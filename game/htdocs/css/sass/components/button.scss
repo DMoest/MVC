@@ -1,0 +1,44 @@
+.navbar__button {
+  display: inline-block;
+  width: auto;
+  height: 1rem;
+  padding: 0 0.5rem 0.5rem;
+  text-align: left;
+  font-size: 1.2em;
+  color: var(--color__text--dark);
+  text-decoration: none;
+  transition: color 0.3s ease-in;
+
+  :hover,
+  :link {
+    cursor: pointer;
+    color: var(--color__primary--light);
+    text-decoration: underline;
+  }
+
+  :active,
+  :focus {
+    color: var(--color__primary--lighter);
+  }
+}
+
+
+.diceForm__input--button {
+  width: $size--50;
+  height: auto;
+  padding: 1rem;
+  margin: 0 auto;
+  font-size: $font__size--button;
+  font-weight: $font__weight--button;
+  display: inline-block;
+  background-color: $color__white;
+  border: $border--thin solid $color__grey--50;
+  border-radius: $border__radius;
+  transition: all 0.2s;
+
+  &:hover {
+    color: $color__text--light;
+    border: $border--thin solid $color__primary;
+    background-color: $color__primary--darker;
+  }
+}

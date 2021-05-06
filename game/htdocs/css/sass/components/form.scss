@@ -1,0 +1,61 @@
+.form {
+
+}
+
+.diceForm {
+  background-color: $color__grey--10;
+  padding: $whiteSpace;
+  border: $border--thin solid $color__grey--50;
+  border-radius: $border__radius;
+
+  &__input {
+    &--slider {
+
+    }
+
+    &--button {
+
+    }
+  }
+
+  &__submit {
+    &--container {
+      display: flex;
+      flex-flow: nowrap row;
+      //justify-content: space-around;
+      gap: 1rem;
+    }
+  }
+
+  &__results {
+    width: 100%;
+    display: block;
+
+    &--container {
+      width: $size--100;
+      height: auto;
+      display: flex;
+      flex-flow: nowrap row;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    &--player-0,
+    &--player-1,
+    &--player-2,
+    &--player-3,
+    &--player-4,
+    &--player-5,
+    &--player-6 {
+      width: $size--100;
+      height: auto;
+      padding: 1rem;
+      margin: 0 0 $whiteSpace;
+      display: inline-block;
+      background-color: $color__white;
+      border: $border--thin solid $color__grey--50;
+      border-radius: $border__radius;
+
+    }
+  }
+}

@@ -1,0 +1,216 @@
+@charset "UTF-8";
+/* --- COLORS --- */
+/* black & white */
+/* grey scale colors */
+/* text colors */
+/* primary color */
+/* secondary color */
+/* --- MEASUREMENTS --- */
+/* percentage sizing */
+/* border */
+/* --- FONTS --- */
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: Georgia, Serif;
+  font-size: 1em;
+}
+
+.header__title--text {
+  text-align: center;
+  font-size: 2.726rem;
+}
+.header__title--slogan {
+  text-align: center;
+  font-size: 1.333rem;
+  font-style: italic;
+  font-weight: 100;
+}
+
+.navbar__button {
+  display: inline-block;
+  width: auto;
+  height: 1rem;
+  padding: 0 0.5rem 0.5rem;
+  text-align: left;
+  font-size: 1.2em;
+  color: var(--color__text--dark);
+  text-decoration: none;
+  transition: color 0.3s ease-in;
+}
+.navbar__button :hover,
+.navbar__button :link {
+  cursor: pointer;
+  color: var(--color__primary--light);
+  text-decoration: underline;
+}
+.navbar__button :active,
+.navbar__button :focus {
+  color: var(--color__primary--lighter);
+}
+
+.diceForm__input--button {
+  width: 50%;
+  height: auto;
+  padding: 1rem;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  font-weight: 400;
+  display: inline-block;
+  background-color: #fcfcfc;
+  border: 0.05rem solid #9E9E9E;
+  border-radius: 0.3rem;
+  transition: all 0.2s;
+}
+.diceForm__input--button:hover {
+  color: #F5F5F5;
+  border: 0.05rem solid #0288D1;
+  background-color: #015988;
+}
+
+body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 85%;
+  padding: 1em;
+  margin: auto;
+  border-left: 1px solid #ccc;
+  color: var(--color__text--dark);
+}
+
+main {
+  min-height: 20em;
+}
+
+/**
+ * Style a dice using UTF-8 characters.
+ */
+.dice-utf8 .dice-1::after {
+  content: "⚀";
+}
+
+.dice-utf8 .dice-2::after {
+  content: "⚁";
+}
+
+.dice-utf8 .dice-3::after {
+  content: "⚂";
+}
+
+.dice-utf8 .dice-4::after {
+  content: "⚃";
+}
+
+.dice-utf8 .dice-5::after {
+  content: "⚄";
+}
+
+.dice-utf8 .dice-6::after {
+  content: "⚅";
+}
+
+.dice-utf8 {
+  font-size: 32px;
+}
+.dice-utf8 i {
+  font-style: normal;
+}
+
+/**
+ * CSS sprite for a dice with six faces.
+ */
+.dice-sprite {
+  display: inline-block;
+  padding: 0;
+  margin: 0 4px 0 0;
+  width: 32px;
+  height: 32px;
+  font-style: normal;
+  background: url(/../img/dice-faces.jpg) no-repeat;
+}
+
+.dice-sprite.dice-1 {
+  background-position: -160px 0;
+}
+
+.dice-sprite.dice-2 {
+  background-position: -128px 0;
+}
+
+.dice-sprite.dice-3 {
+  background-position: -96px 0;
+}
+
+.dice-sprite.dice-4 {
+  background-position: -64px 0;
+}
+
+.dice-sprite.dice-5 {
+  background-position: -32px 0;
+}
+
+.dice-sprite.dice-6 {
+  background-position: 0 0;
+}
+
+.diceForm {
+  background-color: #F5F5F5;
+  padding: calc(1.333 * 1em);
+  border: 0.05rem solid #9E9E9E;
+  border-radius: 0.3rem;
+}
+.diceForm__submit--container {
+  display: flex;
+  flex-flow: nowrap row;
+  gap: 1rem;
+}
+.diceForm__results {
+  width: 100%;
+  display: block;
+}
+.diceForm__results--container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: nowrap row;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.diceForm__results--player-0, .diceForm__results--player-1, .diceForm__results--player-2, .diceForm__results--player-3, .diceForm__results--player-4, .diceForm__results--player-5, .diceForm__results--player-6 {
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  margin: 0 0 calc(1.333 * 1em);
+  display: inline-block;
+  background-color: #fcfcfc;
+  border: 0.05rem solid #9E9E9E;
+  border-radius: 0.3rem;
+}
+
+footer {
+  border-top: 1px solid #ccc;
+  min-height: 4em;
+  text-align: center;
+}
+
+.header {
+  width: 100%;
+  height: auto;
+  padding: 0 0 calc(2 * (1.333 * 1em));
+  display: block;
+}
+.header__title {
+  width: 100%;
+  padding: 0 0 calc(2 * (1.333 * 1em));
+}
+
+navbar {
+  display: flex;
+  flex-flow: nowrap row;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/*# sourceMappingURL=style.css.map */

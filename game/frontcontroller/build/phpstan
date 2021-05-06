@@ -1,0 +1,36 @@
+ ------ ----------------------------------------------------------------------- 
+  Line   config/config.php                                                      
+ ------ ----------------------------------------------------------------------- 
+  7      Parameter #2 $newvalue of function ini_set expects string, int given.  
+ ------ ----------------------------------------------------------------------- 
+
+ ------ -------------------------------------------------------------------- 
+  Line   config/exception_selfDefined.php                                    
+ ------ -------------------------------------------------------------------- 
+  10     Instantiated class Dice not found.                                  
+         💡 Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  11     Call to method roll() on an unknown class Dice.                     
+         💡 Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  12     Caught class PersonAgeException not found.                          
+         💡 Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  16     Instantiated class Dice not found.                                  
+         💡 Learn more at https://phpstan.org/user-guide/discovering-symbols  
+ ------ -------------------------------------------------------------------- 
+
+ ------ -------------------------------------------------------- 
+  Line   src/Dice/DiceHand.php                                   
+ ------ -------------------------------------------------------- 
+  24     PHPDoc tag @param references unknown parameter: $rolls  
+ ------ -------------------------------------------------------- 
+
+ ------ -------------------------------------------------------------------- 
+  Line   src/Dice/Game.php                                                   
+ ------ -------------------------------------------------------------------- 
+  32     Function renderView not found.                                      
+         💡 Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  33     Function sendResponse not found.                                    
+         💡 Learn more at https://phpstan.org/user-guide/discovering-symbols  
+ ------ -------------------------------------------------------------------- 
+
+ [ERROR] Found 8 errors                                                                                                 
+

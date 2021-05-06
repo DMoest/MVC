@@ -1,0 +1,13 @@
+body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 85%;
+  padding: 1em;
+  margin: auto;
+  border-left: 1px solid #ccc;
+  color: var(--color__text--dark);
+}
+
+main {
+  min-height: 20em;
+}

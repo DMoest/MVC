@@ -1,0 +1,89 @@
+/* --- COLORS --- */
+/* black & white */
+/* grey scale colors */
+/* text colors */
+/* primary color */
+/* secondary color */
+/* --- MEASUREMENTS --- */
+/* percentage sizing */
+/* border */
+/* --- FONTS --- */
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: Georgia, Serif;
+  font-size: 1em;
+}
+
+.header__title--text {
+  text-align: center;
+  font-size: 2.726rem;
+}
+.header__title--slogan {
+  text-align: center;
+  font-size: 1.333rem;
+  font-style: italic;
+  font-weight: 100;
+}
+
+.navbar__button {
+  display: inline-block;
+  width: auto;
+  height: 1rem;
+  padding: 0 0.5rem 0.5rem;
+  text-align: left;
+  font-size: 1.2em;
+  color: var(--color__text--dark);
+  text-decoration: none;
+  transition: color 0.3s ease-in;
+}
+.navbar__button:hover {
+  cursor: pointer;
+  color: var(--color__primary--light);
+  text-decoration: underline;
+}
+.navbar__button:active, .navbar__button:focus {
+  color: var(--color__primary--lighter);
+}
+
+body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 85%;
+  padding: 1em;
+  margin: auto;
+  border-left: 1px solid #ccc;
+  color: var(--color__text--dark);
+}
+
+main {
+  min-height: 20em;
+}
+
+footer {
+  border-top: 1px solid #ccc;
+  min-height: 4em;
+  text-align: center;
+}
+
+.header {
+  width: 100%;
+  height: auto;
+  padding: 0 0 calc(2 * (1.333 * 1em));
+  display: block;
+}
+.header__title {
+  width: 100%;
+  padding: 0 0 calc(2 * (1.333 * 1em));
+}
+
+navbar {
+  display: flex;
+  flex-flow: nowrap row;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/*# sourceMappingURL=style.css.map */
