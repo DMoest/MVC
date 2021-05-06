@@ -21,10 +21,15 @@ $scoreBoard = $scoreBoard ?? null;
 
 ?>
 
-
+<?php echo " | *** GET *** | " . var_dump($_GET) . "<br>" ?>
+<?php echo " | *** POST *** | " . var_dump($_POST) . "<br>" ?>
+<?php echo " | *** SESSION *** | " . var_dump($_SESSION) . "<br>" ?>
+<?php echo " | *** PLAYERS *** | " . var_dump($players) . "<br>" ?>
+<?php echo " | *** DATA *** | " . var_dump($data) . "<br>" ?>
 
 <h1><?= $header ?></h1>
 <p><?= $message ?></p>
+
 <p>There are <?= count($players) ?> players in this game of Dice 21.</p>
 <p>Round: <?= $round ?></p>
 

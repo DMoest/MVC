@@ -1,7 +1,7 @@
 /Users/Daniel/Documents/Studier/BTH/dbwebb-kurser/mvc/me/game/frontcontroller/src/Router/Router.php:23	The method dispatch() has a Cyclomatic Complexity of 17. The configured cyclomatic complexity threshold is 10.
-/Users/Daniel/Documents/Studier/BTH/dbwebb-kurser/mvc/me/game/src/Dice/Game.php:29	The class Game has an overall complexity of 52 which is very high. The configured complexity threshold is 50.
+/Users/Daniel/Documents/Studier/BTH/dbwebb-kurser/mvc/me/game/src/Dice/Game.php:29	The class Game has an overall complexity of 53 which is very high. The configured complexity threshold is 50.
 /Users/Daniel/Documents/Studier/BTH/dbwebb-kurser/mvc/me/game/src/Dice/Game.php:67	The method playGame() has a Cyclomatic Complexity of 11. The configured cyclomatic complexity threshold is 10.
-/Users/Daniel/Documents/Studier/BTH/dbwebb-kurser/mvc/me/game/src/Dice/Game.php:146	The method playComputer() has a Cyclomatic Complexity of 13. The configured cyclomatic complexity threshold is 10.
-/Users/Daniel/Documents/Studier/BTH/dbwebb-kurser/mvc/me/game/src/Dice/Game.php:369	Avoid unused local variables such as '$data'.
+/Users/Daniel/Documents/Studier/BTH/dbwebb-kurser/mvc/me/game/src/Dice/Game.php:151	The method playComputer() has a Cyclomatic Complexity of 13. The configured cyclomatic complexity threshold is 10.
+/Users/Daniel/Documents/Studier/BTH/dbwebb-kurser/mvc/me/game/src/Dice/Game.php:374	Avoid unused local variables such as '$data'.
 /Users/Daniel/Documents/Studier/BTH/dbwebb-kurser/mvc/me/game/src/Router/Router.php:34	The method dispatch() has a Cyclomatic Complexity of 29. The configured cyclomatic complexity threshold is 10.
 /Users/Daniel/Documents/Studier/BTH/dbwebb-kurser/mvc/me/game/src/Router/Router.php:34	The method dispatch() has 119 lines of code. Current threshold is set to 100. Avoid really long methods.

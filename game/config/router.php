@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 use FastRoute\RouteCollector;
 
+
 $router = $router ?? null;
 
 $router->addRoute("GET", "/test", function () {
@@ -34,3 +35,33 @@ $router->addGroup("/form", function (RouteCollector $router) {
     $router->addRoute("GET", "/view", ["\Mos\Controller\Form", "view"]);
     $router->addRoute("POST", "/process", ["\Mos\Controller\Form", "process"]);
 });
+
+
+
+/* Controller Class Routes */
+/* -------------------------------------------------- */
+/* Check these things:
+    1. Route to respond on.
+    2. Method in use for route (GET/POST).
+    3. Usage route addon URL.
+    4. Controller-Class used for route.
+    5. Method of the Controller-Class to execute with.
+*/
+
+
+$router->addGroup("/dice__init", function (RouteCollector $router) {
+    $router->addRoute("GET", "/view", ["\daap19\Controller\DiceInit", "renderView"]);
+    $router->addRoute("POST", "/process", ["\daap19\Controller\DiceInit", "processResponse"]);
+});
+
+$router->addGroup("/dice", function (RouteCollector $router) {
+    $router->addRoute("GET", "/view", ["\daap19\Controller\Game", "renderView"]);
+    $router->addRoute("POST", "/process", ["\daap19\Controller\Game", "processResponse"]);
+});
+
+$router->addGroup("/dice__results", function (RouteCollector $router) {
+    $router->addRoute("GET", "/view", ["\daap19\Controller\Dice", "renderView"]);
+    $router->addRoute("POST", "/process", ["\daap19\Controller\Dice", "processResponse"]);
+});
+
+/* -------------------------------------------------- */

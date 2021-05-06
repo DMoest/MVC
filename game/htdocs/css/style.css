@@ -29,6 +29,19 @@ body {
   font-weight: 100;
 }
 
+.diceForm__text--header {
+  text-align: center;
+  font-size: 2.369rem;
+}
+.diceForm__text--paragraph {
+  text-align: left;
+  font-size: 1.151rem;
+}
+.diceForm__text--button {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
 .navbar__button {
   display: inline-block;
   width: auto;

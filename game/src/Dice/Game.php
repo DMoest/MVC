@@ -86,6 +86,11 @@ class Game
         $playerStopped = $player->hasStopped();
         $credit = $player->getCredit();
 
+        $players = $this->getPlayers();
+        $data["players"] = $players;
+
+        echo "<p>Players: var_dump($this->getPlayers())</p>";
+
         /* Run this game */
         if (intval($computer) !== 1 && $credit >= 5) {
             /* Action depending on users input */
@@ -396,6 +401,15 @@ class Game
         $this->round++;
     }
 
+    /**
+     * @method getPlayers()
+     * @description getter method to return array of player objects representing all the players in the game.
+     * @return array of player objects.
+     */
+    public function getPlayers(): array
+    {
+        return $this->players;
+    }
 
     /**
      * @method outputData()

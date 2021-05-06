@@ -20,3 +20,23 @@ body {
     font-weight: 100;
   }
 }
+
+.diceForm{
+
+  &__text {
+    &--header {
+      text-align: center;
+      font-size: $font__size--h2;
+    }
+
+    &--paragraph {
+      text-align: left;
+      font-size: $font__size--p;
+    }
+
+    &--button {
+      text-align: center;
+      font-size: $font__size--button;
+    }
+  }
+}
