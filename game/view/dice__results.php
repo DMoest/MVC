@@ -11,40 +11,47 @@ $header = $header ?? null;
 $message = $message ?? null;
 $action = $action ?? null;
 $round = $round ?? null;
+$numberOfPlayers = $numberOfPlayers ?? null;
+$playerNumber = $playerNumber ?? null;
+$graphicDices = $graphicDices ?? null;
 $scoreBoard = $scoreBoard ?? null;
-//$output = $output ?? null;
-//$players = $players ?? null;
-//$playerNumber = $playerNumber ?? null;
-//$diceHand = $diceHand ?? null;
-//$diceHandLastRoll = $diceHandLastRoll ?? null;
-//$roll = $roll ?? null;
-//$stop = $stop ?? null;
-//$submit = $submit ?? null;
-//$diceLastRoll = $diceLastRoll ?? null;
 
 ?>
 
 <h1><?= $header ?></h1>
-<p><?= $message ?></p>
+<p><i><?= $message ?> - round <?= $round ?></i></p>
 
 <form method="post" action="<?= $action ?>" class="diceForm">
-    <h3>Round <?= $round ?> results</h3>
-
     <div class="diceForm__results">
-        <h3>Scores</h3>
+        <h3>Current players score</h3>
+
+        <p>Last played hand from Player <?= $playerNumber ?>
+            <!--Graphic Dices -->
+            <p class="dice-utf8">
+                <?php foreach($graphicDices as $value) : ?>
+                    <i class="<?= $value ?>"></i>
+                <?php endforeach; ?>
+            </p>
+        </p>
+
         <?= $scoreBoard ?>
     </div>
 
     <div class="diceForm__submit--container">
-        <input class="diceForm__input--button" type="submit" name="submit" value="Next round" formaction="dice/view"/>
+        <input class="diceForm__input--button diceForm__input--buttonLink" type="submit" name="submit" value="next"/>
     </div>
+
 </form>
 
 
 
-<!--<p>- TESTING: -------------------------------------------------------------------------------------------------------------</p>-->
-<!--<pre>Output: --><?//= var_dump($output) ?><!--</pre>-->
-<!--<pre>Action: --><?//= var_dump($action) ?><!--</pre>-->
-<!--<pre>$_POST: --><?//= var_dump($_POST) ?><!--</pre>-->
-<!--<pre>$_SESSION: --><?//= var_dump($_SESSION) ?><!--</pre>-->
-<!--<p>------------------------------------------------------------------------------------------------------------------------</p>-->
+<!-- ------------------------------------------------------------------------------------------------------------------------ -->
+<!--<h3>| *** DICE RESULTS VIEW *** |</h3>-->
+<!---->
+<!--<p>| *** POST *** |</p>-->
+<!--<pre>--><?php //print_r($_POST) ?><!--</pre>-->
+<!---->
+<!--<p>| *** SESSION *** |</p>-->
+<!--<pre>--><?php //print_r($_SESSION) ?><!--</pre>-->
+
+<!-- ------------------------------------------------------------------------------------------------------------------------ -->

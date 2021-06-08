@@ -17,7 +17,9 @@ echo <<<EOD
 with trouble.</p>
 EOD;
 
-var_dump(session_name());
-var_dump($_SESSION);
+?>
 
-$_SESSION["counter"] = 1 + ($_SESSION["counter"] ?? 0);
+<p> <?php var_dump(session_name()); ?></p><br>";
+<pre>$_SESSION["counter"]: <?php print_r($_SESSION); ?></pre><br>";
+
+<p><?php $_SESSION["counter"] = 1 + ($_SESSION["counter"] ?? 0); ?></p>

@@ -11,6 +11,7 @@ use Mos\Controller\ControllerBase;
 use Psr\Http\Message\ResponseInterface;
 //use Nyholm\Psr7\Factory\Psr17Factory;
 
+
 /**
  * Functions usage.
  */
@@ -22,13 +23,11 @@ use function Mos\Functions\{
 
 
 /**
- * @name Game
+ * @name GameResults
  * @description Controller class for initializing a game of Dice, used by router.
  */
-class Game extends ControllerBase
+class GameResults extends ControllerBase
 {
-    private ?string $scoreBoard = null;
-
     /**
      * @method renderView()
      * @description renders view and returns response object for route controller class.
@@ -40,26 +39,22 @@ class Game extends ControllerBase
 
         $diceGame = $_SESSION["diceGame"];
         $players = $diceGame->getPlayers();
-        $currentPlayer = $players[$diceGame->getPlayerIndex()];
-        $playerScore = $currentPlayer->getScore();
-        $playerCredit = $currentPlayer->getCredit();
+        $player = $players[$diceGame->getPlayerIndex()];
 
         $data = [
             "header" => "Dice Game 21",
-            "message" => "Game on, roll them dices!",
-            "action" => url("/dice/process"),
+            "message" => "Results for this round.",
+            "action" => url("/dice__results/process"),
             "round" => $diceGame->getRound(),
-            "players" => $players,
-            "score" => $playerScore,
-            "credit" => $playerCredit,
-            "numberOfPlayers" => count($diceGame->getPLayers()),
-            "playerNumber" => $diceGame->getPlayerIndex() +1,
+            "playerNumber" => $diceGame->getPLayerIndex() +1,
+            "graphicDices" => $diceGame->showGraphicDices($player->getLastHand()),
             "scoreBoard" => $diceGame->scoreBoard(),
         ];
 
-        $body = renderView("layout/dice.php", $data);
+        $body = renderView("layout/dice__results.php", $data);
 
         /* ------------------------------------------------------------ */
+
 
         // Return the response through parent class ControllerBase
         return $this->response($body);
@@ -75,37 +70,28 @@ class Game extends ControllerBase
     {
         /* - My code -------------------------------------------------- */
 
-        /* Catch POST request from dice__init form and store values to SESSION variable */
         $diceGame = $_SESSION["diceGame"];
-        $dices = intval($_POST["dices"]) ?? null;
-        $submit = strval($_POST["submit"]) ?? null;
+        $players = $diceGame->getPlayers();
+        $playerIndex = $diceGame->getPlayerIndex();
+        $player = $players[$playerIndex];
+        $lastIndex = count($players) -1;
+        $bust = intval($player->isBust());
+        $stopped = intval($player->hasStopped());
 
-        /* Play game */
-        $diceGame->playGame($dices, $submit);
-        $this->scoreBoard = $diceGame->scoreBoard();
+        if ($stopped === 1 ?? $bust === 1) {
+            if ($playerIndex === $lastIndex) {
+                $diceGame->setNextRound();
+            }
 
-        /* ------------------------------------------------------------ */
-
-        // Return the redirect through parent class ControllerBase
-        return $this->redirect(url("/dice__results/view"));
-    }
+            $diceGame->setNextPlayerIndex();
+        }
 
 
-    /**
-     * @name reset
-     * @description method to reset game through removing the variable from the session.
-     * @return ResponseInterface
-     */
-    public function reset(): ResponseInterface
-    {
-        /* - My code -------------------------------------------------- */
-
-        /* Removes the session variable that is diceGame to */
-        unset($_SESSION["diceGame"]);
 
         /* ------------------------------------------------------------ */
 
+
         // Return the redirect through parent class ControllerBase
-        return $this->redirect(url("/dice__init/view"));
+        return $this->redirect(url("/dice/view"));
     }
 }

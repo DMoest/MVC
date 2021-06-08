@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Mos\Controller;
 
-use Nyholm\Psr7\Factory\Psr17Factory;
-use Nyholm\Psr7\Response;
+//use Nyholm\Psr7\Factory\Psr17Factory;
+//use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 
 use function Mos\Functions\{
@@ -17,27 +17,22 @@ use function Mos\Functions\{
 /**
  * Controller for the session routes.
  */
-class Session
+class Session extends ControllerBase
 {
     public function index(): ResponseInterface
     {
-        $psr17Factory = new Psr17Factory();
-
         $body = renderView("layout/session.php");
 
-        return $psr17Factory
-            ->createResponse(200)
-            ->withBody($psr17Factory->createStream($body));
+        // Return the response through parent class ControllerBase
+        return $this->response($body);
     }
-
 
 
     public function destroy(): ResponseInterface
     {
         destroySession();
 
-        return (new Response())
-            ->withStatus(301)
-            ->withHeader("Location", url("/session"));
+        // Return the redirect through parent class ControllerBase
+        return $this->redirect(url("/session"));
     }
 }

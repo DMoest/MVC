@@ -14,17 +14,14 @@ use function Mos\Functions\renderView;
 /**
  * Controller for the debug route.
  */
-class Debug
+class Debug extends ControllerBase
 {
     public function __invoke(): ResponseInterface
     {
         $body = renderView("layout/debug.php");
 
-        // Create and return the response
-        $psr17Factory = new Psr17Factory();
-        return $psr17Factory
-            ->createResponse(200)
-            ->withBody($psr17Factory->createStream($body));
+        // Return the response through parent class ControllerBase
+        return $this->response($body);
     }
 
     // public function __invoke(): ResponseInterface

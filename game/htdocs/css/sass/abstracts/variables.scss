@@ -32,6 +32,37 @@ $color__secondary: #FF8B00;
 $color__secondary--dark: #BF7E30;
 $color__secondary--darker: #A65A00;
 
+/* Indicator colors */
+$color__info--lighter: #77BEF5;
+$color__info--light: #4BABF4;
+$color__info: #2196F3;
+$color__info--dark: #098BEF;
+$color__info--darker: #0367B4;
+
+$color__success--lighter: #A9E2AC;
+$color__success--light: #77CC7D;
+$color__success: #4CAF53;
+$color__success--dark: #2D9434;
+$color__success--darker: #15781B;
+
+$color__caution--lighter: #FFEB3B;
+$color__caution--light: #FFEB3B;
+$color__caution: #FFEB3B;
+$color__caution--dark: #F0D809;
+$color__caution--darker: #B6A403;
+
+$color__warning--lighter: #FFC164;
+$color__warning--light: #FFB039;
+$color__warning: #FF9800;
+$color__warning--dark: #9B5D00;
+$color__warning--darker: #9B5D00;
+
+$color__danger--lighter: #FF8F86;
+$color__danger--light: #FF685C;
+$color__danger: #F44336;
+$color__danger--dark: #D81D0F;
+$color__danger--darker: #A90F03;
+
 
 /* --- MEASUREMENTS --- */
 /* percentage sizing */
@@ -58,13 +89,6 @@ $border__radius--long: 0.5rem;
 
 
 /* --- FONTS --- */
-//$font__title: ;
-//$font__header: ;
-//$font__subHeader: ;
-//$font__h4: ;
-//$font__h5: ;
-//$font__h6: ;
-
 $font__family--text: Georgia, Serif;
 $font__family--header: Georgia, Serif;
 $font__family--title: Georgia, Serif;
@@ -91,6 +115,7 @@ $font__weight--h6: 400;
 $font__weight--p: 300;
 $font__weight--button: 400;
 
+/* --- Space --- */
 $whiteSpace: calc(1.333 * 1em);
 $whiteSpace--large: calc(2 * (1.333 * 1em));
 $whiteSpace--xLarge: calc(4 * (1.333 * 1em));

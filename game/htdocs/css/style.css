@@ -5,10 +5,12 @@
 /* text colors */
 /* primary color */
 /* secondary color */
+/* Indicator colors */
 /* --- MEASUREMENTS --- */
 /* percentage sizing */
 /* border */
 /* --- FONTS --- */
+/* --- Space --- */
 html {
   font-size: 100%;
 }
@@ -53,14 +55,12 @@ body {
   text-decoration: none;
   transition: color 0.3s ease-in;
 }
-.navbar__button :hover,
-.navbar__button :link {
+.navbar__button:hover {
   cursor: pointer;
   color: var(--color__primary--light);
   text-decoration: underline;
 }
-.navbar__button :active,
-.navbar__button :focus {
+.navbar__button:active, .navbar__button:focus {
   color: var(--color__primary--lighter);
 }
 
@@ -69,18 +69,65 @@ body {
   height: auto;
   padding: 1rem;
   margin: 0 auto;
-  font-size: 1.2rem;
-  font-weight: 400;
   display: inline-block;
-  background-color: #fcfcfc;
   border: 0.05rem solid #9E9E9E;
   border-radius: 0.3rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-transform: uppercase;
   transition: all 0.2s;
 }
-.diceForm__input--button:hover {
+.diceForm__input--buttonLink {
   color: #F5F5F5;
-  border: 0.05rem solid #0288D1;
-  background-color: #015988;
+  background-color: #098BEF;
+  border: 0.05rem solid #0367B4;
+}
+.diceForm__input--buttonLink:hover, .diceForm__input--buttonLink:link {
+  background-color: #4BABF4;
+  border: 0.05rem solid #098BEF;
+}
+.diceForm__input--buttonLink:active, .diceForm__input--buttonLink:focus {
+  background-color: #77BEF5;
+  border: 0.05rem solid #2196F3;
+}
+.diceForm__input--buttonSuccess {
+  color: #F5F5F5;
+  background-color: #4CAF53;
+  border: 0.05rem solid #15781B;
+}
+.diceForm__input--buttonSuccess:hover, .diceForm__input--buttonSuccess:link {
+  background-color: #77CC7D;
+  border: 0.05rem solid #4CAF53;
+}
+.diceForm__input--buttonSuccess:active, .diceForm__input--buttonSuccess:focus {
+  background-color: #A9E2AC;
+  border: 0.05rem solid #77CC7D;
+}
+.diceForm__input--buttonCaution {
+  color: #212121;
+  background-color: #F0D809;
+  border: 0.05rem solid #B6A403;
+}
+.diceForm__input--buttonCaution:hover, .diceForm__input--buttonCaution:link {
+  background-color: #FFEB3B;
+  border: 0.05rem solid #F0D809;
+}
+.diceForm__input--buttonCaution:active, .diceForm__input--buttonCaution:focus {
+  background-color: #FFEB3B;
+  border: 0.05rem solid #FFEB3B;
+}
+.diceForm__input--buttonDanger {
+  color: #F5F5F5;
+  background-color: #D81D0F;
+  border: 0.05rem solid #A90F03;
+}
+.diceForm__input--buttonDanger:hover, .diceForm__input--buttonDanger:link {
+  background-color: #F44336;
+  border: 0.05rem solid #D81D0F;
+}
+.diceForm__input--buttonDanger:active, .diceForm__input--buttonDanger:focus {
+  background-color: #FF8F86;
+  border: 0.05rem solid #F44336;
 }
 
 body {
@@ -177,6 +224,7 @@ main {
 .diceForm__submit--container {
   display: flex;
   flex-flow: nowrap row;
+  justify-content: space-around;
   gap: 1rem;
 }
 .diceForm__results {

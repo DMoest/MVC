@@ -16,13 +16,17 @@
     &--button {
 
     }
+
+    &--caution {
+
+    }
   }
 
   &__submit {
     &--container {
       display: flex;
       flex-flow: nowrap row;
-      //justify-content: space-around;
+      justify-content: space-around;
       gap: 1rem;
     }
   }

@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'a7b0d14e4d748fc26667a8bcc155ab08a89d000a',
+    'reference' => 'd3b46ff23193a200c63fbaa4e0302abf01eb4c5a',
     'name' => 'dbwebb/mvc-game',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'a7b0d14e4d748fc26667a8bcc155ab08a89d000a',
+      'reference' => 'd3b46ff23193a200c63fbaa4e0302abf01eb4c5a',
     ),
     'laminas/laminas-httphandlerrunner' => 
     array (

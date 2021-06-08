@@ -12,12 +12,10 @@ use function Mos\Functions\renderView;
 /**
  * Controller for a sample route an controller class.
  */
-class Sample
+class Sample extends ControllerBase
 {
     public function where(): ResponseInterface
     {
-        $psr17Factory = new Psr17Factory();
-
         $data = [
             "header" => "Rainbow page",
             "message" => "Hey, edit this to do it youreself!",
@@ -25,8 +23,7 @@ class Sample
 
         $body = renderView("layout/page.php", $data);
 
-        return $psr17Factory
-            ->createResponse(200)
-            ->withBody($psr17Factory->createStream($body));
+        // Return the response through parent class ControllerBase
+        return $this->response($body);
     }
 }

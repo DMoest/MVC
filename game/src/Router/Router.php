@@ -83,64 +83,8 @@ class Router
             $_SESSION["output"] = $_POST["content"] ?? null;
             redirectTo(url("/form/view"));
             return;
-        } else if ($method === "GET" && $path === "/dice__init/view") {
-            $data = [
-                "header" => "Startup a game of Dice 21",
-                "message" => "Please choose how to play.",
-                "action" => url("/dice__init/process"),
-                "output" => $_SESSION["output"] ?? null,
-                "players" => $_POST["numberOfPlayers"] ?? null,
-                "credit" => $_POST["credit"] ?? null,
-            ];
-
-            $body = renderView("layout/dice__init.php", $data);
-            sendResponse($body);
-            return;
-        } else if ($method === "POST" && $path === "/dice__init/process") {
-
-            /* Setup new game */
-            $diceGame = new Game(intval($_POST["numberOfPlayers"]), intval($_POST["credit"]), true);
-            $_SESSION["diceGame"] = $diceGame ?? null;
-
-            redirectTo(url("/dice/view"));
-            return;
-        } else if ($method === "GET" && $path === "/dice/view") {
-
-            /* set session to variable for easy access & execution */
-            $callable = $_SESSION["diceGame"];
-
-            /* Execute method on the object of the named session to start the game */
-            $callable->playGame();
-
-            return;
-        } else if ($method === "POST" && $path === "/dice/process") {
-            $_SESSION["output"] = $_POST["content"] ?? null;
-            redirectTo(url("/dice/view"));
-            return;
-        }  else if ($method === "GET" && $path === "/dice__results/view") {
-            $data = [
-                "header" => "Startup a game of Dice 21",
-                "message" => "Please choose how to play.",
-                "action" => url("/dice__results/process"),
-                "view" => "layout/dice.php",
-                "output" => $_SESSION["output"] ?? null,
-                "players" => $_POST["numberOfPlayers"] ?? null,
-                "credit" => $_POST["credit"] ?? null,
-            ];
-
-            $body = renderView("layout/dice__results.php", $data);
-            sendResponse($body);
-            return;
-        } else if ($method === "POST" && $path === "/dice__results/process") {
-
-            echo "<p>ENTER ROUTE DICE__RESULTS</p>";
-
-            /* Setup for next round */
-//            $_SESSION["diceGame"]->setNextRound();
-
-            redirectTo(url("/dice__results/view"));
-            return;
         }
+
 
         $data = [
             "header" => "404",

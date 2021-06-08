@@ -12,9 +12,16 @@ use function Mos\Functions\{
     getRoutePath
 };
 
-echo "<h1>Debug details</h1>";
+echo "<h1>Debug details</h1>"; ?>
 
-var_dump(getBaseUrl());
-var_dump(getCurrentUrl());
-var_dump(getRoutePath());
-var_dump($_SERVER);
+<pre><?= var_dump(getBaseUrl()); ?></pre>
+<pre><?= var_dump(getCurrentUrl()); ?></pre>
+<pre><?= var_dump(getRoutePath()); ?></pre>
+<pre><?= var_dump($_SERVER); ?></pre>
+
+
+
+<!--var_dump(getBaseUrl());-->
+<!--var_dump(getCurrentUrl());-->
+<!--var_dump(getRoutePath());-->
+<!--var_dump($_SERVER);-->

@@ -14,18 +14,11 @@ declare(strict_types=1);
 $header = $header ?? null;
 $message = $message ?? null;
 $action = $action ?? null;
-$output = $output ?? null;
+$dices = $dices ?? null;
 $players = $players ?? null;
 $credit = $credit ?? null;
 
 ?>
-
-
-<?php echo " | *** GET *** | " . var_dump($_GET) . "<br>" ?>
-<?php echo " | *** POST *** | " . var_dump($_POST) . "<br>" ?>
-<?php echo " | *** SESSION *** | " . var_dump($_SESSION) . "<br>" ?>
-<?php echo " | *** PLAYERS *** | " . var_dump($players) . "<br>" ?>
-<?php echo " | *** DATA *** | " . var_dump($data) . "<br>" ?>
 
 
 <h2 class="diceForm__text--header"><?= $header ?></h2>
@@ -45,12 +38,19 @@ $credit = $credit ?? null;
     </p>
 
     <div class="diceForm__submit--container">
-        <button class="diceForm__input--button diceForm__text--button" type="submit">Start game</button>
+        <button class="diceForm__input--button diceForm__input--buttonLink" type="submit">Start game</button>
     </div>
-
-    <?php if ($output !== null) : ?>
-        <p>
-            <output>You rolled '<?= htmlentities($output) ?>' dices. </output>
-        </p>
-    <?php endif; ?>
 </form>
+
+
+
+<!-- TESTING: ------------------------------------------------------------------------------------------------------------- -->
+<!--<h3>| *** DICE INIT VIEW *** |</h3>-->
+<!---->
+<!--<p>| *** POST *** |</p>-->
+<!--<pre>--><?php //print_r($_POST) ?><!--</pre>-->
+<!---->
+<!--<p>| *** SESSION *** |</p>-->
+<!--<pre>--><?php //print_r($_SESSION) ?><!--</pre>-->
+
+<!-- ------------------------------------------------------------------------------------------------------------------------ -->

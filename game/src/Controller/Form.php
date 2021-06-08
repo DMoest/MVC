@@ -16,7 +16,7 @@ use function Mos\Functions\{
 /**
  * Controller showing how to work with forms.
  */
-class Form
+class Form extends ControllerBase
 {
     public function view(): ResponseInterface
     {
@@ -26,23 +26,19 @@ class Form
             "action" => url("/form/process"),
             "output" => $_SESSION["output"] ?? null,
         ];
+
         $body = renderView("layout/form.php", $data);
 
-        $psr17Factory = new Psr17Factory();
-        return $psr17Factory
-            ->createResponse(200)
-            ->withBody($psr17Factory->createStream($body));
+        // Return the response through parent class ControllerBase
+        return $this->response($body);
     }
-
 
 
     public function process(): ResponseInterface
     {
         $_SESSION["output"] = $_POST["content"] ?? null;
 
-        $psr17Factory = new Psr17Factory();
-        return $psr17Factory
-            ->createResponse(301)
-            ->withHeader("Location", url("/form/view"));
+        // Return the redirect through parent class ControllerBase
+        return $this->redirect(url("/form/view"));
     }
 }
