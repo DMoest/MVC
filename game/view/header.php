@@ -39,6 +39,7 @@ use function Mos\Functions\url;
         <a href="<?= url("/no/such/path") ?>" class="navbar__button">Show 404 example</a>
         <a href="<?= url("/form/view") ?>" class="navbar__button">Form view</a>
         <a href="<?= url("/dice__init/view") ?>" class="navbar__button">Dice</a>
+        <a href="<?= url("/yatzy__init/view") ?>" class="navbar__button">Yatzy</a>
     </nav>
 </header>
 

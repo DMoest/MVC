@@ -9,6 +9,7 @@
 .dice-utf8 .dice-6::after { content: "\2685"; }
 
 .dice-utf8 {
+  display: inline-block;
   font-size: 32px;
 
   i {

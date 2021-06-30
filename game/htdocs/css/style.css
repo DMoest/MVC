@@ -172,6 +172,7 @@ main {
 }
 
 .dice-utf8 {
+  display: inline-block;
   font-size: 32px;
 }
 .dice-utf8 i {
@@ -220,6 +221,23 @@ main {
   padding: calc(1.333 * 1em);
   border: 0.05rem solid #9E9E9E;
   border-radius: 0.3rem;
+}
+.diceForm__text {
+  text-align: center;
+  font-size: 1.33rem;
+  margin: calc(1.333 * 1em) 0 0;
+}
+.diceForm__graphicDices {
+  display: flex;
+  flex-flow: nowrap row;
+  justify-content: space-around;
+  gap: 1rem;
+}
+.diceForm__graphicDices--selectionBox {
+  display: flex;
+  flex-flow: nowrap column;
+  justify-content: space-between;
+  gap: 1rem;
 }
 .diceForm__submit--container {
   display: flex;

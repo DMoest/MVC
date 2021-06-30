@@ -1,5 +1,14 @@
 phpcpd 6.0.3 by Sebastian Bergmann.
 
-No clones found.
+Found 2 clones with 164 duplicated lines in 2 files:
 
-Time: 00:00.115, Memory: 2.00 MB
+  - /Users/Daniel/Documents/Studier/BTH/dbwebb-kurser/mvc/me/game/src/Dice/Player.php:166-264 (98 lines)
+    /Users/Daniel/Documents/Studier/BTH/dbwebb-kurser/mvc/me/game/src/Yatzy/Player.php:192-290
+
+  - /Users/Daniel/Documents/Studier/BTH/dbwebb-kurser/mvc/me/game/src/Dice/Player.php:91-157 (66 lines)
+    /Users/Daniel/Documents/Studier/BTH/dbwebb-kurser/mvc/me/game/src/Yatzy/Player.php:99-165
+
+5.90% duplicated lines out of 2778 total lines of code.
+Average size of duplication is 82 lines, largest clone has 98 of lines
+
+Time: 00:00.048, Memory: 4.00 MB

@@ -15,7 +15,8 @@ class GraphicDice extends Dice
     private const SIDES = 6;
 
     /**
-     * GraphicDice constructor.
+     * @method __construct()
+     * @description Class constructor method.
      */
     public function __construct()
     {
@@ -24,7 +25,7 @@ class GraphicDice extends Dice
 
     /**
      * @method graphicDice()
-     * @description returns a string that represents a class to reveal the right graphic representation of the value of the dice roll.
+     * @description Returns a string that represents a class to use for revealing the right graphic representation of the value of the dice roll.
      * @return string as the class to represent the value of the dice roll.
      */
     public function graphicDice(): string
@@ -32,4 +33,3 @@ class GraphicDice extends Dice
         return "dice-" . $this->getLastRoll();
     }
 }
-

@@ -54,6 +54,7 @@ class Game
         for ($i = 0; $i < $numOfPlayers; $i++) {
             $newPlayer = new Player($credit, false);
             $this->players[] = $newPlayer;
+            $this->numOfPlayers++;
         }
 
         /**
@@ -63,12 +64,8 @@ class Game
         if (intval($machine) === 1) {
             $machinePlayer = new Player($credit, $machine);
             $this->players[] = $machinePlayer;
+            $this->numOfPlayers++;
         }
-
-        /**
-         * After players have been created count them and save to property.
-         */
-        $this->numOfPlayers = count($this->players);
     }
 
 

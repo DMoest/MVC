@@ -49,6 +49,9 @@ $router->addGroup("/form", function (RouteCollector $router) {
 */
 
 
+
+/* - DICE 21 ----------------------------------------------- */
+
 $router->addGroup("/dice__init", function (RouteCollector $router) {
     $router->addRoute("GET", "/view", ["\daap19\Controller\DiceInit", "renderView"]);
     $router->addRoute("POST", "/process", ["\daap19\Controller\DiceInit", "processResponse"]);
@@ -65,4 +68,22 @@ $router->addGroup("/dice__results", function (RouteCollector $router) {
     $router->addRoute("POST", "/process", ["\daap19\Controller\GameResults", "processResponse"]);
 });
 
-/* -------------------------------------------------- */
+
+/* - YATZY ------------------------------------------------- */
+
+$router->addGroup("/yatzy__init", function (RouteCollector $router) {
+    $router->addRoute("GET", "/view", ["\daap19\Controller\YatzyInit", "renderView"]);
+    $router->addRoute("POST", "/process", ["\daap19\Controller\YatzyInit", "processResponse"]);
+});
+
+$router->addGroup("/yatzy", function (RouteCollector $router) {
+    $router->addRoute("GET", "/view", ["\daap19\Controller\Yatzy", "renderView"]);
+    $router->addRoute("POST", "/process", ["\daap19\Controller\Yatzy", "processResponse"]);
+    $router->addRoute("POST", "/reset", ["\daap19\Controller\Yatzy", "reset"]);
+});
+
+$router->addGroup("/yatzy__results", function (RouteCollector $router) {
+    $router->addRoute("GET", "/view", ["\daap19\Controller\YatzyResults", "renderView"]);
+    $router->addRoute("POST", "/process", ["\daap19\Controller\YatzyResults", "processResponse"]);
+});
+/* --------------------------------------------------------- */

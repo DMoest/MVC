@@ -23,8 +23,8 @@ class Dice
      * @var int|null as the value of the dice roll.
      * @var array to store all the values rolled/thrown with the dice object.
      */
-    private ?int $faces = null;
-    private ?int $roll = null;
+    private ?int $faces;
+    private ?array $diceResults = [];
     private ?int $lastRoll = null;
 
     /**
@@ -54,10 +54,10 @@ class Dice
      */
     public function roll(): int
     {
-        $this->roll = mt_rand(1, $this->faces); // Random integer 1 to 6 integer.
-        $this->lastRoll = $this->roll;
+        $this->lastRoll = mt_rand(1, $this->faces); // Random integer 1 to 6 integer.
+        $this->diceResults[] = $this->lastRoll;
 
-        return $this->roll;
+        return $this->lastRoll;
     }
 
     /**
@@ -65,18 +65,28 @@ class Dice
      * @description getter method to get the number of faces of the dice object.
      * @return int|null of faces of the dice.
      */
-    public function getFaces(): ?int
+    public function getFaces(): int
     {
         return $this->faces;
     }
 
     /**
      * @method getLastRoll()
-     * @description getter method to get the last roll/throw of the dice.
+     * @description Getter method to return the last roll/throw value of the dice object.
      * @return int
      */
     public function getLastRoll(): int
     {
         return $this->lastRoll;
+    }
+
+    /**
+     * @method getDiceResults()
+     * @description Getter method to return all values ever rolled on this dice.
+     * @returns array of integer values.
+     */
+    public function getDiceResults(): array
+    {
+        return $this->diceResults;
     }
 }

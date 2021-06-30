@@ -8,6 +8,28 @@
   border: $border--thin solid $color__grey--50;
   border-radius: $border__radius;
 
+  &__text {
+    text-align: center;
+    font-size: 1.33rem;
+    margin: $whiteSpace 0 0;
+  }
+
+  &__graphicDices {
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: space-around;
+    gap: 1rem;
+
+    &--selectionBox {
+      display: flex;
+      flex-flow: nowrap column;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+  }
+
+
+
   &__input {
     &--slider {
 
