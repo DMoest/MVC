@@ -42,7 +42,7 @@ class GameResults extends ControllerBase
         $player = $players[$diceGame->getPlayerIndex()];
 
         $data = [
-            "header" => "Dice Game 21",
+            "header" => "DiceGame 21 - Results",
             "message" => "Results for this round.",
             "action" => url("/dice__results/process"),
             "round" => $diceGame->getRound(),
@@ -85,8 +85,6 @@ class GameResults extends ControllerBase
 
             $diceGame->setNextPlayerIndex();
         }
-
-
 
         /* ------------------------------------------------------------ */
 

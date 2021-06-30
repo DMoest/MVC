@@ -45,8 +45,8 @@ class Game extends ControllerBase
         $playerCredit = $currentPlayer->getCredit();
 
         $data = [
-            "header" => "Dice Game 21",
-            "message" => "Game on, roll them dices!",
+            "header" => "Dice DiceGame 21",
+            "message" => "DiceGame on, roll them dices!",
             "action" => url("/dice/process"),
             "round" => $diceGame->getRound(),
             "players" => $players,

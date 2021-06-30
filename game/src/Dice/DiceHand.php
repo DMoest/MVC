@@ -31,7 +31,7 @@ class DiceHand
         $this->faces = $faces;
 
         for ($i = 0; $i < $this->numberOfDices; $i++) {
-            $this->dices[] = new GraphicDice();
+            $this->dices[] = new DiceGraphic();
         }
     }
 

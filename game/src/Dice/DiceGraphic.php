@@ -4,18 +4,17 @@
  * Namespaces.
  */
 namespace daap19\Dice;
-use daap19\Dice\Dice;
 
 /**
- * Class GraphicDice
- * @package Dicersice\GraphicDice
+ * Class DiceGraphic
+ * @package Dicersice\DiceGraphic
  */
-class GraphicDice extends Dice
+class DiceGraphic extends Dice
 {
     private const SIDES = 6;
 
     /**
-     * GraphicDice constructor.
+     * DiceGraphic constructor.
      */
     public function __construct()
     {

@@ -27,34 +27,21 @@ include(__DIR__ . "/../../config/config.php");
  * @name Player
  * @package Daap19\Dice
  */
-class Player
+class Player implements PlayerInterface
 {
-    private int $credit;
-    private ?int $wins = null;
     private array $results = [];
     private array $lastRoll = [];
     private object $lastHand;
     private ?int $sum;
     private ?float $average = null;
-    private bool $stopped;
-    private ?bool $bust = null;
-    private ?bool $out = null;
-    private bool $machine;
 
     /**
      * @method __construct()
-     * @description Player class constructor method.
-     * @param int $startCredit
+     * @description YatzyPlayer class constructor method.
      * @param bool $machinePlayer
      */
-    final public function __construct(int $startCredit, bool $machinePlayer)
+    public function __construct()
     {
-        $this->credit = $startCredit;
-        $this->results = [];
-        $this->stopped = false;
-        $this->bust = false;
-        $this->out = false;
-        $this->machine = $machinePlayer;
         $this->average = $this->getAverage();
         $this->sum = $this->getScore();
     }
@@ -66,7 +53,7 @@ class Player
      * @param int $faces as number of faces on the dices in the hand.
      * @return array of integers as values from dice hand roll.
      */
-    final public function rollDices(int $dices = 1, int $faces = 6): array
+    public function rollDices(int $dices = 1, int $faces = 6): array
     {
         $diceHand = new DiceHand($dices, $faces);
         $diceHand->roll();
@@ -83,46 +70,33 @@ class Player
         return $values;
     }
 
-    /**
-     * @method getScore()
-     * @description returns a sum of all values in array of results.
-     * @return int as player score.
-     */
-    final public function getScore(): int
-    {
-        return array_sum($this->results);
-    }
+//    /**
+//     * @method getScore()
+//     * @description returns a sum of all values in array of results.
+//     * @return int as player score.
+//     */
+//    public function getScore(): int
+//    {
+//        return array_sum($this->results);
+//    }
 
     /**
      * @method getResults()
      * @description returns results as array of integers representing values from rolling dices.
      * @return array of integers
      */
-    final public function getResults(): array
+    public function getResults(): array
     {
         return $this->results;
     }
 
-    /**
-     * @method getSumTotal()
-     * @description setter/getter method combined that returns the sum total of all result values from the property array results.
-     * @return int as total value of array results.
-     */
-    final public function getSumTotal(): int
-    {
-        /* Set sum total */
-        $this->sum = array_sum($this->results);
-
-        /* Get sum total */
-        return $this->sum;
-    }
 
     /**
      * @method getResultsAsString()
      * @description returns string concat from all values in array of results from dice rolls.
      * @return string concatenation of integers from array of results.
      */
-    final public function getResultsAsString(): string
+    public function getResultsAsString(): string
     {
         $output = "";
         $dices = count($this->results);
@@ -138,12 +112,28 @@ class Player
         return $output;
     }
 
+
+    /**
+     * @method getSumTotal()
+     * @description setter/getter method combined that returns the sum total of all result values from the property array results.
+     * @return int as total value of array results.
+     */
+    public function getSumTotal(): int
+    {
+        /* Set sum total */
+        $this->sum = array_sum($this->results);
+
+        /* Get sum total */
+        return $this->sum;
+    }
+
+
     /**
      * @method getLastRoll()
      * @description returns array of values from last dice hand roll.
      * @return array of integers as values.
      */
-    final public function getLastRoll(): array
+    public function getLastRoll(): array
     {
         return $this->lastRoll;
     }
@@ -153,7 +143,7 @@ class Player
      * @description return last dice hand as object.
      * @return object
      */
-    final public function getLastHand(): object
+    public function getLastHand(): object
     {
         return $this->lastHand;
     }
@@ -163,7 +153,7 @@ class Player
      * @description returns string concat from all values in array lastRoll from last dice rolls.
      * @return string concatenation of integers from array of results.
      */
-    final public function getLastRollAsString(): string
+    public function getLastRollAsString(): string
     {
         $output = "";
         $dices = count($this->lastRoll);
@@ -184,7 +174,7 @@ class Player
      * @description setter/getter method combined that returns the average float|integer value of values in array of results.
      * @return float|null as a calculated average value from results.
      */
-    final public function getAverage(): ?float
+    public function getAverage(): ?float
     {
         if (count($this->results) > 0) {
             $this->average = round(array_sum($this->results) / count($this->results), 2);
@@ -192,135 +182,146 @@ class Player
 
         return $this->average;
     }
+//
+//    /**
+//     * @method getCredit()
+//     * @description getter function to return players credit account.
+//     * @return int as value of player credit.
+//     */
+//    public function getCredit(): int
+//    {
+//        return $this->credit;
+//    }
 
-    /**
-     * @method getCredit()
-     * @description getter function to return players credit account.
-     * @return int as value of player credit.
-     */
-    final public function getCredit(): int
-    {
-        return $this->credit;
-    }
 
-    /**
-     * @method setCredit()
-     * @description setter function to set new credit to player credit account.
-     * @param int $newCredit as the credit to set.
-     * @return void
-     */
-    final public function setCredit(int $newCredit): void
-    {
-        $this->credit = $newCredit;
-    }
+//    /**
+//     * @method setCredit()
+//     * @description setter function to set new credit to player credit account.
+//     * @param int $newCredit as the credit to set.
+//     * @return void
+//     */
+//    public function setCredit(int $newCredit): void
+//    {
+//        $this->credit = $newCredit;
+//    }
 
-    /**
-     * @method setWin
-     * @description setter method that iterates the property wins +1.
-     * @returns void
-     */
-    final public function setWin()
-    {
-        $this->wins++;
-    }
 
-    /**
-     * @method getWins()
-     * @description getter method that returns the integer value of the property wins.
-     * @return int
-     */
-    final public function getWins(): ?int
-    {
-        return $this->wins;
-    }
+//    /**
+//     * @method setWin
+//     * @description setter method that iterates the property wins +1.
+//     * @returns void
+//     */
+//    public function setWin()
+//    {
+//        $this->wins++;
+//    }
 
-    /**
-     * @method stop()
-     * @description setter method to set boolean property to indicate that player have stopped at this score.
-     * @return void
-     */
-    final public function stop(): void
-    {
-        $this->stopped = true;
-    }
 
-    /**
-     * @method hasStopped()
-     * @description getter method that returns a boolean value to indiate if player have stopped or not.
-     * @return bool as indicator if player have stopped.
-     */
-    final public function hasStopped(): bool
-    {
-        return $this->stopped;
-    }
+//    /**
+//     * @method getWins()
+//     * @description getter method that returns the integer value of the property wins.
+//     * @return int
+//     */
+//    public function getWins(): ?int
+//    {
+//        return $this->wins;
+//    }
 
-    /**
-     * @method isBust()
-     * @description returns a boolean value to indicate if this player has gone bust in the current round.
-     * @return bool
-     */
-    final public function isBust(): bool
-    {
-        return $this->bust;
-    }
 
-    /**
-     * @method setBust()
-     * @description Setter method to set boolean value when player is bust in current round.
-     * @return void
-     */
-    final public function setBust()
-    {
-        $this->bust = true;
-    }
+//    /**
+//     * @method stop()
+//     * @description setter method to set boolean property to indicate that player have stopped at this score.
+//     * @return void
+//     */
+//    public function stop(): void
+//    {
+//        $this->stopped = true;
+//    }
 
-    /**
-     * @method isOut()
-     * @description returns a boolean value to indicate if this player has gone bust in the current round.
-     * @return bool
-     */
-    final public function isOut(): bool
-    {
-        return $this->out;
-    }
 
-    /**
-     * @method setOut()
-     * @description Setter method to set boolean value when player is bust in current round.
-     * @return void
-     */
-    final public function setOut()
-    {
-        $this->out = true;
-    }
+//    /**
+//     * @method hasStopped()
+//     * @description getter method that returns a boolean value to indiate if player have stopped or not.
+//     * @return bool as indicator if player have stopped.
+//     */
+//    public function hasStopped(): bool
+//    {
+//        return $this->stopped;
+//    }
 
-    /**
-     * @method isMachine()
-     * @description returns boolean value to indicate if this player is run by computer/machine or not.
-     * @return bool as indicator of machine player or not.
-     */
-    final public function isMachine(): bool
-    {
-        return $this->machine;
-    }
 
-    /**
-     * @method setForNextRound()
-     * @description setter method that setts up a player for next round of dice game.
-     * @return void
-     */
-    final public function setForNextRound(): void
-    {
-        $this->stopped = false;
-        $this->results = [];
-        $this->lastRoll = [];
-        $this->sum = null;
-        $this->average = null;
-        $this->bust = false;
+//    /**
+//     * @method isBust()
+//     * @description returns a boolean value to indicate if this player has gone bust in the current round.
+//     * @return bool
+//     */
+//    public function isBust(): bool
+//    {
+//        return $this->bust;
+//    }
 
-        /* Check players credit */
-        if ($this->credit === 0) {
-            $this->stopped = true;
-        }
-    }
+
+//    /**
+//     * @method setBust()
+//     * @description Setter method to set boolean value when player is bust in current round.
+//     * @return void
+//     */
+//    public function setBust()
+//    {
+//        $this->bust = true;
+//    }
+
+
+//    /**
+//     * @method isOut()
+//     * @description returns a boolean value to indicate if this player has gone bust in the current round.
+//     * @return bool
+//     */
+//    public function isOut(): bool
+//    {
+//        return $this->out;
+//    }
+
+
+//    /**
+//     * @method setOut()
+//     * @description Setter method to set boolean value when player is bust in current round.
+//     * @return void
+//     */
+//    public function setOut()
+//    {
+//        $this->out = true;
+//    }
+
+
+//    /**
+//     * @method isMachine()
+//     * @description returns boolean value to indicate if this player is run by computer/machine or not.
+//     * @return bool as indicator of machine player or not.
+//     */
+//    public function isMachine(): bool
+//    {
+//        return $this->machine;
+//    }
+
+
+//    /**
+//     * @method setForNextRound()
+//     * @description setter method that setts up a player for next round of dice game.
+//     * @return void
+//     */
+//    public function setForNextRound(): void
+//    {
+//        $this->stopped = false;
+//        $this->results = [];
+//        $this->lastRoll = [];
+//        $this->sum = null;
+//        $this->average = null;
+//        $this->bust = false;
+//
+//        /* Check players credit */
+//        if ($this->credit === 0) {
+//            $this->stopped = true;
+//        }
+//    }
 }

@@ -65,4 +65,9 @@ $router->addGroup("/dice__results", function (RouteCollector $router) {
     $router->addRoute("POST", "/process", ["\daap19\Controller\GameResults", "processResponse"]);
 });
 
+$router->addGroup("/dice__finalResults", function (RouteCollector $router) {
+    $router->addRoute("GET", "/view", ["\daap19\Controller\GameFinalResults", "renderView"]);
+    $router->addRoute("POST", "/process", ["\daap19\Controller\GameFinalResults", "processResponse"]);
+});
+
 /* -------------------------------------------------- */

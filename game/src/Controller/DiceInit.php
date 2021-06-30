@@ -8,7 +8,7 @@ declare(strict_types=1);
 namespace daap19\Controller;
 use Mos\Controller\ControllerBase;
 use Psr\Http\Message\ResponseInterface;
-use daap19\Dice\Game;
+use daap19\Dice\DiceGame;
 
 /**
  * Functions usage.
@@ -36,7 +36,7 @@ class DiceInit extends ControllerBase
         /* - My code -------------------------------------------------- */
 
         $data = [
-            "header" => "Dice Game 21",
+            "header" => "DiceGame 21",
             "message" => "Welcome, please setup a game of dice. 
                 You choose the amout of players to be in it and the starting credit each player have. 
                 Keep in mind that there will be an extra player added on top of the number you choose. 
@@ -74,8 +74,8 @@ class DiceInit extends ControllerBase
             $machine = false;
         }
 
-        /* Create new Game object on SESSION variable */
-        $diceGame = new Game($players, $startCredit, $machine);
+        /* Create new DiceGame object on SESSION variable */
+        $diceGame = new DiceGame($players, $startCredit, $machine);
         $_SESSION["diceGame"] = $diceGame;
 
         /* ------------------------------------------------------------ */

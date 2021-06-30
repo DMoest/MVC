@@ -26,18 +26,17 @@ include(__DIR__ . "/../../config/config.php");
  * Class Dice
  * @package Daap19\Dice
  */
-class Game
+class DiceGame
 {
     private array $players = [];
     private ?int $round;
     private ?int $playerIndex;
-    private ?int $numOfPlayers = null;
-    private ?string $scoreBoard = null;
+    private ?int $numOfPlayers;
 
 
     /**
      * @method __construct()
-     * @description Game constructor class.
+     * @description DiceGame constructor class.
      * @param int $numOfPlayers as the number of players to play the game.
      * @param int $credit as the amount of credit the player start with.
      * @param bool $machine as a indicator a player should be played by the machine.
@@ -52,7 +51,7 @@ class Game
          * @description Setup user players with for loop to generate players on construct. Input is taken from user thru request form.
          */
         for ($i = 0; $i < $numOfPlayers; $i++) {
-            $newPlayer = new Player($credit, false);
+            $newPlayer = new DicePlayer($credit, false);
             $this->players[] = $newPlayer;
         }
 
@@ -61,7 +60,7 @@ class Game
          * @description Setup computer controlled player if variable validates to boolean true.
          */
         if (intval($machine) === 1) {
-            $machinePlayer = new Player($credit, $machine);
+            $machinePlayer = new DicePlayer($credit, $machine);
             $this->players[] = $machinePlayer;
         }
 
@@ -115,9 +114,9 @@ class Game
         /**
          * Depending on submit choice from user.
          * If submit is roll:
-         * Player rolls dices then check the players score.
+         * YatzyPlayer rolls dices then check the players score.
          * Else if stop:
-         * Player stop to await other players move.
+         * YatzyPlayer stop to await other players move.
          */
         if ($submit === "roll") {
             $player->rollDices($dices);
@@ -291,7 +290,7 @@ class Game
     {
         /* Setup score board outer container element */
         $this->numOfPlayers = count($this->players);
-        $this->scoreBoard = "<div class=\"diceForm__results--container\">";
+        $scoreBoard = "<div class=\"diceForm__results--container\">";
 
         /* Generate inner elements for scores */
         for ($i = 0; $i < $this->numOfPlayers; $i++) {
@@ -306,39 +305,39 @@ class Game
             $bust = $this->players[$i]->isBust();
 
             /* Build elements */
-            $this->scoreBoard .= "<div class=\"diceForm__results--player-" . $i . "\">";
-            $this->scoreBoard .= "<h4>Player " . ($i +1) . "</h4>";
+            $scoreBoard .= "<div class=\"diceForm__results--player-" . $i . "\">";
+            $scoreBoard .= "<h4>YatzyPlayer " . ($i +1) . "</h4>";
 
             /* Only add elements if player have results */
             if ($totalScore > 0) {
-                $this->scoreBoard .= "<p>$stringRes</p>";
-                $this->scoreBoard .= "<p>Average dice value = " . $average . "</p>";
-                $this->scoreBoard .= "<p>Player " . ($i+1) . " score = " . $totalScore . "</p>";
+                $scoreBoard .= "<p>$stringRes</p>";
+                $scoreBoard .= "<p>Average dice value = " . $average . "</p>";
+                $scoreBoard .= "<p>YatzyPlayer " . ($i+1) . " score = " . $totalScore . "</p>";
             }
 
             /* Remaining credit for this player */
-            $this->scoreBoard .= "<p>Credit: " . $playerCredit . "</p>";
+            $scoreBoard .= "<p>Credit: " . $playerCredit . "</p>";
 
             /* If there are winning round print them */
             if ($playerWins > 0) {
-                $this->scoreBoard .= "<p>Winning rounds: " . $playerWins . "</p>";
+                $scoreBoard .= "<p>Winning rounds: " . $playerWins . "</p>";
             }
 
             /* Print message if player stopped or is bust. */
             if (intval($bust) === 1) {
-                $this->scoreBoard .= "<span>Player is bust.</span>";
+                $scoreBoard .= "<span>YatzyPlayer is bust.</span>";
             } else if (intval($stopped) === 1) {
-                $this->scoreBoard .= "<span>Player has stopped.</span>";
+                $scoreBoard .= "<span>YatzyPlayer has stopped.</span>";
             }
 
             /* Close the div */
-            $this->scoreBoard .= "</div>";
+            $scoreBoard .= "</div>";
         }
 
         /* Close outer element container tag */
-        $this->scoreBoard .= "</div>";
+        $scoreBoard .= "</div>";
 
-        return $this->scoreBoard;
+        return $scoreBoard;
     }
 
     /**
