@@ -22,10 +22,10 @@ use function Mos\Functions\{
 
 
 /**
- * @name Game
+ * @name DiceGame
  * @description Controller class for initializing a game of Dice, used by router.
  */
-class Game extends ControllerBase
+class DiceGame extends ControllerBase
 {
     private ?string $scoreBoard = null;
 

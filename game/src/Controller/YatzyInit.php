@@ -62,7 +62,7 @@ class YatzyInit extends ControllerBase
     {
         /* - My code -------------------------------------------------- */
 
-        /* Create new Game object on SESSION variable */
+        /* Create new DiceGame object on SESSION variable */
         $yatzy = new Yatzy();
         $_SESSION["yatzy"] = $yatzy;
 

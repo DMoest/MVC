@@ -23,10 +23,10 @@ use function Mos\Functions\{
 
 
 /**
- * @name GameResults
+ * @name DiceGameResults
  * @description Controller class for initializing a game of Dice, used by router.
  */
-class GameResults extends ControllerBase
+class DiceGameResults extends ControllerBase
 {
     /**
      * @method renderView()

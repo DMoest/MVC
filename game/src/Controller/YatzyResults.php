@@ -41,7 +41,7 @@ class YatzyResults extends ControllerBase
         $player = $yatzy->getCurrentPlayer();
 
         $data = [
-            "header" => "Dice Game 21",
+            "header" => "Dice DiceGame 21",
             "message" => "Results for this round.",
             "action" => url("/yatzy__results/process"),
             "round" => $yatzy->getRound(),

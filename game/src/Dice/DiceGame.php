@@ -53,7 +53,6 @@ class DiceGame
         for ($i = 0; $i < $numOfPlayers; $i++) {
             $newPlayer = new DicePlayer($credit, false);
             $this->players[] = $newPlayer;
-            $this->numOfPlayers++;
         }
 
         /**
@@ -63,8 +62,9 @@ class DiceGame
         if (intval($machine) === 1) {
             $machinePlayer = new DicePlayer($credit, $machine);
             $this->players[] = $machinePlayer;
-            $this->numOfPlayers++;
         }
+
+        $this->numOfPlayers = count($this->players);
     }
 
 
