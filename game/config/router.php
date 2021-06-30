@@ -68,6 +68,7 @@ $router->addGroup("/dice__results", function (RouteCollector $router) {
     $router->addRoute("POST", "/process", ["\daap19\Controller\GameResults", "processResponse"]);
 });
 
+<<<<<<< HEAD
 
 /* - YATZY ------------------------------------------------- */
 
@@ -87,3 +88,11 @@ $router->addGroup("/yatzy__results", function (RouteCollector $router) {
     $router->addRoute("POST", "/process", ["\daap19\Controller\YatzyResults", "processResponse"]);
 });
 /* --------------------------------------------------------- */
+=======
+$router->addGroup("/dice__finalResults", function (RouteCollector $router) {
+    $router->addRoute("GET", "/view", ["\daap19\Controller\GameFinalResults", "renderView"]);
+    $router->addRoute("POST", "/process", ["\daap19\Controller\GameFinalResults", "processResponse"]);
+});
+
+/* -------------------------------------------------- */
+>>>>>>> refactor

@@ -31,7 +31,7 @@ $credit = $credit ?? null;
         <p class="diceForm__text--paragraph">This range is 1 to 5 and represents a value for number of players in the game.</p>
 
         <label class="diceForm__text--paragraph" for="credit">Amount of BitCoins players staring with:
-        <input class="diceForm__input--slider" type="number" name="credit" placeholder="players starting credit" min="25" max="100" value="25" step="5"></label><br>
+        <input class="diceForm__input--slider" type="number" name="credit" placeholder="players starting credit" min="5" max="100" value="25" step="5"></label><br>
 
         <label class="diceForm__text--paragraph" for="machine">Play against computer?
         <input class="diceForm__input--checkbox" type="checkbox" name="machine" value="true" checked/></label>

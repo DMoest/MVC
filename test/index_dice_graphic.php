@@ -1,6 +1,6 @@
 <?php
 /**
- * GraphicDice testing.
+ * DiceGraphic testing.
  */
 
 use \Dicersice\Dice\GraphicDice;

@@ -33,7 +33,11 @@ class DiceHand
         $this->faces = $faces;
 
         for ($i = 0; $i < $this->numberOfDices; $i++) {
+<<<<<<< HEAD
             $this->dices[$i] = new GraphicDice();
+=======
+            $this->dices[] = new DiceGraphic();
+>>>>>>> refactor
         }
 
         $this->sum = 0;
