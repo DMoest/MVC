@@ -178,38 +178,32 @@ class Yatzy
     final public function scoreBoard(): string
     {
         /* Setup score board outer container element */
-        $this->numOfPlayers = count($this->players);
         $this->scoreBoard = "<div class=\"diceForm__results--container\">";
 
-        /* Generate inner elements for scores */
-        for ($i = 0; $i < $this->numOfPlayers; $i++) {
-
+        foreach ($this->players as $key => $player) {
             /* Results as string */
-            $stringRes = $this->players[$i]->getResultsAsString();
-            $average = $this->players[$i]->getAverage();
-            $totalScore = $this->players[$i]->getScore();
-//            $playerCredit = $this->players[$i]->getCredit();
-//            $playerWins = $this->players[$i]->getWins();
-//            $stopped = $this->players[$i]->hasStopped();
-//            $bust = $this->players[$i]->isBust();
+            $stringRes = $player->getResultsAsString();
+            $average = $player->getAverage();
+            $totalScore = $player->getScore();
+//            $stopped = $player->hasStopped();
 
             /* Build elements */
-            $this->scoreBoard .= "<div class=\"diceForm__results--player-" . $i . "\">";
-            $this->scoreBoard .= "<h4>YatzyPlayer " . ($i +1) . "</h4>";
+            $this->scoreBoard .= "<div class=\"diceForm__results--player-" . $key . "\">";
+            $this->scoreBoard .= "<h4>YatzyPlayer " . ($key +1) . "</h4>";
 
             /* Only add elements if player have results */
             if ($totalScore > 0) {
                 $this->scoreBoard .= "<p>$stringRes</p>";
                 $this->scoreBoard .= "<p>Average dice value = " . $average . "</p>";
-                $this->scoreBoard .= "<p>YatzyPlayer " . ($i+1) . " score = " . $totalScore . "</p>";
+                $this->scoreBoard .= "<p>Player " . ($key+1) . " score = " . $totalScore . "</p>";
             }
 
-            /* Print message if player stopped or is bust. */
+//            /* Print message if player stopped or is bust. */
 //            if (intval($stopped) === 1) {
 //                $this->scoreBoard .= "<span>YatzyPlayer has stopped.</span>";
 //            }
 
-            /* Close the div */
+            /* Close the players div */
             $this->scoreBoard .= "</div>";
         }
 

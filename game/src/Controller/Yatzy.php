@@ -82,26 +82,26 @@ class Yatzy extends ControllerBase
 
         if ($diceHand !== null) {
             if (isset($_POST["dice--0"])) {
-                $keepThese[] = 0;
+                $keepThese[0] = 0;
             }
 
             if (isset($_POST["dice--1"])) {
-                $keepThese[] = 1;
+                $keepThese[1] = 1;
             }
 
             if (isset($_POST["dice--2"])) {
-                $keepThese[] = 2;
+                $keepThese[2] = 2;
             }
 
             if (isset($_POST["dice--3"])) {
-                $keepThese[] = 3;
+                $keepThese[3] = 3;
             }
 
             if (isset($_POST["dice--4"])) {
-                $keepThese[] = 4;
+                $keepThese[4] = 4;
             }
 
-            $player->keepDices($keepThese);
+            $diceHand->keepDices($keepThese);
         }
 
         /* Play game */

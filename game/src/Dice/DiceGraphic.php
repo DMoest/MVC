@@ -14,12 +14,9 @@ class DiceGraphic extends Dice
     private const SIDES = 6;
 
     /**
-<<<<<<< HEAD:game/src/Dice/GraphicDice.php
      * @method __construct()
      * @description Class constructor method.
-=======
      * DiceGraphic constructor.
->>>>>>> refactor:game/src/Dice/DiceGraphic.php
      */
     public function __construct()
     {

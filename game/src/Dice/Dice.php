@@ -73,9 +73,9 @@ class Dice
     /**
      * @method getLastRoll()
      * @description Getter method to return the last roll/throw value of the dice object.
-     * @return int
+     * @return ?int
      */
-    public function getLastRoll(): int
+    public function getLastRoll(): ?int
     {
         return $this->lastRoll;
     }

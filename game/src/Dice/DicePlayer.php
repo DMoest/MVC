@@ -36,6 +36,7 @@ class DicePlayer extends Player implements PlayerInterface, DicePlayerInterface
     private ?bool $out = null;
     private bool $machine;
 
+
     /**
      * @method __construct()
      * @description YatzyPlayer class constructor method.

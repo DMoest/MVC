@@ -57,19 +57,19 @@ $router->addGroup("/dice__init", function (RouteCollector $router) {
 });
 
 $router->addGroup("/dice", function (RouteCollector $router) {
-    $router->addRoute("GET", "/view", ["\daap19\Controller\Game", "renderView"]);
-    $router->addRoute("POST", "/process", ["\daap19\Controller\Game", "processResponse"]);
-    $router->addRoute("POST", "/reset", ["\daap19\Controller\Game", "reset"]);
+    $router->addRoute("GET", "/view", ["\daap19\Controller\DiceGame", "renderView"]);
+    $router->addRoute("POST", "/process", ["\daap19\Controller\DiceGame", "processResponse"]);
+    $router->addRoute("POST", "/reset", ["\daap19\Controller\DiceGame", "reset"]);
 });
 
 $router->addGroup("/dice__results", function (RouteCollector $router) {
-    $router->addRoute("GET", "/view", ["\daap19\Controller\GameResults", "renderView"]);
-    $router->addRoute("POST", "/process", ["\daap19\Controller\GameResults", "processResponse"]);
+    $router->addRoute("GET", "/view", ["\daap19\Controller\DiceGameResults", "renderView"]);
+    $router->addRoute("POST", "/process", ["\daap19\Controller\DiceGameResults", "processResponse"]);
 });
 
 $router->addGroup("/dice__finalResults", function (RouteCollector $router) {
-    $router->addRoute("GET", "/view", ["\daap19\Controller\GameFinalResults", "renderView"]);
-    $router->addRoute("POST", "/process", ["\daap19\Controller\GameFinalResults", "processResponse"]);
+    $router->addRoute("GET", "/view", ["\daap19\Controller\DiceGameFinalResults", "renderView"]);
+    $router->addRoute("POST", "/process", ["\daap19\Controller\DiceGameFinalResults", "processResponse"]);
 });
 
 

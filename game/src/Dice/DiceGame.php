@@ -176,11 +176,9 @@ class DiceGame
     {
         $graphicDices = [];
         $dices = $diceHand->getDices();
-        $numOfDices = count($dices);
 
-        for ($i = 0; $i < $numOfDices; $i++) {
-            $diceResult = $dices[$i]->graphicDice();
-            $graphicDices[$i] = $diceResult;
+        foreach ($dices as $key => $diceObject) {
+            $graphicDices[$key] = $diceObject->graphicDice();
         }
 
         return $graphicDices;

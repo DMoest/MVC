@@ -11,7 +11,8 @@ namespace daap19\Dice;
  */
 interface PlayerInterface
 {
-    public function rollDices(): array;
+    public function __construct();
+    public function rollDices(int $dices, int $faces): array;
     public function getLastRoll(): array;
     public function getLastHand(): object;
     public function getResults(): array;

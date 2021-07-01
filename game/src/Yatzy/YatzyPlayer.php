@@ -4,9 +4,7 @@
  * Namespace declaration & other namespaces in use.
  */
 namespace daap19\Yatzy;
-use daap19\Dice\DiceHand;
 use daap19\Dice\Player;
-use daap19\Dice\PlayerInterface;
 
 /**
  * Functions in use.
@@ -30,7 +28,7 @@ include(__DIR__ . "/../../config/config.php");
  * @name YatzyPlayer
  * @package Daap19\Dice
  */
-class YatzyPlayer extends Player implements PlayerInterface, YatzyPlayerInterface
+class YatzyPlayer extends Player implements YatzyPlayerInterface
 {
     private ?int $rolls;
     private ?object $diceHand;
@@ -48,39 +46,30 @@ class YatzyPlayer extends Player implements PlayerInterface, YatzyPlayerInterfac
 
         $this->rolls = 0;
         $this->results = [];
-        $this->keep = [];
-        $this->diceHand = null;
-        $this->lastHand = null;
         $this->lastRoll = [];
-        $this->keepDices = [];
-        $this->average = $this->getAverage();
+        $this->diceHand = new YatzyDiceHand(5, 6);
+        $this->lastHand = null;
+        $this->keepDices = $this->diceHand->getKeptDices();
         $this->sum = $this->getScore();
+        $this->average = $this->getAverage();
     }
 
 
     /**
      * @method rollDices()
      * @description creates a new object from class DiceHand and rolls the hand of dices.
-     * @param int $dices as number of dices in hand.
-     * @param int $faces as number of faces on the dices in the hand.
      * @return array of integers as values from dice hand roll.
      */
     final public function rollDices(int $dices = 5, int $faces = 6): array
     {
-        if (!isset($diceHand)) {
-            $diceHand = new DiceHand($dices, $faces);
+        $this->diceHand->roll();
+        $this->lastRoll = $this->diceHand->getLastRoll();
 
+        foreach ($this->lastRoll as $value) {
+            $this->results[] = $value;
         }
-        $this->lastRoll = $diceHand->roll();
-        $this->diceHand = $diceHand;
-        $this->results = $diceHand->getLastRoll();
-        $dices = $diceHand->getDices();
-        $numOfDices = count($dices);
-        $this->results = []; // Clear array of results.
 
-        for ($i = 0; $i < $numOfDices; $i++) {
-            $this->results[] = $this->lastRoll[$i];
-        }
+        $this->rolls++;
 
         return $this->lastRoll;
     }
@@ -104,7 +93,7 @@ class YatzyPlayer extends Player implements PlayerInterface, YatzyPlayerInterfac
      */
     final public function getScore(): int
     {
-        return array_sum($this->results);
+        return array_sum($this->lastRoll);
     }
 
 
@@ -174,7 +163,13 @@ class YatzyPlayer extends Player implements PlayerInterface, YatzyPlayerInterfac
      */
     final public function getDiceHand(): ?object
     {
-        return $this->diceHand;
+        $score = $this->getScore();
+
+        if ($score !== 0) {
+            return $this->diceHand;
+        } elseif ($score === 0) {
+            return null;
+        }
     }
 
 

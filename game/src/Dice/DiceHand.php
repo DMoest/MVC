@@ -10,15 +10,14 @@ namespace daap19\Dice;
  * @description Class DiceHand to roll one or more dices at the same time. Works with the class Dice to create a hand of dice objects.
  * @package Dicersice\DiceHand
  */
-class DiceHand
+class DiceHand implements DiceHandInterface
 {
     private ?int $faces;
     private ?int $numberOfDices;
-    private array $dices = [];
-    private array $lastRoll = [];
+    protected array $dices = [];
+    protected array $lastRoll = [];
     private ?int $sum;
     private ?float $average;
-    private array $keepDice = [];
 
 
     /**
@@ -33,17 +32,13 @@ class DiceHand
         $this->faces = $faces;
 
         for ($i = 0; $i < $this->numberOfDices; $i++) {
-<<<<<<< HEAD
-            $this->dices[$i] = new GraphicDice();
-=======
             $this->dices[] = new DiceGraphic();
->>>>>>> refactor
         }
 
         $this->sum = 0;
         $this->average = 0;
-        $this->keepDice = [];
     }
+
 
     /**
      * DiceHand destructor.
@@ -53,16 +48,6 @@ class DiceHand
 //        echo __METHOD__;
 //    }
 
-    /**
-     * @method addDice()
-     * @description Method to add a new dice thru DiceInterface to the diceHand.
-     * @param DiceInterface $dice as the new dice object to add.
-     * @return void
-     */
-    public function addDice(DiceInterface $dice)
-    {
-        $this->dices[] = $dice;
-    }
 
     /**
      * @method roll()
@@ -72,18 +57,14 @@ class DiceHand
     public function roll(): array
     {
         $this->lastRoll = []; // Clear array of values from last roll.
-        $numOfDices = count($this->dices);
 
-        for($i = 0; $i < $numOfDices; $i++) {
-            /* Roll dice if not in the keep array*/
-            if (!in_array($this->dices[$i], $this->keepDice, true)) {
-                $value = $this->dices[$i]->roll();
-                $this->lastRoll[$i] = $value;
-            }
+        foreach ($this->dices as $key => $diceObject) {
+            $this->lastRoll[$key] = $diceObject->roll();
         }
 
         return $this->lastRoll;
     }
+
 
     /**
      * @method getDices()
@@ -95,6 +76,7 @@ class DiceHand
         return $this->dices;
     }
 
+
     /**
      * @method getLastRoll()
      * @description returns array of integers as values from last dicehand rolled.
@@ -104,6 +86,7 @@ class DiceHand
     {
         return $this->lastRoll;
     }
+
 
     /**
      * @method getLastRollAsString()
@@ -128,6 +111,7 @@ class DiceHand
         return $response . " = " . array_sum($this->lastRoll);
     }
 
+
     /**
      * @method getSum()
      * @description getter method that returns integer value as sum of last rolled dices.
@@ -137,6 +121,7 @@ class DiceHand
     {
         return array_sum($this->lastRoll);
     }
+
 
     /**
      * @method getAverage()

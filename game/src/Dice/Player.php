@@ -31,9 +31,11 @@ class Player implements PlayerInterface
 {
     protected array $results = [];
     protected array $lastRoll = [];
-    protected object $lastHand;
-    protected ?int $sum;
+    protected ?object $lastHand;
+    protected ?int $sum = null;
     protected ?float $average = null;
+    protected int $faces = 6;
+    protected int $dices = 1;
 
 
     /**
@@ -43,8 +45,8 @@ class Player implements PlayerInterface
      */
     public function __construct()
     {
-        $this->average = $this->getAverage();
         $this->sum = 0;
+        $this->average = $this->getAverage();
     }
 
 
@@ -92,13 +94,13 @@ class Player implements PlayerInterface
     public function getResultsAsString(): string
     {
         $output = "";
-        $dices = count($this->results);
+        $dices = count($this->lastRoll);
 
         for ($i = 0; $i < $dices; $i++) {
-            if ($i < count($this->results) -1) {
-                $output .= $this->results[$i] . ", ";
-            } else if ($i == count($this->results) -1) {
-                $output .= $this->results[$i] . " = " . array_sum($this->results);
+            if ($i < count($this->lastRoll) -1) {
+                $output .= $this->lastRoll[$i] . ", ";
+            } else if ($i == count($this->lastRoll) -1) {
+                $output .= $this->lastRoll[$i] . " = " . array_sum($this->lastRoll);
             }
         }
 
