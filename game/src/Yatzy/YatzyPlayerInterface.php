@@ -15,6 +15,9 @@ interface YatzyPlayerInterface
     public function stop(): void;
     public function hasStopped(): bool;
     public function keepDices(array $diceIndexes): array;
+    public function getDiceHand(): ?object;
+    public function validateScoreValues(array $chosenScores, int $valueToBe): ?bool;
+    public function saveScores(array $theChosenScores, int $theValue): array;
 
 
     /* Yatzy stuff */

@@ -34,6 +34,7 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
     private ?object $diceHand;
     private ?array $keepDices;
     private bool $stopped;
+    private array $playerScores = [1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0, 6 => 0];
 
 
     /**
@@ -131,13 +132,13 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
     final public function getResultsAsString(): string
     {
         $output = "";
-        $dices = count($this->results);
+        $dices = count($this->lastRoll);
 
         for ($i = 0; $i < $dices; $i++) {
-            if ($i < count($this->results) -1) {
-                $output .= $this->results[$i] . ", ";
-            } else if ($i == count($this->results) -1) {
-                $output .= $this->results[$i] . " = " . array_sum($this->results);
+            if ($i < count($this->lastRoll) -1) {
+                $output .= $this->lastRoll[$i] . ", ";
+            } else if ($i === count($this->lastRoll) -1) {
+                $output .= $this->lastRoll[$i] . " = " . array_sum($this->lastRoll);
             }
         }
 
@@ -167,9 +168,9 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
 
         if ($score !== 0) {
             return $this->diceHand;
-        } elseif ($score === 0) {
-            return null;
         }
+
+        return null;
     }
 
 
@@ -192,7 +193,6 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
     }
 
 
-
     /**
      * @method stop()
      * @description setter method to set boolean property to indicate that player have stopped at this score.
@@ -212,5 +212,52 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
     final public function hasStopped(): bool
     {
         return $this->stopped;
+    }
+
+
+    /**
+     * @method validateScoreValues()
+     * @description Method to validate if all chosen values are the same & correct values.
+     * @param array $chosenScores as the values player has chosen.
+     * @param int $valueToBe as the value it is supposed to be/compared with.
+     * @return bool|null as indicator of validity.
+     */
+    public function validateScoreValues(array $chosenScores, int $valueToBe): ?bool
+    {
+        $validity = null;
+
+        foreach ($chosenScores as $value) {
+            /* Check if valuse are the same */
+            if ($value === $valueToBe) {
+                $validity = true;
+            } elseif ($value !== $valueToBe) {
+                return false;
+            }
+        }
+
+        return $validity;
+    }
+
+
+    /**
+     * @method saveScores()
+     * @description Takes dice values the player has chosen and saves the
+     * @param array $theChosenScores
+     * @param int $theValue
+     * @return array|int[]
+     */
+    public function saveScores(array $theChosenScores, int $theValue): array
+    {
+        $this->playerScores[$theValue] + array_sum($theChosenScores);
+
+        return $this->playerScores;
+    }
+
+
+    final public function setReadyForNextRound()
+    {
+        $this->rolls = 0;
+        $this->lastRoll = [];
+        $this->stopped = false;
     }
 }

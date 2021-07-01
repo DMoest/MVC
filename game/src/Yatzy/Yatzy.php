@@ -69,20 +69,19 @@ class Yatzy
      */
     final public function play(object $player, string $submit)
     {
-        if ($submit === "roll") {
+        $player = $this->players[$this->playerIndex];
+        $playerRolls = $player->getRolls();
+
+        if ($submit === "roll" && $playerRolls < 3) {
             $player->rollDices();
         } elseif ($submit === "stop") {
             $player->stop();
+        } elseif ($playerRolls === 3) {
+            $this->round++;
+            $player->setReadyForNextRound();
+            $this->setPlayerIndex();
         }
     }
-
-
-
-
-
-
-
-// ----------------------------------------------------------------------------------------------------
 
 
     /**
