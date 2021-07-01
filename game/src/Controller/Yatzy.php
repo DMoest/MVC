@@ -106,7 +106,7 @@ class Yatzy extends ControllerBase
 
         /* Play game */
         $yatzy->play($player, $submit);
-        $this->scoreBoard = $yatzy->scoreBoard();
+        $this->scoreBoard = $yatzy->printYatzyScoreBoard();
 
         /* ------------------------------------------------------------ */
 

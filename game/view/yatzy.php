@@ -29,7 +29,7 @@ $credit = $credit ?? null;
 <p><i><?= $message ?></i></p>
 
 <form method="post" action="<?= $action ?>" class="diceForm">
-    <p>Times the Player rolled the dices: <?= $playerRolls ?></p>
+    <p>Player rolled the dices: <?= $playerRolls ?> times.</p>
 
     <?php if ($graphicDices !== null) : ?>
     <p class="diceForm__results">
@@ -43,9 +43,8 @@ $credit = $credit ?? null;
             <!-- Generate dice representations -->
             <?php foreach($graphicDices as $key => $value) : ?>
 
-                <!-- Each dice representation -->
+                <!-- Each graphic dice representation -->
                 <div class="dice-utf8 diceForm__graphicDices--selectionBox">
-<!--                    <p class="diceForm__text">Dice --><?//= $key +1 ?><!--</p>-->
                     <i class="<?= $value ?>"></i>
                     <input id="dice--<?= $key ?>" name="dice--<?= $key ?>" type="checkbox"/>
                 </div>
@@ -57,7 +56,14 @@ $credit = $credit ?? null;
     <?php endif; ?>
 
     <div class="diceForm__submit--container">
-        <button class="diceForm__input--button diceForm__input--buttonSuccess" type="submit" name="submit" value="roll">Roll the dices</button>
+
+        <?php if($playerRolls < 3) { ?>
+            <button class="diceForm__input--button diceForm__input--buttonSuccess" type="submit" name="submit" value="roll">Roll the dices</button>
+        <?php } ?>
+
+        <?php if($playerRolls === 3) { ?>
+            <button class="diceForm__input--button diceForm__input--buttonSuccess" type="submit" name="submit" value="selectScores">Select scores</button>
+        <?php } ?>
         <button class="diceForm__input--button diceForm__input--buttonDanger" type="submit" name="submit" value="stop">Stop</button>
     </div>
 </form>

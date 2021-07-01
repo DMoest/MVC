@@ -158,61 +158,19 @@ class Yatzy
      * @param object $diceHand as representation of a hand of dice objects.
      * @return array of strings representing classes to show a dice.
      */
-    final public function showGraphicDices(object $diceHand): array
+    final public function showGraphicDices(object $diceHand): ?array
     {
-        $graphicDices = [];
+        $graphicDices = null;
         $dices = $diceHand->getDices();
-        $numOfDices = count($dices);
 
-        for ($i = 0; $i < $numOfDices; $i++) {
-            $diceResult = $dices[$i]->graphicDice();
-            $graphicDices[$i] = $diceResult;
+        if ($diceHand->getSum() > 0) {
+            $graphicDices = [];
+
+            foreach ($dices as $key => $diceObject) {
+                $graphicDices[$key] = $diceObject->graphicDice();
+            }
         }
 
         return $graphicDices;
     }
-
-
-//    /**
-//     * @method scoreBoard()
-//     * @description method is used to generate a scoreboard for all players.
-//     * @return string
-//     */
-//    final public function scoreBoard(): string
-//    {
-//        /* Setup score board outer container element */
-//        $this->scoreBoard = "<div class=\"diceForm__results--container\">";
-//
-//        foreach ($this->players as $key => $player) {
-//            /* Results as string */
-//            $stringRes = $player->getLastRollAsString();
-//            $average = $player->getAverage();
-//            $totalScore = $player->getScore();
-////            $stopped = $player->hasStopped();
-//
-//            /* Build elements */
-//            $this->scoreBoard .= "<div class=\"diceForm__results--player-" . $key . "\">";
-//            $this->scoreBoard .= "<h4>YatzyPlayer " . ($key +1) . "</h4>";
-//
-//            /* Only add elements if player have results */
-//            if ($totalScore > 0) {
-//                $this->scoreBoard .= "<p>$stringRes</p>";
-//                $this->scoreBoard .= "<p>Average dice value = " . $average . "</p>";
-//                $this->scoreBoard .= "<p>Player " . ($key+1) . " score = " . $totalScore . "</p>";
-//            }
-//
-////            /* Print message if player stopped or is bust. */
-////            if (intval($stopped) === 1) {
-////                $this->scoreBoard .= "<span>YatzyPlayer has stopped.</span>";
-////            }
-//
-//            /* Close the players div */
-//            $this->scoreBoard .= "</div>";
-//        }
-//
-//        /* Close outer element container tag */
-//        $this->scoreBoard .= "</div>";
-//
-//        return $this->scoreBoard;
-//    }
 }

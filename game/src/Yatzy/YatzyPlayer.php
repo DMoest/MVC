@@ -145,15 +145,9 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
      * @description return last dice hand as object.
      * @return ?object
      */
-    final public function getDiceHand(): ?object
+    final public function getDiceHand(): object
     {
-        $score = $this->getScore();
-
-        if ($score !== 0) {
-            return $this->diceHand;
-        }
-
-        return null;
+        return $this->diceHand;
     }
 
 
