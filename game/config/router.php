@@ -91,6 +91,11 @@ $router->addGroup("/yatzy__results", function (RouteCollector $router) {
     $router->addRoute("POST", "/process", ["\daap19\Controller\YatzyResults", "processResponse"]);
 });
 
+$router->addGroup("/yatzy__selectScores", function (RouteCollector $router) {
+    $router->addRoute("GET", "/view", ["\daap19\Controller\YatzySelectScores", "renderView"]);
+    $router->addRoute("POST", "/process", ["\daap19\Controller\YatzySelectScores", "processResponse"]);
+});
+
 $router->addGroup("/yatzy__finalResults", function (RouteCollector $router) {
     $router->addRoute("GET", "/view", ["\daap19\Controller\YatzyFinalResults", "renderView"]);
     $router->addRoute("POST", "/process", ["\daap19\Controller\YatzyFinalResults", "processResponse"]);

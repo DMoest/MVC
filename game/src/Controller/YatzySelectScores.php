@@ -23,10 +23,10 @@ use function Mos\Functions\{
 
 
 /**
- * @name YatzyResults
- * @description Controller class for results in a game of Yatzy, used by router.
+ * @name YatzySelectScores
+ * @description Controller class for selecting where a player put the scores in a game of Yatzy, used by router.
  */
-class YatzyResults extends ControllerBase
+class YatzySelectScores extends ControllerBase
 {
     /**
      * @method renderView()
@@ -43,17 +43,16 @@ class YatzyResults extends ControllerBase
         $data = [
             "header" => "Dice DiceGame 21",
             "message" => "Results for this round.",
-            "action" => url("/yatzy__results/view"),
+            "action" => url("/yatzy__selectScores/process"),
             "round" => $yatzy->getRound(),
             "playerNumber" => $yatzy->getPlayerIndex() +1,
             "graphicDices" => $yatzy->showGraphicDices($player->getDiceHand()),
             "scoreBoard" => $yatzy->printYatzyScoreBoard(),
         ];
 
-        $body = renderView("layout/yatzy__results.php", $data);
+        $body = renderView("layout/yatzy__selectScores.php", $data);
 
         /* ------------------------------------------------------------ */
-
 
         // Return the response through parent class ControllerBase
         return $this->response($body);
@@ -69,26 +68,9 @@ class YatzyResults extends ControllerBase
     {
         /* - My code -------------------------------------------------- */
 
-//        $yatzy = $_SESSION["yatzy"];
-//        $players = $yatzy->getPlayers();
-//        $playerIndex = $yatzy->getPlayerIndex();
-//        $player = $players[$playerIndex];
-//        $lastIndex = count($players) -1;
-//        $bust = intval($player->isBust());
-//        $stopped = intval($player->hasStopped());
-//
-//        if ($stopped === 1) {
-//            if ($playerIndex === $lastIndex) {
-//                $yatzy->setNextRound();
-//            }
-//
-//            $yatzy->setNextPlayerIndex();
-//        }
-
 
 
         /* ------------------------------------------------------------ */
-
 
         // Return the redirect through parent class ControllerBase
         return $this->redirect(url("/yatzy/view"));

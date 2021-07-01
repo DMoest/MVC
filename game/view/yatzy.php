@@ -10,6 +10,7 @@ declare(strict_types=1);
 $header = $header ?? null;
 $message = $message ?? null;
 $action = $action ?? null;
+$selectScoresURL = $selectScoresURL ?? null;
 $dices = $dices ?? null;
 $submit = $submit ?? null;
 $round = $round ?? null;
@@ -62,7 +63,7 @@ $credit = $credit ?? null;
         <?php } ?>
 
         <?php if($playerRolls === 3) { ?>
-            <button class="diceForm__input--button diceForm__input--buttonSuccess" type="submit" name="submit" value="selectScores">Select scores</button>
+            <button class="diceForm__input--button diceForm__input--buttonSuccess" type="submit" name="submit" value="selectScores" formaction="<?= $selectScoresURL ?>">Select scores</button>
         <?php } ?>
         <button class="diceForm__input--button diceForm__input--buttonDanger" type="submit" name="submit" value="stop">Stop</button>
     </div>
