@@ -5,6 +5,8 @@
  */
 namespace daap19\Yatzy;
 
+use daap19\Dice\ScoreBoardTrait;
+
 /**
  * Functions in use.
  */
@@ -28,6 +30,8 @@ include(__DIR__ . "/../../config/config.php");
  */
 class Yatzy
 {
+    use ScoreBoardTrait;
+
     private ?int $round;
     private ?int $numOfPlayers = null;
     private ?array $players;
@@ -169,46 +173,46 @@ class Yatzy
     }
 
 
-    /**
-     * @method scoreBoard()
-     * @description method is used to generate a scoreboard for all players.
-     * @return string
-     */
-    final public function scoreBoard(): string
-    {
-        /* Setup score board outer container element */
-        $this->scoreBoard = "<div class=\"diceForm__results--container\">";
-
-        foreach ($this->players as $key => $player) {
-            /* Results as string */
-            $stringRes = $player->getLastRollAsString();
-            $average = $player->getAverage();
-            $totalScore = $player->getScore();
-//            $stopped = $player->hasStopped();
-
-            /* Build elements */
-            $this->scoreBoard .= "<div class=\"diceForm__results--player-" . $key . "\">";
-            $this->scoreBoard .= "<h4>YatzyPlayer " . ($key +1) . "</h4>";
-
-            /* Only add elements if player have results */
-            if ($totalScore > 0) {
-                $this->scoreBoard .= "<p>$stringRes</p>";
-                $this->scoreBoard .= "<p>Average dice value = " . $average . "</p>";
-                $this->scoreBoard .= "<p>Player " . ($key+1) . " score = " . $totalScore . "</p>";
-            }
-
-//            /* Print message if player stopped or is bust. */
-//            if (intval($stopped) === 1) {
-//                $this->scoreBoard .= "<span>YatzyPlayer has stopped.</span>";
+//    /**
+//     * @method scoreBoard()
+//     * @description method is used to generate a scoreboard for all players.
+//     * @return string
+//     */
+//    final public function scoreBoard(): string
+//    {
+//        /* Setup score board outer container element */
+//        $this->scoreBoard = "<div class=\"diceForm__results--container\">";
+//
+//        foreach ($this->players as $key => $player) {
+//            /* Results as string */
+//            $stringRes = $player->getLastRollAsString();
+//            $average = $player->getAverage();
+//            $totalScore = $player->getScore();
+////            $stopped = $player->hasStopped();
+//
+//            /* Build elements */
+//            $this->scoreBoard .= "<div class=\"diceForm__results--player-" . $key . "\">";
+//            $this->scoreBoard .= "<h4>YatzyPlayer " . ($key +1) . "</h4>";
+//
+//            /* Only add elements if player have results */
+//            if ($totalScore > 0) {
+//                $this->scoreBoard .= "<p>$stringRes</p>";
+//                $this->scoreBoard .= "<p>Average dice value = " . $average . "</p>";
+//                $this->scoreBoard .= "<p>Player " . ($key+1) . " score = " . $totalScore . "</p>";
 //            }
-
-            /* Close the players div */
-            $this->scoreBoard .= "</div>";
-        }
-
-        /* Close outer element container tag */
-        $this->scoreBoard .= "</div>";
-
-        return $this->scoreBoard;
-    }
+//
+////            /* Print message if player stopped or is bust. */
+////            if (intval($stopped) === 1) {
+////                $this->scoreBoard .= "<span>YatzyPlayer has stopped.</span>";
+////            }
+//
+//            /* Close the players div */
+//            $this->scoreBoard .= "</div>";
+//        }
+//
+//        /* Close outer element container tag */
+//        $this->scoreBoard .= "</div>";
+//
+//        return $this->scoreBoard;
+//    }
 }

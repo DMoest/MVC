@@ -54,7 +54,7 @@ class DiceGame extends ControllerBase
             "credit" => $playerCredit,
             "numberOfPlayers" => count($diceGame->getPLayers()),
             "playerNumber" => $diceGame->getPlayerIndex() +1,
-            "scoreBoard" => $diceGame->scoreBoard(),
+            "scoreBoard" => $diceGame->printDiceScoreBoard(),
         ];
 
         $body = renderView("layout/dice.php", $data);
@@ -82,7 +82,7 @@ class DiceGame extends ControllerBase
 
         /* Play game */
         $diceGame->playGame($dices, $submit);
-        $this->scoreBoard = $diceGame->scoreBoard();
+        $this->scoreBoard = $diceGame->printDiceScoreBoard();
 
         /* ------------------------------------------------------------ */
 

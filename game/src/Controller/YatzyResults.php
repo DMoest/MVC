@@ -47,7 +47,7 @@ class YatzyResults extends ControllerBase
             "round" => $yatzy->getRound(),
             "playerNumber" => $yatzy->getPlayerIndex() +1,
             "graphicDices" => $yatzy->showGraphicDices($player->getDiceHand()),
-            "scoreBoard" => $yatzy->scoreBoard(),
+            "scoreBoard" => $yatzy->printYatzyScoreBoard(),
         ];
 
         $body = renderView("layout/yatzy__results.php", $data);

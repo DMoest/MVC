@@ -48,7 +48,7 @@ class DiceGameResults extends ControllerBase
             "round" => $diceGame->getRound(),
             "playerNumber" => $diceGame->getPLayerIndex() +1,
             "graphicDices" => $diceGame->showGraphicDices($player->getLastHand()),
-            "scoreBoard" => $diceGame->scoreBoard(),
+            "scoreBoard" => $diceGame->printDiceScoreBoard(),
         ];
 
         $body = renderView("layout/dice__results.php", $data);

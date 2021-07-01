@@ -28,6 +28,8 @@ include(__DIR__ . "/../../config/config.php");
  */
 class DiceGame
 {
+    use ScoreBoardTrait;
+
     private array $players = [];
     private ?int $round;
     private ?int $playerIndex;
@@ -275,65 +277,6 @@ class DiceGame
         }
     }
 
-
-    /**
-     * @method scoreBoard()
-     * @description method is used to generate a scoreboard for all players.
-     * @return string
-     */
-    final public function scoreBoard(): string
-    {
-        /* Setup score board outer container element */
-        $this->numOfPlayers = count($this->players);
-        $scoreBoard = "<div class=\"diceForm__results--container\">";
-
-        /* Generate inner elements for scores */
-        for ($i = 0; $i < $this->numOfPlayers; $i++) {
-
-            /* Results as string */
-            $stringRes = $this->players[$i]->getResultsAsString();
-            $average = $this->players[$i]->getAverage();
-            $totalScore = $this->players[$i]->getScore();
-            $playerCredit = $this->players[$i]->getCredit();
-            $playerWins = $this->players[$i]->getWins();
-            $stopped = $this->players[$i]->hasStopped();
-            $bust = $this->players[$i]->isBust();
-
-            /* Build elements */
-            $scoreBoard .= "<div class=\"diceForm__results--player-" . $i . "\">";
-            $scoreBoard .= "<h4>YatzyPlayer " . ($i +1) . "</h4>";
-
-            /* Only add elements if player have results */
-            if ($totalScore > 0) {
-                $scoreBoard .= "<p>$stringRes</p>";
-                $scoreBoard .= "<p>Average dice value = " . $average . "</p>";
-                $scoreBoard .= "<p>YatzyPlayer " . ($i+1) . " score = " . $totalScore . "</p>";
-            }
-
-            /* Remaining credit for this player */
-            $scoreBoard .= "<p>Credit: " . $playerCredit . "</p>";
-
-            /* If there are winning round print them */
-            if ($playerWins > 0) {
-                $scoreBoard .= "<p>Winning rounds: " . $playerWins . "</p>";
-            }
-
-            /* Print message if player stopped or is bust. */
-            if (intval($bust) === 1) {
-                $scoreBoard .= "<span>YatzyPlayer is bust.</span>";
-            } else if (intval($stopped) === 1) {
-                $scoreBoard .= "<span>YatzyPlayer has stopped.</span>";
-            }
-
-            /* Close the div */
-            $scoreBoard .= "</div>";
-        }
-
-        /* Close outer element container tag */
-        $scoreBoard .= "</div>";
-
-        return $scoreBoard;
-    }
 
     /**
      * @method solveTheBet()
