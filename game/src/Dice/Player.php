@@ -29,6 +29,9 @@ include(__DIR__ . "/../../config/config.php");
  */
 class Player implements PlayerInterface
 {
+    use LastRollAsStringTrait;
+    use ResultsAsStringTrait;
+
     protected array $results = [];
     protected array $lastRoll = [];
     protected ?object $lastHand;
@@ -87,28 +90,6 @@ class Player implements PlayerInterface
 
 
     /**
-     * @method getResultsAsString()
-     * @description returns string concat from all values in array of results from dice rolls.
-     * @return string concatenation of integers from array of results.
-     */
-    public function getResultsAsString(): string
-    {
-        $output = "";
-        $dices = count($this->lastRoll);
-
-        for ($i = 0; $i < $dices; $i++) {
-            if ($i < count($this->lastRoll) -1) {
-                $output .= $this->lastRoll[$i] . ", ";
-            } else if ($i == count($this->lastRoll) -1) {
-                $output .= $this->lastRoll[$i] . " = " . array_sum($this->lastRoll);
-            }
-        }
-
-        return $output;
-    }
-
-
-    /**
      * @method getSumTotal()
      * @description setter/getter method combined that returns the sum total of all result values from the property array results.
      * @return int as total value of array results.
@@ -145,26 +126,26 @@ class Player implements PlayerInterface
     }
 
 
-    /**
-     * @method getLastRollAsString()
-     * @description returns string concat from all values in array lastRoll from last dice rolls.
-     * @return string concatenation of integers from array of results.
-     */
-    public function getLastRollAsString(): string
-    {
-        $output = "";
-        $dices = count($this->lastRoll);
-
-        for ($i = 0; $i < $dices; $i++) {
-            if ($i < count($this->lastRoll) -1) {
-                $output .= $this->lastRoll[$i] . ", ";
-            } else if ($i == count($this->lastRoll) -1) {
-                $output .= $this->lastRoll[$i] . " = " . array_sum($this->lastRoll);
-            }
-        }
-
-        return $output;
-    }
+//    /**
+//     * @method getLastRollAsString()
+//     * @description returns string concat from all values in array lastRoll from last dice rolls.
+//     * @return string concatenation of integers from array of results.
+//     */
+//    public function getLastRollAsString(): string
+//    {
+//        $output = "";
+//        $dices = count($this->lastRoll);
+//
+//        for ($i = 0; $i < $dices; $i++) {
+//            if ($i < count($this->lastRoll) -1) {
+//                $output .= $this->lastRoll[$i] . ", ";
+//            } else if ($i == count($this->lastRoll) -1) {
+//                $output .= $this->lastRoll[$i] . " = " . array_sum($this->lastRoll);
+//            }
+//        }
+//
+//        return $output;
+//    }
 
 
     /**

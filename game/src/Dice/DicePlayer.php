@@ -24,11 +24,15 @@ namespace daap19\Dice;
 include(__DIR__ . "/../../config/config.php");
 
 /**
- * @name DicePlayer
- * @package Daap19\Dice
+ * Class DicePlayer
+ * @description Class DicePlayer extends the Player class. For easier use of same base class interfaces are implemented for each of the related classes.
+ * @package daap19\Dice
  */
-class DicePlayer extends Player implements PlayerInterface, DicePlayerInterface
+class DicePlayer extends Player implements DicePlayerInterface
 {
+    use ResultsAsStringTrait;
+    use LastRollAsStringTrait;
+
     private int $credit;
     private ?int $wins = null;
     private bool $stopped;
@@ -43,7 +47,7 @@ class DicePlayer extends Player implements PlayerInterface, DicePlayerInterface
      * @param int $startCredit
      * @param bool $machinePlayer
      */
-    public function __construct(int $startCredit, bool $machinePlayer)
+    public function __construct(int $startCredit = 25, bool $machinePlayer = true)
     {
         parent::__construct(); // construct from parent class.
 

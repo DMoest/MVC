@@ -5,6 +5,8 @@
  */
 namespace daap19\Yatzy;
 use daap19\Dice\Player;
+use daap19\Dice\ResultsAsStringTrait;
+use daap19\Dice\LastRollAsStringTrait;
 
 /**
  * Functions in use.
@@ -30,6 +32,9 @@ include(__DIR__ . "/../../config/config.php");
  */
 class YatzyPlayer extends Player implements YatzyPlayerInterface
 {
+    use LastRollAsStringTrait;
+    use ResultsAsStringTrait;
+
     private ?int $rolls;
     private ?object $diceHand;
     private ?array $keepDices;
@@ -121,28 +126,6 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
 
         /* Get sum total */
         return $this->sum;
-    }
-
-
-    /**
-     * @method getResultsAsString()
-     * @description returns string concat from all values in array of results from dice rolls.
-     * @return string concatenation of integers from array of results.
-     */
-    final public function getResultsAsString(): string
-    {
-        $output = "";
-        $dices = count($this->lastRoll);
-
-        for ($i = 0; $i < $dices; $i++) {
-            if ($i < count($this->lastRoll) -1) {
-                $output .= $this->lastRoll[$i] . ", ";
-            } else if ($i === count($this->lastRoll) -1) {
-                $output .= $this->lastRoll[$i] . " = " . array_sum($this->lastRoll);
-            }
-        }
-
-        return $output;
     }
 
 

@@ -19,5 +19,4 @@ interface PlayerInterface
     public function getResultsAsString(): string;
     public function getSumTotal(): int;
     public function getAverage(): ?float;
-    public function getLastRollAsString(): string;
 }

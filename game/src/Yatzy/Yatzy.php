@@ -181,7 +181,7 @@ class Yatzy
 
         foreach ($this->players as $key => $player) {
             /* Results as string */
-            $stringRes = $player->getResultsAsString();
+            $stringRes = $player->getLastRollAsString();
             $average = $player->getAverage();
             $totalScore = $player->getScore();
 //            $stopped = $player->hasStopped();

@@ -11,6 +11,7 @@ namespace daap19\Dice;
  */
 interface DicePlayerInterface
 {
+    public function __construct(int $startCredit, bool $machinePlayer);
     public function getScore(): int;
     public function getCredit(): int;
     public function setCredit(int $newCredit): void;
