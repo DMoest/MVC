@@ -82,6 +82,7 @@ class DicePlayer extends Player implements DicePlayerInterface
         return $this->credit;
     }
 
+
     /**
      * @method setCredit()
      * @description setter function to set new credit to player credit account.
@@ -93,6 +94,7 @@ class DicePlayer extends Player implements DicePlayerInterface
         $this->credit = $newCredit;
     }
 
+
     /**
      * @method setWin
      * @description setter method that iterates the property wins +1.
@@ -102,6 +104,7 @@ class DicePlayer extends Player implements DicePlayerInterface
     {
         $this->wins++;
     }
+
 
     /**
      * @method getWins()
@@ -113,6 +116,7 @@ class DicePlayer extends Player implements DicePlayerInterface
         return $this->wins;
     }
 
+
     /**
      * @method stop()
      * @description setter method to set boolean property to indicate that player have stopped at this score.
@@ -122,6 +126,7 @@ class DicePlayer extends Player implements DicePlayerInterface
     {
         $this->stopped = true;
     }
+
 
     /**
      * @method hasStopped()
@@ -133,6 +138,7 @@ class DicePlayer extends Player implements DicePlayerInterface
         return $this->stopped;
     }
 
+
     /**
      * @method isBust()
      * @description returns a boolean value to indicate if this player has gone bust in the current round.
@@ -142,6 +148,7 @@ class DicePlayer extends Player implements DicePlayerInterface
     {
         return $this->bust;
     }
+
 
     /**
      * @method setBust()
@@ -153,6 +160,7 @@ class DicePlayer extends Player implements DicePlayerInterface
         $this->bust = true;
     }
 
+
     /**
      * @method isOut()
      * @description returns a boolean value to indicate if this player has gone bust in the current round.
@@ -162,6 +170,7 @@ class DicePlayer extends Player implements DicePlayerInterface
     {
         return $this->out;
     }
+
 
     /**
      * @method setOut()
@@ -173,6 +182,7 @@ class DicePlayer extends Player implements DicePlayerInterface
         $this->out = true;
     }
 
+
     /**
      * @method isMachine()
      * @description returns boolean value to indicate if this player is run by computer/machine or not.
@@ -182,6 +192,7 @@ class DicePlayer extends Player implements DicePlayerInterface
     {
         return $this->machine;
     }
+
 
     /**
      * @method setForNextRound()
