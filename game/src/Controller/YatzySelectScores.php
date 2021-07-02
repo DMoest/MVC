@@ -48,6 +48,7 @@ class YatzySelectScores extends ControllerBase
             "playerNumber" => $yatzy->getPlayerIndex() +1,
             "graphicDices" => $yatzy->showGraphicDices($player->getDiceHand()),
             "scoreBoard" => $yatzy->printYatzyScoreBoard(),
+            "scoreSelection" => $yatzy->scoreSelection(),
         ];
 
         $body = renderView("layout/yatzy__selectScores.php", $data);
@@ -75,22 +76,22 @@ class YatzySelectScores extends ControllerBase
 
         /* Control where points are stored */
         switch ($_POST) {
-            case isset($_POST["one"]):
+            case isset($_POST["0"]):
                 $player->saveScores($lastRoll, 1);
                 break;
-            case isset($_POST["two"]):
+            case isset($_POST["1"]):
                 $player->saveScores($lastRoll, 2);
                 break;
-            case isset($_POST["three"]):
+            case isset($_POST["2"]):
                 $player->saveScores($lastRoll, 3);
                 break;
-            case isset($_POST["four"]):
+            case isset($_POST["3"]):
                 $player->saveScores($lastRoll, 4);
                 break;
-            case isset($_POST["five"]):
+            case isset($_POST["4"]):
                 $player->saveScores($lastRoll, 5);
                 break;
-            case isset($_POST["six"]):
+            case isset($_POST["5"]):
                 $player->saveScores($lastRoll, 6);
                 break;
         }

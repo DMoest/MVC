@@ -13,6 +13,11 @@
     text-align: center;
     font-size: 1.33rem;
     margin: $whiteSpace 0 0;
+
+    &--score {
+      padding: 5px 0 0 32px;
+      margin: 0;
+    }
   }
 
   &__graphicDices {

@@ -71,9 +71,8 @@ class Yatzy
      * @description Method to play game with.
      * @returns void
      */
-    final public function play(object $player, string $submit)
+    final public function play(object $player, string $submit): void
     {
-        $player = $this->players[$this->playerIndex];
         $playerRolls = $player->getRolls();
 
         if ($submit === "roll" && $playerRolls < 3) {
@@ -156,7 +155,7 @@ class Yatzy
      * @method showGraphicDices()
      * @description method to help show graphic representations of dices in dice hand.
      * @param object $diceHand as representation of a hand of dice objects.
-     * @return array of strings representing classes to show a dice.
+     * @return ?array of strings representing classes to show a dice.
      */
     final public function showGraphicDices(object $diceHand): ?array
     {
@@ -172,5 +171,46 @@ class Yatzy
         }
 
         return $graphicDices;
+    }
+
+
+    /**
+     * @method scoreSelection()
+     * @description Method to print out part of form for player to select where to put their scores.
+     * @return string
+     */
+    final public function scoreSelection(): string
+    {
+        $outputString = "";
+        $player = $this->getCurrentPlayer();
+        $playerScores = $player->getPlayerScore();
+        $yatzyScoreNames = [
+            0 => "One's",
+            1 => "Two's",
+            2 => "Three's",
+            3 => "Four's",
+            4 => "Five's",
+            5 => "Sixes",
+            6 => "One pair",
+            7 => "Two pairs",
+            8 => "Three of a Kind",
+            9 => "Four of a Kind",
+            10 => "Small strait",
+            11 => "Big strait",
+            12 => "House",
+            13 => "Chance",
+            14 => "Yatzy"];
+
+        foreach ($playerScores as $key => $score) {
+            if ($score === null) {
+                $outputString .= "<label class='yatzyForm__input--label' for='" . $key . "'>";
+                $outputString .= "<input class='yatzyForm__input--radio' type='radio' name='" . $key . "' id='" . $key . "' value='" . $key . "' /> ";
+                $outputString .= $yatzyScoreNames[$key] . " </label><br> ";
+            } else {
+                $outputString .= "<p class='yatzyForm__text--score'> " . $yatzyScoreNames[$key] . " : " . $score . " points </p>";
+            }
+        }
+
+        return $outputString;
     }
 }

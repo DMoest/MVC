@@ -229,6 +229,11 @@ main {
   font-size: 1.33rem;
   margin: calc(1.333 * 1em) 0 0;
 }
+.diceForm__text--score,
+.yatzyForm__text--score {
+  padding: 5px 0 0 32px;
+  margin: 0;
+}
 .diceForm__graphicDices,
 .yatzyForm__graphicDices {
   display: flex;

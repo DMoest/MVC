@@ -13,6 +13,7 @@ $action = $action ?? null;
 $playerRolls = $playerRolls ?? null;
 $graphicDices = $graphicDices ?? null;
 $playerNumber = $playerNumber ?? null;
+$scoreSelection = $scoreSelection ?? null;
 
 ?>
 
@@ -45,18 +46,20 @@ $playerNumber = $playerNumber ?? null;
 
         <p><i>Select where on the chart to place your points.</i></p>
 
-        <label class=""yatzyForm__input--label" for="one">
-            <input class="yatzyForm__input--radio" type="radio" name="one" id="one" value="one" /> One</label><br>
-        <label class=""yatzyForm__input--label" for="two">
-            <input class="yatzyForm__input--radio" type="radio" name="two" id="two" value="two" /> Two</label><br>
-        <label class=""yatzyForm__input--label" for="three">
-            <input class="yatzyForm__input--radio" type="radio" name="three" id="three" value="three" /> Three</label><br>
-        <label class=""yatzyForm__input--label" for="four">
-            <input class="yatzyForm__input--radio" type="radio" name="four" id="four" value="four" /> Four</label><br>
-        <label class=""yatzyForm__input--label" for="five">
-            <input class="yatzyForm__input--radio" type="radio" name="five" id="five" value="five" /> Five</label><br>
-        <label class=""yatzyForm__input--label" for="six">
-            <input class="yatzyForm__input--radio" type="radio" name="six" id="six" value="six" /> Six</label><br>
+        <?= $scoreSelection ?>
+
+<!--        <label class=""yatzyForm__input--label" for="one">-->
+<!--            <input class="yatzyForm__input--radio" type="radio" name="one" id="one" value="one" /> One</label><br>-->
+<!--        <label class=""yatzyForm__input--label" for="two">-->
+<!--            <input class="yatzyForm__input--radio" type="radio" name="two" id="two" value="two" /> Two</label><br>-->
+<!--        <label class=""yatzyForm__input--label" for="three">-->
+<!--            <input class="yatzyForm__input--radio" type="radio" name="three" id="three" value="three" /> Three</label><br>-->
+<!--        <label class=""yatzyForm__input--label" for="four">-->
+<!--            <input class="yatzyForm__input--radio" type="radio" name="four" id="four" value="four" /> Four</label><br>-->
+<!--        <label class=""yatzyForm__input--label" for="five">-->
+<!--            <input class="yatzyForm__input--radio" type="radio" name="five" id="five" value="five" /> Five</label><br>-->
+<!--        <label class=""yatzyForm__input--label" for="six">-->
+<!--            <input class="yatzyForm__input--radio" type="radio" name="six" id="six" value="six" /> Six</label><br>-->
 
 
 

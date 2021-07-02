@@ -38,7 +38,7 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
     private ?object $diceHand;
     private ?array $keepDices;
     private bool $stopped;
-    private array $playerScores = [1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0, 6 => 0];
+    private array $playerScores = [];
 
 
     /**
@@ -57,6 +57,7 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
         $this->keepDices = $this->diceHand->getKeptDices();
         $this->sum = $this->getScore();
         $this->average = $this->getAverage();
+        $this->playerScores = [0 => null, 1 => null, 2 => null, 3 => null, 4 => null, 5 => null];
     }
 
 
@@ -99,6 +100,17 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
     final public function getScore(): int
     {
         return array_sum($this->lastRoll);
+    }
+
+
+    /**
+     * @method getPlayerScore()
+     * @description Getter method to return array of players saved dice scores so far.
+     * @return array|int[]
+     */
+    final public function getPlayerScore(): array
+    {
+        return $this->playerScores;
     }
 
 
@@ -222,17 +234,24 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
      * @param int $referenceValue
      * @return void
      */
-    public function saveScores(array $chosenScores, int $referenceValue): void
+    public function saveScores(array $diceHandArray, int $referenceValue): void
     {
         $counter = 0;
+        $scoreIndex = $referenceValue -1;
 
-        foreach ($chosenScores as $diceValue) {
+        /* Check the dice hand of the player for equal */
+        foreach ($diceHandArray as $diceValue) {
             if ($diceValue === $referenceValue) {
                 $counter++;
             }
         }
 
-        $this->playerScores[$referenceValue] = ($counter * $referenceValue);
+        /* Place a integer as score on the position chosen by the player */
+        if ($counter > 0) {
+            $this->playerScores[$scoreIndex] = ($counter * $referenceValue);
+        } else {
+            $this->playerScores[$scoreIndex] = 0;
+        }
     }
 
 
