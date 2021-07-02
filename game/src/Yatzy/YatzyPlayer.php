@@ -32,7 +32,6 @@ include(__DIR__ . "/../../config/config.php");
  */
 class YatzyPlayer extends Player implements YatzyPlayerInterface
 {
-    use LastRollAsStringTrait;
     use ResultsAsStringTrait;
 
     private ?int $rolls;

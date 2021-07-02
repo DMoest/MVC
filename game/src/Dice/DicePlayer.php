@@ -31,7 +31,6 @@ include(__DIR__ . "/../../config/config.php");
 class DicePlayer extends Player implements DicePlayerInterface
 {
     use ResultsAsStringTrait;
-    use LastRollAsStringTrait;
 
     private int $credit;
     private ?int $wins = null;

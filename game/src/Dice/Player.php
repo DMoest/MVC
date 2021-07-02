@@ -29,7 +29,6 @@ include(__DIR__ . "/../../config/config.php");
  */
 class Player implements PlayerInterface
 {
-    use LastRollAsStringTrait;
     use ResultsAsStringTrait;
 
     protected array $results = [];
