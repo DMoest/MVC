@@ -29,7 +29,7 @@ $credit = $credit ?? null;
 <h1><?= $header ?></h1>
 <p><i><?= $message ?></i></p>
 
-<form method="post" action="<?= $action ?>" class="diceForm">
+<form method="post" action="<?= $action ?>" class="yatzyForm">
     <p>Player rolled the dices: <?= $playerRolls ?> times.</p>
 
     <?php if ($graphicDices !== null) : ?>
@@ -38,49 +38,65 @@ $credit = $credit ?? null;
         <!-- Present the player -->
         <h3>Player <?= $playerNumber ?> score</h3>
 
-        <form class="">
-            <p><i>Select where on the chart to place your points.</i></p>
+        <!--Graphic Dices -->
+        <div class="diceForm__graphicDices">
 
-            <label for="one">
-                <input type="radio" name="scorePosition" id="input" value="one" /> One</label><br>
-            <label for="two">
-                <input type="radio" name="scorePosition" id="two" value="two" /> Two</label><br>
-            <label for="three">
-                <input type="radio" name="scorePosition" id="three" value="three" /> Three</label><br>
-            <label for="four">
-                <input type="radio" name="scorePosition" id="four" value="four" /> Four</label><br>
-            <label for="five">
-                <input type="radio" name="scorePosition" id="five" value="five" /> Five</label><br>
-            <label for="six">
-                <input type="radio" name="scorePosition" id="six" value="six" /> Six</label><br>
+            <!-- Generate dice representations -->
+            <?php foreach($graphicDices as $key => $value) : ?>
 
-            <hr>
+                <!-- Each graphic dice representation -->
+                <div class="dice-utf8 diceForm__graphicDices--selectionBox">
+                    <i class="<?= $value ?>"></i>
+                </div>
+            <?php endforeach; ?>
+        </div>
 
-            <label for="onePair">
-                <input type="radio" name="scorePosition" id="onePair" value="onePair" /> One pair</label><br>
-            <label for="three">
-                <input type="radio" name="scorePosition" id="three" value="twoPairs" /> Two pairs</label><br>
-            <label for="threeOfAKind">
-                <input type="radio" name="scorePosition" id="threeOfAKind" value="threeOfAKind" /> Three of a Kind</label><br>
-            <label for="fourOfAKind">
-                <input type="radio" name="scorePosition" id="fourOfAKind" value="fourOfAKind" /> Four of a Kind</label><br>
-            <label for="smallStraight">
-                <input type="radio" name="scorePosition" id="smallStraight" value="smallStraight" /> Small straight</label><br>
-            <label for="bigStraight">
-                <input type="radio" name="scorePosition" id="bigStraight" value="bigStraight" /> Big straight</label><br>
-            <label for="house">
-                <input type="radio" name="scorePosition" id="house" value="house" /> House</label><br>
-            <label for="chance">
-                <input type="radio" name="scorePosition" id="chance" value="chance" /> Chance</label><br>
-            <label for="yatzy">
-                <input type="radio" name="scorePosition" id="yatzy" value="yatzy" /> Yatzy</label><br>
-        </form>
+        <p><i>Select where on the chart to place your points.</i></p>
+
+        <label class=""yatzyForm__input--label" for="one">
+            <input class="yatzyForm__input--radio" type="radio" name="one" id="one" value="one" /> One</label><br>
+        <label class=""yatzyForm__input--label" for="two">
+            <input class="yatzyForm__input--radio" type="radio" name="two" id="two" value="two" /> Two</label><br>
+        <label class=""yatzyForm__input--label" for="three">
+            <input class="yatzyForm__input--radio" type="radio" name="three" id="three" value="three" /> Three</label><br>
+        <label class=""yatzyForm__input--label" for="four">
+            <input class="yatzyForm__input--radio" type="radio" name="four" id="four" value="four" /> Four</label><br>
+        <label class=""yatzyForm__input--label" for="five">
+            <input class="yatzyForm__input--radio" type="radio" name="five" id="five" value="five" /> Five</label><br>
+        <label class=""yatzyForm__input--label" for="six">
+            <input class="yatzyForm__input--radio" type="radio" name="six" id="six" value="six" /> Six</label><br>
+
+
+
+
+
+<!--            <hr>-->
+<!---->
+<!--            <label class="yatzyForm__input--label" for="onePair">-->
+<!--                <input class="yatzyForm__input--radio" type="radio" name="scorePosition" id="onePair" value="onePair" /> One pair</label><br>-->
+<!--            <label class="yatzyForm__input--label" for="three">-->
+<!--                <input class="yatzyForm__input--radio" type="radio" name="scorePosition" id="three" value="twoPairs" /> Two pairs</label><br>-->
+<!--            <label class="yatzyForm__input--label" for="threeOfAKind">-->
+<!--                <input class="yatzyForm__input--radio" type="radio" name="scorePosition" id="threeOfAKind" value="threeOfAKind" /> Three of a Kind</label><br>-->
+<!--            <label class="yatzyForm__input--label" for="fourOfAKind">-->
+<!--                <input class="yatzyForm__input--radio" type="radio" name="scorePosition" id="fourOfAKind" value="fourOfAKind" /> Four of a Kind</label><br>-->
+<!--            <label class="yatzyForm__input--label" for="smallStraight">-->
+<!--                <input class="yatzyForm__input--radio" type="radio" name="scorePosition" id="smallStraight" value="smallStraight" /> Small straight</label><br>-->
+<!--            <label class="yatzyForm__input--label" for="bigStraight">-->
+<!--                <input class="yatzyForm__input--radio" type="radio" name="scorePosition" id="bigStraight" value="bigStraight" /> Big straight</label><br>-->
+<!--            <label class="yatzyForm__input--label" for="house">-->
+<!--                <input class="yatzyForm__input--radio" type="radio" name="scorePosition" id="house" value="house" /> House</label><br>-->
+<!--            <label class="yatzyForm__input--label" for="chance">-->
+<!--                <input class="yatzyForm__input--radio" type="radio" name="scorePosition" id="chance" value="chance" /> Chance</label><br>-->
+<!--            <label class="yatzyForm__input--label" for="yatzy">-->
+<!--                <input class="yatzyForm__input--radio" type="radio" name="scorePosition" id="yatzy" value="yatzy" /> Yatzy</label><br>-->
+
 
         </p>
 
     <?php endif; ?>
 
     <div class="diceForm__submit--container">
-            <button class="diceForm__input--button diceForm__input--buttonLink" type="submit" name="submit" value="roll">Position points</button>
+            <button class="diceForm__input--button diceForm__input--buttonLink" type="submit" name="submit">Position points</button>
     </div>
 </form>

@@ -41,8 +41,8 @@ class YatzySelectScores extends ControllerBase
         $player = $yatzy->getCurrentPlayer();
 
         $data = [
-            "header" => "Dice DiceGame 21",
-            "message" => "Results for this round.",
+            "header" => "Yatzy - Player Points Selection",
+            "message" => "",
             "action" => url("/yatzy__selectScores/process"),
             "round" => $yatzy->getRound(),
             "playerNumber" => $yatzy->getPlayerIndex() +1,
@@ -68,7 +68,35 @@ class YatzySelectScores extends ControllerBase
     {
         /* - My code -------------------------------------------------- */
 
+        $yatzy = $_SESSION["yatzy"];
+        $player = $yatzy->getCurrentPlayer();
+        $diceHand = $player->getDiceHand();
+        $lastRoll = $player->getLastRoll();
 
+        /* Control where points are stored */
+        switch ($_POST) {
+            case isset($_POST["one"]):
+                $player->saveScores($lastRoll, 1);
+                break;
+            case isset($_POST["two"]):
+                $player->saveScores($lastRoll, 2);
+                break;
+            case isset($_POST["three"]):
+                $player->saveScores($lastRoll, 3);
+                break;
+            case isset($_POST["four"]):
+                $player->saveScores($lastRoll, 4);
+                break;
+            case isset($_POST["five"]):
+                $player->saveScores($lastRoll, 5);
+                break;
+            case isset($_POST["six"]):
+                $player->saveScores($lastRoll, 6);
+                break;
+        }
+
+        $diceHand->setForNextRound();
+        $player->setForNextRound();
 
         /* ------------------------------------------------------------ */
 

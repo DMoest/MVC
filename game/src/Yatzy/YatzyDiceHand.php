@@ -61,4 +61,11 @@ class YatzyDiceHand extends DiceHand implements YatzyDiceHandInterface
     {
         return $this->keepDices;
     }
+
+
+    public function setForNextRound(): void
+    {
+        $this->lastRoll = [];
+        $this->keepDices = [];
+    }
 }

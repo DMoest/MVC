@@ -16,9 +16,11 @@ interface YatzyPlayerInterface
     public function hasStopped(): bool;
     public function keepDices(array $diceIndexes): array;
     public function getDiceHand(): ?object;
-    public function validateScoreValues(array $chosenScores, int $valueToBe): ?bool;
-    public function saveScores(array $theChosenScores, int $theValue): array;
 
+    public function validateScoreValues(array $chosenScores, int $valueToBe): ?bool;
+    public function saveScores(array $chosenScores, int $referenceValue): void;
+
+    public function setForNextRound(): void;
 
     /* Yatzy stuff */
     // Some method to keep dices

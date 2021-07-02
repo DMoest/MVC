@@ -47,7 +47,7 @@ class Yatzy extends ControllerBase
             "header" => "Yatzy",
             "message" => "Collect them dices good!",
             "action" => url("/yatzy/process"),
-            "selectScoresURL" => url("/yatzy__selectScores/process"),
+            "selectScoresURL" => url("/yatzy__selectScores/view"),
             "round" => $yatzy->getRound(),
             "playerRolls" => $player->getRolls(),
         ];

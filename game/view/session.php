@@ -23,3 +23,5 @@ EOD;
 <pre>$_SESSION["counter"]: <?php print_r($_SESSION); ?></pre><br>";
 
 <p><?php $_SESSION["counter"] = 1 + ($_SESSION["counter"] ?? 0); ?></p>
+
+<pre>$_POST: <?php print_r($_POST); ?></pre><br>";

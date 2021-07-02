@@ -219,19 +219,25 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
     /**
      * @method saveScores()
      * @description Takes dice values the player has chosen and saves the
-     * @param array $theChosenScores
-     * @param int $theValue
-     * @return array|int[]
+     * @param array $chosenScores
+     * @param int $referenceValue
+     * @return void
      */
-    public function saveScores(array $theChosenScores, int $theValue): array
+    public function saveScores(array $chosenScores, int $referenceValue): void
     {
-        $this->playerScores[$theValue] + array_sum($theChosenScores);
+        $counter = 0;
 
-        return $this->playerScores;
+        foreach ($chosenScores as $diceValue) {
+            if ($diceValue === $referenceValue) {
+                $counter++;
+            }
+        }
+
+        $this->playerScores[$referenceValue] = ($counter * $referenceValue);
     }
 
 
-    final public function setReadyForNextRound()
+    final public function setForNextRound(): void
     {
         $this->rolls = 0;
         $this->lastRoll = [];

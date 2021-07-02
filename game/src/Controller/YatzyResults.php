@@ -39,11 +39,10 @@ class YatzyResults extends ControllerBase
 
         $yatzy = $_SESSION["yatzy"];
         $player = $yatzy->getCurrentPlayer();
-
         $data = [
-            "header" => "Dice DiceGame 21",
-            "message" => "Results for this round.",
-            "action" => url("/yatzy__results/view"),
+            "header" => "Yatzy - Dice Roll Results",
+            "message" => "This is the player dice roll results.",
+            "action" => url("/yatzy__results/process"),
             "round" => $yatzy->getRound(),
             "playerNumber" => $yatzy->getPlayerIndex() +1,
             "graphicDices" => $yatzy->showGraphicDices($player->getDiceHand()),
@@ -53,7 +52,6 @@ class YatzyResults extends ControllerBase
         $body = renderView("layout/yatzy__results.php", $data);
 
         /* ------------------------------------------------------------ */
-
 
         // Return the response through parent class ControllerBase
         return $this->response($body);
@@ -69,28 +67,17 @@ class YatzyResults extends ControllerBase
     {
         /* - My code -------------------------------------------------- */
 
-//        $yatzy = $_SESSION["yatzy"];
-//        $players = $yatzy->getPlayers();
-//        $playerIndex = $yatzy->getPlayerIndex();
-//        $player = $players[$playerIndex];
-//        $lastIndex = count($players) -1;
-//        $bust = intval($player->isBust());
-//        $stopped = intval($player->hasStopped());
-//
-//        if ($stopped === 1) {
-//            if ($playerIndex === $lastIndex) {
-//                $yatzy->setNextRound();
-//            }
-//
-//            $yatzy->setNextPlayerIndex();
-//        }
-
-
+        $yatzy = $_SESSION["yatzy"];
+        $player = $yatzy->getCurrentPlayer();
+        $playerRolls = $player->getRolls();
 
         /* ------------------------------------------------------------ */
 
-
-        // Return the redirect through parent class ControllerBase
-        return $this->redirect(url("/yatzy/view"));
+        // Return the redirect through parent class ControllerBase, the redirect depends on the players amount of dice rolls.
+        if ($playerRolls < 3) {
+            return $this->redirect(url("/yatzy/view"));
+        } elseif ($playerRolls === 3) {
+            return $this->redirect(url("/yatzy__selectScores/view"));
+        }
     }
 }

@@ -15,4 +15,5 @@ interface YatzyDiceHandInterface
     public function roll(): array;
     public function keepDices(array $dices);
     public function getKeptDices(): array;
+    public function setForNextRound(): void;
 }
