@@ -7,16 +7,12 @@ declare(strict_types=1);
 /**
  * Declare variables in use.
  * @var string $header representation of the header text.
- * @var string $message representation of the message text.
  * @var string $action full representation of the url-route redirect goes to.
- * @var array $players representation of the action url-route redirect.
+ * @var string $message representation of the message text.
  */
 $header = $header ?? null;
-$message = $message ?? null;
 $action = $action ?? null;
-$dices = $dices ?? null;
-$players = $players ?? null;
-$credit = $credit ?? null;
+$message = $message ?? null;
 
 ?>
 

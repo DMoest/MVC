@@ -10,21 +10,13 @@ declare(strict_types=1);
 $header = $header ?? null;
 $message = $message ?? null;
 $action = $action ?? null;
-$selectScoresURL = $selectScoresURL ?? null;
-$dices = $dices ?? null;
-$submit = $submit ?? null;
-$round = $round ?? null;
-$players = $players ?? null;
-$playerNumber = $playerNumber ?? null;
 $playerRolls = $playerRolls ?? null;
-$diceHand = $diceHand ?? null;
-$diceHandLastRoll = $diceHandLastRoll ?? null;
 $graphicDices = $graphicDices ?? null;
-$scoreBoard = $scoreBoard ?? null;
-$score = $score ?? null;
-$credit = $credit ?? null;
+$playerNumber = $playerNumber ?? null;
 
 ?>
+
+
 
 <h1><?= $header ?></h1>
 <p><i><?= $message ?></i></p>
@@ -93,7 +85,6 @@ $credit = $credit ?? null;
 
 
         </p>
-
     <?php endif; ?>
 
     <div class="diceForm__submit--container">

@@ -9,14 +9,13 @@ declare(strict_types=1);
  */
 $header = $header ?? null;
 $message = $message ?? null;
-$action = $action ?? null;
 $round = $round ?? null;
-$numberOfPlayers = $numberOfPlayers ?? null;
-$playerNumber = $playerNumber ?? null;
-$graphicDices = $graphicDices ?? null;
+$action = $action ?? null;
 $scoreBoard = $scoreBoard ?? null;
 
 ?>
+
+
 
 <h1><?= $header ?></h1>
 <p><i><?= $message ?> - round <?= $round ?></i></p>

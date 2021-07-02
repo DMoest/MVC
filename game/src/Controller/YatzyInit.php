@@ -36,6 +36,11 @@ class YatzyInit extends ControllerBase
     {
         /* - My code -------------------------------------------------- */
 
+        /* Instead of overriding the old session for yatzy, redirect to the existing one. */
+        if (isset($_SESSION["yatzy"])) {
+            return $this->redirect(url("/yatzy/view"));
+        }
+
         $data = [
             "header" => "Welcome to Yatzy",
             "message" => "Welcome to a game of Yatzy. 
@@ -46,7 +51,6 @@ class YatzyInit extends ControllerBase
         $body = renderView("layout/yatzy__init.php", $data);
 
         /* ------------------------------------------------------------ */
-
 
         // Return the response through parent class ControllerBase
         return $this->response($body);
@@ -63,11 +67,9 @@ class YatzyInit extends ControllerBase
         /* - My code -------------------------------------------------- */
 
         /* Create new DiceGame object on SESSION variable */
-        $yatzy = new Yatzy();
-        $_SESSION["yatzy"] = $yatzy;
+        $_SESSION["yatzy"] = new Yatzy();
 
         /* ------------------------------------------------------------ */
-
 
         // Return the redirect through parent class ControllerBase
         return $this->redirect(url("/yatzy/view"));

@@ -10,27 +10,22 @@ declare(strict_types=1);
 $header = $header ?? null;
 $message = $message ?? null;
 $action = $action ?? null;
-$selectScoresURL = $selectScoresURL ?? null;
-$dices = $dices ?? null;
-$submit = $submit ?? null;
 $round = $round ?? null;
-$players = $players ?? null;
-$playerNumber = $playerNumber ?? null;
 $playerRolls = $playerRolls ?? null;
-$diceHand = $diceHand ?? null;
-$diceHandLastRoll = $diceHandLastRoll ?? null;
 $graphicDices = $graphicDices ?? null;
-$scoreBoard = $scoreBoard ?? null;
-$score = $score ?? null;
-$credit = $credit ?? null;
+$playerNumber = $playerNumber ?? null;
 
 ?>
 
+
+
+<!-- Yatzy View -->
 <h1><?= $header ?></h1>
 <p><i><?= $message ?></i></p>
 
 <form method="post" action="<?= $action ?>" class="diceForm">
-    <p>Player rolled the dices: <?= $playerRolls ?> times.</p>
+    <p>Round: <?= $round ?> </p>
+    <p>Times player have rolled the dices: <?= $playerRolls ?> </p>
 
     <?php if ($graphicDices !== null) : ?>
         <p class="diceForm__results">
