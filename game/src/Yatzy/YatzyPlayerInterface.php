@@ -17,7 +17,7 @@ interface YatzyPlayerInterface
     public function keepDices(array $diceIndexes): array;
     public function getDiceHand(): ?object;
     public function getPlayerScore(): array;
-
+    public function getPlayerScoreSum(): int;
     public function validateScoreValues(array $diceHandArray, int $valueToBe): ?bool;
     public function saveScores(array $chosenScores, int $referenceValue): void;
 

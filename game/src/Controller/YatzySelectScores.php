@@ -49,6 +49,7 @@ class YatzySelectScores extends ControllerBase
             "graphicDices" => $yatzy->showGraphicDices($player->getDiceHand()),
             "scoreBoard" => $yatzy->printYatzyScoreBoard(),
             "scoreSelection" => $yatzy->scoreSelection(),
+            "scoreSum" => $player->getPlayerScoreSum(),
         ];
 
         $body = renderView("layout/yatzy__selectScores.php", $data);

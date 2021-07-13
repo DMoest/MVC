@@ -206,7 +206,7 @@ class Yatzy
                 $outputString .= "<label class='yatzyForm__input--label' for='" . $key . "'>";
                 $outputString .= "<input class='yatzyForm__input--radio' type='radio' name='" . $key . "' id='" . $key . "' value='" . $key . "' /> ";
                 $outputString .= $yatzyScoreNames[$key] . " </label><br> ";
-            } else {
+            } elseif (is_int($score)) {
                 $outputString .= "<p class='yatzyForm__text--score'> " . $yatzyScoreNames[$key] . " : " . $score . " points </p>";
             }
         }

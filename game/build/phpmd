@@ -1,2 +1,0 @@
-/Users/Daniel/Documents/Studier/BTH/dbwebb-kurser/mvc/me/game/src/Dice/DicePlayer.php:50	The method __construct has a boolean flag argument $machinePlayer, which is a certain sign of a Single Responsibility Principle violation.
-/Users/Daniel/Documents/Studier/BTH/dbwebb-kurser/mvc/me/game/src/Dice/LastRollAsStringTrait.php:19	Avoid unused local variables such as '$diceValue'.

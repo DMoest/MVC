@@ -45,9 +45,9 @@ trait ResultsAsStringTrait
 
         foreach ($this->lastRoll as $key => $diceValue) {
             if ($key < $numberOfDices -1) {
-                $outputString .= $this->lastRoll[$key] . ", ";
+                $outputString .= $diceValue . ", ";
             } else if ($key === $numberOfDices -1) {
-                $outputString .= $this->lastRoll[$key] . " = " . array_sum($this->lastRoll);
+                $outputString .= $diceValue . " = " . array_sum($this->lastRoll);
             }
         }
 

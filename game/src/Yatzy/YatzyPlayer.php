@@ -115,6 +115,17 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
 
 
     /**
+     * @method getPlayerScoreSum()
+     * @description Getter method to return the value of all scores in the array on the property $this->playerScore.
+     * @return int as sum value of array $this->playerScore
+     */
+    final public function getPlayerScoreSum(): int
+    {
+        return array_sum($this->playerScores);
+    }
+
+
+    /**
      * @method getResults()
      * @description returns results as array of integers representing values from rolling dices.
      * @return array of integers
@@ -249,7 +260,7 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
         /* Place a integer as score on the position chosen by the player */
         if ($counter > 0) {
             $this->playerScores[$scoreIndex] = ($counter * $referenceValue);
-        } else {
+        } elseif ($counter === 0) {
             $this->playerScores[$scoreIndex] = 0;
         }
     }

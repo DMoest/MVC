@@ -46,7 +46,7 @@ class DicePlayer extends Player implements DicePlayerInterface
      * @param int $startCredit
      * @param bool $machinePlayer
      */
-    public function __construct(int $startCredit = 25, bool $machinePlayer = true)
+    public function __construct(int $startCredit = 25, bool $machinePlayer)
     {
         parent::__construct(); // construct from parent class.
 
