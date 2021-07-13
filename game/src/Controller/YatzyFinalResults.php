@@ -35,8 +35,6 @@ class YatzyFinalResults extends ControllerBase
      */
     public function renderView(): ResponseInterface
     {
-        /* - My code -------------------------------------------------- */
-
         $yatzy = $_SESSION["yatzy"];
         $player = $yatzy->getCurrentPlayer();
 
@@ -49,12 +47,9 @@ class YatzyFinalResults extends ControllerBase
             "scoreBoard" => $yatzy->printYatzyScoreBoard(),
             "playerScores" => $player->getPlayerScore(),
             "scoreSum" => $player->getPlayerScoreSum(),
-//            "playerScores" => $yatzy->showGraphicDices($player->getPlayerScore()),
         ];
 
         $body = renderView("layout/yatzy__finalResults.php", $data);
-
-        /* ------------------------------------------------------------ */
 
         // Return the response through parent class ControllerBase
         return $this->response($body);
@@ -68,40 +63,6 @@ class YatzyFinalResults extends ControllerBase
      */
     public function processResponse(): ResponseInterface
     {
-        /* - My code -------------------------------------------------- */
-
-//        $yatzy = $_SESSION["yatzy"];
-//        $player = $yatzy->getCurrentPlayer();
-//        $diceHand = $player->getDiceHand();
-//        $lastRoll = $player->getLastRoll();
-//
-//        /* Control where points are stored */
-//        switch ($_POST) {
-//            case isset($_POST["0"]):
-//                $player->saveScores($lastRoll, 1);
-//                break;
-//            case isset($_POST["1"]):
-//                $player->saveScores($lastRoll, 2);
-//                break;
-//            case isset($_POST["2"]):
-//                $player->saveScores($lastRoll, 3);
-//                break;
-//            case isset($_POST["3"]):
-//                $player->saveScores($lastRoll, 4);
-//                break;
-//            case isset($_POST["4"]):
-//                $player->saveScores($lastRoll, 5);
-//                break;
-//            case isset($_POST["5"]):
-//                $player->saveScores($lastRoll, 6);
-//                break;
-//        }
-//
-//        $diceHand->setForNextRound();
-//        $player->setForNextRound();
-
-        /* ------------------------------------------------------------ */
-
         // Return the redirect through parent class ControllerBase
         return $this->redirect(url("/yatzy/view"));
     }

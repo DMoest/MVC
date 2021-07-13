@@ -35,8 +35,6 @@ class YatzyResults extends ControllerBase
      */
     public function renderView(): ResponseInterface
     {
-        /* - My code -------------------------------------------------- */
-
         $yatzy = $_SESSION["yatzy"];
         $player = $yatzy->getCurrentPlayer();
         $data = [
@@ -51,8 +49,6 @@ class YatzyResults extends ControllerBase
 
         $body = renderView("layout/yatzy__results.php", $data);
 
-        /* ------------------------------------------------------------ */
-
         // Return the response through parent class ControllerBase
         return $this->response($body);
     }
@@ -65,13 +61,9 @@ class YatzyResults extends ControllerBase
      */
     public function processResponse(): ResponseInterface
     {
-        /* - My code -------------------------------------------------- */
-
         $yatzy = $_SESSION["yatzy"];
         $player = $yatzy->getCurrentPlayer();
         $playerRolls = $player->getRolls();
-
-        /* ------------------------------------------------------------ */
 
         // Return the redirect through parent class ControllerBase, the redirect depends on the players amount of dice rolls.
         if ($playerRolls < 3) {

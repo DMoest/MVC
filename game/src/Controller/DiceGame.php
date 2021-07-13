@@ -36,8 +36,6 @@ class DiceGame extends ControllerBase
      */
     public function renderView(): ResponseInterface
     {
-        /* - My code -------------------------------------------------- */
-
         $diceGame = $_SESSION["diceGame"];
         $players = $diceGame->getPlayers();
         $currentPlayer = $players[$diceGame->getPlayerIndex()];
@@ -59,8 +57,6 @@ class DiceGame extends ControllerBase
 
         $body = renderView("layout/dice.php", $data);
 
-        /* ------------------------------------------------------------ */
-
         // Return the response through parent class ControllerBase
         return $this->response($body);
     }
@@ -73,8 +69,6 @@ class DiceGame extends ControllerBase
      */
     public function processResponse(): ResponseInterface
     {
-        /* - My code -------------------------------------------------- */
-
         /* Catch POST request from dice__init form and store values to SESSION variable */
         $diceGame = $_SESSION["diceGame"];
         $dices = intval($_POST["dices"]) ?? null;
@@ -83,8 +77,6 @@ class DiceGame extends ControllerBase
         /* Play game */
         $diceGame->playGame($dices, $submit);
         $this->scoreBoard = $diceGame->printDiceScoreBoard();
-
-        /* ------------------------------------------------------------ */
 
         // Return the redirect through parent class ControllerBase
         return $this->redirect(url("/dice__results/view"));
@@ -98,12 +90,8 @@ class DiceGame extends ControllerBase
      */
     public function reset(): ResponseInterface
     {
-        /* - My code -------------------------------------------------- */
-
         /* Removes the session variable that is diceGame to */
         unset($_SESSION["diceGame"]);
-
-        /* ------------------------------------------------------------ */
 
         // Return the redirect through parent class ControllerBase
         return $this->redirect(url("/dice__init/view"));

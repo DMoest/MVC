@@ -12,7 +12,6 @@ namespace daap19\Dice;
 interface DiceHandInterface
 {
     public function __construct();
-//    public function addDice(): void;
     public function roll(): array;
     public function getDices(): array;
     public function getLastRoll(): array;

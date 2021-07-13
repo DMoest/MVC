@@ -37,8 +37,6 @@ class Yatzy extends ControllerBase
      */
     public function renderView(): ResponseInterface
     {
-        /* - My code -------------------------------------------------- */
-
         $yatzy = $_SESSION["yatzy"];
         $player = $yatzy->getCurrentPlayer();
         $diceHand = $player->getDiceHand();
@@ -58,8 +56,6 @@ class Yatzy extends ControllerBase
 
         $body = renderView("layout/yatzy.php", $data);
 
-        /* ------------------------------------------------------------ */
-
         // Return the response through parent class ControllerBase
         return $this->response($body);
     }
@@ -72,8 +68,6 @@ class Yatzy extends ControllerBase
      */
     public function processResponse(): ResponseInterface
     {
-        /* - My code -------------------------------------------------- */
-
         /* Catch POST request from dice__init form and store values to SESSION variable */
         $yatzy = $_SESSION["yatzy"];
         $player = $yatzy->getCurrentPlayer();
@@ -118,8 +112,6 @@ class Yatzy extends ControllerBase
         $yatzy->play($player, $submit);
         $this->scoreBoard = $yatzy->printYatzyScoreBoard();
 
-        /* ------------------------------------------------------------ */
-
         // Return the redirect through parent class ControllerBase
         return $this->redirect(url("/yatzy__results/view"));
     }
@@ -132,12 +124,8 @@ class Yatzy extends ControllerBase
      */
     public function reset(): ResponseInterface
     {
-        /* - My code -------------------------------------------------- */
-
         /* Removes the session variable that is diceGame to */
         unset($_SESSION["yatzy"]);
-
-        /* ------------------------------------------------------------ */
 
         // Return the redirect through parent class ControllerBase
         return $this->redirect(url("/yatzy__init/view"));

@@ -106,12 +106,13 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
     /**
      * @method getPlayerScore()
      * @description Getter method to return array of players saved dice scores so far.
-     * @return array|int[]
+     * @return array
      */
     final public function getPlayerScore(): array
     {
         return $this->playerScores;
     }
+
 
     /**
      * @method getAmountOfScoresSaved()
@@ -140,43 +141,6 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
     final public function getPlayerScoreSum(): int
     {
         return array_sum($this->playerScores);
-    }
-
-
-    /**
-     * @method getResults()
-     * @description returns results as array of integers representing values from rolling dices.
-     * @return array of integers
-     */
-    final public function getResults(): array
-    {
-        return $this->results;
-    }
-
-
-    /**
-     * @method getSumTotal()
-     * @description setter/getter method combined that returns the sum total of all result values from the property array results.
-     * @return int as total value of array results.
-     */
-    final public function getSumTotal(): int
-    {
-        /* Set sum total */
-        $this->sum = array_sum($this->results);
-
-        /* Get sum total */
-        return $this->sum;
-    }
-
-
-    /**
-     * @method getLastRoll()
-     * @description returns array of values from last dice hand roll.
-     * @return array of integers as values.
-     */
-    final public function getLastRoll(): array
-    {
-        return $this->lastRoll;
     }
 
 
@@ -233,30 +197,6 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
 
 
     /**
-     * @method validateScoreValues()
-     * @description Method to validate if all chosen values are the same & correct values.
-     * @param array $chosenScores as the values player has chosen.
-     * @param int $valueToBe as the value it is supposed to be/compared with.
-     * @return bool|null as indicator of validity.
-     */
-    public function validateScoreValues(array $chosenScores, int $valueToBe): ?bool
-    {
-        $validity = null;
-
-        foreach ($chosenScores as $value) {
-            /* Check if valuse are the same */
-            if ($value === $valueToBe) {
-                $validity = true;
-            } elseif ($value !== $valueToBe) {
-                return false;
-            }
-        }
-
-        return $validity;
-    }
-
-
-    /**
      * @method saveScores()
      * @description Takes dice values the player has chosen and saves the
      * @param array $chosenScores
@@ -284,6 +224,11 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
     }
 
 
+    /**
+     * @method setForNextRound()
+     * @description Setter method to prepare yatzyPlayer object for next round of yatzy.
+     * @returns void
+     */
     final public function setForNextRound(): void
     {
         $this->rolls = 0;

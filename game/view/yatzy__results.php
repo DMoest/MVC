@@ -25,8 +25,6 @@ $scoreBoard = $scoreBoard ?? null;
     <!-- Print score board -->
     <?= $scoreBoard ?>
 
-    </div>
-
     <!-- Next button -->
     <div class="diceForm__submit--container">
         <input class="diceForm__input--button diceForm__input--buttonLink" type="submit" name="submit" value="next"/>

@@ -34,8 +34,6 @@ class YatzyInit extends ControllerBase
      */
     public function renderView(): ResponseInterface
     {
-        /* - My code -------------------------------------------------- */
-
         /* Instead of overriding the old session for yatzy, redirect to the existing one. */
         if (isset($_SESSION["yatzy"])) {
             return $this->redirect(url("/yatzy/view"));
@@ -50,8 +48,6 @@ class YatzyInit extends ControllerBase
 
         $body = renderView("layout/yatzy__init.php", $data);
 
-        /* ------------------------------------------------------------ */
-
         // Return the response through parent class ControllerBase
         return $this->response($body);
     }
@@ -64,12 +60,8 @@ class YatzyInit extends ControllerBase
      */
     public function processResponse(): ResponseInterface
     {
-        /* - My code -------------------------------------------------- */
-
         /* Create new DiceGame object on SESSION variable */
         $_SESSION["yatzy"] = new Yatzy();
-
-        /* ------------------------------------------------------------ */
 
         // Return the redirect through parent class ControllerBase
         return $this->redirect(url("/yatzy/view"));

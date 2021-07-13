@@ -35,8 +35,6 @@ class DiceGameResults extends ControllerBase
      */
     public function renderView(): ResponseInterface
     {
-        /* - My code -------------------------------------------------- */
-
         $diceGame = $_SESSION["diceGame"];
         $players = $diceGame->getPlayers();
         $player = $players[$diceGame->getPlayerIndex()];
@@ -53,9 +51,6 @@ class DiceGameResults extends ControllerBase
 
         $body = renderView("layout/dice__results.php", $data);
 
-        /* ------------------------------------------------------------ */
-
-
         // Return the response through parent class ControllerBase
         return $this->response($body);
     }
@@ -68,8 +63,6 @@ class DiceGameResults extends ControllerBase
      */
     public function processResponse(): ResponseInterface
     {
-        /* - My code -------------------------------------------------- */
-
         $diceGame = $_SESSION["diceGame"];
         $players = $diceGame->getPlayers();
         $playerIndex = $diceGame->getPlayerIndex();
@@ -85,9 +78,6 @@ class DiceGameResults extends ControllerBase
 
             $diceGame->setNextPlayerIndex();
         }
-
-        /* ------------------------------------------------------------ */
-
 
         // Return the redirect through parent class ControllerBase
         return $this->redirect(url("/dice/view"));

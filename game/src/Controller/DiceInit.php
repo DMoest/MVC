@@ -33,8 +33,6 @@ class DiceInit extends ControllerBase
      */
     public function renderView(): ResponseInterface
     {
-        /* - My code -------------------------------------------------- */
-
         $data = [
             "header" => "DiceGame 21",
             "message" => "Welcome, please setup a game of dice. 
@@ -45,9 +43,6 @@ class DiceInit extends ControllerBase
         ];
 
         $body = renderView("layout/dice__init.php", $data);
-
-        /* ------------------------------------------------------------ */
-
 
         // Return the response through parent class ControllerBase
         return $this->response($body);
@@ -61,8 +56,6 @@ class DiceInit extends ControllerBase
      */
     public function processResponse(): ResponseInterface
     {
-        /* - My code -------------------------------------------------- */
-
         /* Catch POST request from dice__init form */
         $players = intval($_POST["players"]) ?? null;
         $startCredit = intval($_POST["credit"]) ?? null;
@@ -77,9 +70,6 @@ class DiceInit extends ControllerBase
         /* Create new DiceGame object on SESSION variable */
         $diceGame = new DiceGame($players, $startCredit, $machine);
         $_SESSION["diceGame"] = $diceGame;
-
-        /* ------------------------------------------------------------ */
-
 
         // Return the redirect through parent class ControllerBase
         return $this->redirect(url("/dice/view"));

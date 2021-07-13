@@ -35,8 +35,6 @@ class YatzySelectScores extends ControllerBase
      */
     public function renderView(): ResponseInterface
     {
-        /* - My code -------------------------------------------------- */
-
         $yatzy = $_SESSION["yatzy"];
         $player = $yatzy->getCurrentPlayer();
 
@@ -54,8 +52,6 @@ class YatzySelectScores extends ControllerBase
 
         $body = renderView("layout/yatzy__selectScores.php", $data);
 
-        /* ------------------------------------------------------------ */
-
         // Return the response through parent class ControllerBase
         return $this->response($body);
     }
@@ -68,8 +64,6 @@ class YatzySelectScores extends ControllerBase
      */
     public function processResponse(): ResponseInterface
     {
-        /* - My code -------------------------------------------------- */
-
         $yatzy = $_SESSION["yatzy"];
         $player = $yatzy->getCurrentPlayer();
         $diceHand = $player->getDiceHand();
@@ -111,6 +105,5 @@ class YatzySelectScores extends ControllerBase
             // Return the redirect through parent class ControllerBase
             return $this->redirect(url("/yatzy__finalResults/view"));
         }
-        /* ------------------------------------------------------------ */
     }
 }

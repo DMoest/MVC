@@ -125,28 +125,6 @@ class Player implements PlayerInterface
     }
 
 
-//    /**
-//     * @method getLastRollAsString()
-//     * @description returns string concat from all values in array lastRoll from last dice rolls.
-//     * @return string concatenation of integers from array of results.
-//     */
-//    public function getLastRollAsString(): string
-//    {
-//        $output = "";
-//        $dices = count($this->lastRoll);
-//
-//        for ($i = 0; $i < $dices; $i++) {
-//            if ($i < count($this->lastRoll) -1) {
-//                $output .= $this->lastRoll[$i] . ", ";
-//            } else if ($i == count($this->lastRoll) -1) {
-//                $output .= $this->lastRoll[$i] . " = " . array_sum($this->lastRoll);
-//            }
-//        }
-//
-//        return $output;
-//    }
-
-
     /**
      * @method getAverage()
      * @description setter/getter method combined that returns the average float|integer value of values in array of results.
