@@ -74,35 +74,43 @@ class YatzySelectScores extends ControllerBase
         $player = $yatzy->getCurrentPlayer();
         $diceHand = $player->getDiceHand();
         $lastRoll = $player->getLastRoll();
+        $maxScores = count($player->getPlayerScore());
+        $playerSavedScores = $player->getAmountOfScoresSaved();
 
         /* Control where points are stored */
-        switch ($_POST) {
-            case isset($_POST["0"]):
+        switch ($_POST["scoreSelect"]) {
+            case "0":
                 $player->saveScores($lastRoll, 1);
                 break;
-            case isset($_POST["1"]):
+            case "1":
                 $player->saveScores($lastRoll, 2);
                 break;
-            case isset($_POST["2"]):
+            case "2":
                 $player->saveScores($lastRoll, 3);
                 break;
-            case isset($_POST["3"]):
+            case "3":
                 $player->saveScores($lastRoll, 4);
                 break;
-            case isset($_POST["4"]):
+            case "4":
                 $player->saveScores($lastRoll, 5);
                 break;
-            case isset($_POST["5"]):
+            case "5":
                 $player->saveScores($lastRoll, 6);
                 break;
         }
 
+        $playerSavedScores++;
         $diceHand->setForNextRound();
         $player->setForNextRound();
+        $yatzy->setNextRound();
 
+        if ($playerSavedScores < $maxScores) {
+            // Return the redirect through parent class ControllerBase
+            return $this->redirect(url("/yatzy/view"));
+        } elseif ($playerSavedScores === $maxScores) {
+            // Return the redirect through parent class ControllerBase
+            return $this->redirect(url("/yatzy__finalResults/view"));
+        }
         /* ------------------------------------------------------------ */
-
-        // Return the redirect through parent class ControllerBase
-        return $this->redirect(url("/yatzy/view"));
     }
 }

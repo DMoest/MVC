@@ -113,6 +113,24 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
         return $this->playerScores;
     }
 
+    /**
+     * @method getAmountOfScoresSaved()
+     * @description Getter method for counting number of saved scores.
+     * @return int
+     */
+    final public function getAmountOfScoresSaved(): int
+    {
+        $countScores = 0;
+
+        foreach ($this->playerScores as $scoreValue) {
+            if ($scoreValue !== null) {
+                $countScores++;
+            }
+        }
+
+        return $countScores;
+    }
+
 
     /**
      * @method getPlayerScoreSum()

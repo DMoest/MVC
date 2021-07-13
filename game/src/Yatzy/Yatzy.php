@@ -99,6 +99,17 @@ class Yatzy
 
 
     /**
+     * @method setNextRound()
+     * @description Setter method to increase round number +1.
+     * @returns void
+     */
+    final public function setNextRound(): void
+    {
+        $this->round++;
+    }
+
+
+    /**
      * @method getPlayers()
      * @description getter method to return array of player objects representing all the players in the game.
      * @return array of player objects.
@@ -204,7 +215,7 @@ class Yatzy
         foreach ($playerScores as $key => $score) {
             if ($score === null) {
                 $outputString .= "<label class='yatzyForm__input--label' for='" . $key . "'>";
-                $outputString .= "<input class='yatzyForm__input--radio' type='radio' name='" . $key . "' id='" . $key . "' value='" . $key . "' /> ";
+                $outputString .= "<input class='yatzyForm__input--radio' type='radio' name='scoreSelect' id='" . $key . "' value='" . $key . "' /> ";
                 $outputString .= $yatzyScoreNames[$key] . " </label><br> ";
             } elseif (is_int($score)) {
                 $outputString .= "<p class='yatzyForm__text--score'> " . $yatzyScoreNames[$key] . " : " . $score . " points </p>";

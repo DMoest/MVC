@@ -76,10 +76,19 @@ class Yatzy extends ControllerBase
 
         /* Catch POST request from dice__init form and store values to SESSION variable */
         $yatzy = $_SESSION["yatzy"];
-        $player = $yatzy->getCurrentPlayer() ?? null;
-        $submit = strval($_POST["submit"]) ?? null;
-        $diceHand = $player->getDiceHand() ?? null;
+        $player = $yatzy->getCurrentPlayer();
+        $submit = strval($_POST["submit"]);
+        $diceHand = $player->getDiceHand();
+        $playerSavedScores = $player->getPlayerScore(); // array_count_values only stores strings & integers (not null).
         $keepThese = [];
+        $savedValues = 0;
+
+        /* Count the saved player scores to determine if player is done */
+        foreach ($playerSavedScores as $value) {
+            if (intval($value) !== 0) {
+                $savedValues++;
+            }
+        }
 
         if ($diceHand !== null) {
             if (isset($_POST["dice--0"])) {
