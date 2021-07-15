@@ -8,6 +8,13 @@ namespace daap19\Dice;
 /**
  * Interface PlayerInterface
  * @package daap19\Dice
+ * @property array $results
+ * @property array $lastRoll
+ * @property object $lastHand
+ * @property ?int $sum
+ * @property ?float $average
+ * @property int $faces
+ * @property int $dices
  */
 interface PlayerInterface
 {
@@ -16,7 +23,6 @@ interface PlayerInterface
     public function getLastRoll(): array;
     public function getLastHand(): object;
     public function getResults(): array;
-    public function getResultsAsString(): string;
     public function getSumTotal(): int;
     public function getAverage(): ?float;
 }

@@ -73,7 +73,7 @@ class Yatzy extends ControllerBase
         $player = $yatzy->getCurrentPlayer();
         $submit = strval($_POST["submit"]);
         $diceHand = $player->getDiceHand();
-        $playerSavedScores = $player->getPlayerScore(); // array_count_values only stores strings & integers (not null).
+        $playerSavedScores = $player->getPlayerScore();
         $keepThese = [];
         $savedValues = 0;
 

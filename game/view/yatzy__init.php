@@ -18,9 +18,9 @@ $message = $message ?? null;
 
 
 
-<h2 class="diceForm__text--header"><?= $header ?></h2>
 
 <form method="post" action="<?= $action ?>" class="diceForm">
+    <h2 class="diceForm__text--header"><?= $header ?></h2>
     <p class="diceForm__text--paragraph"><?= $message ?></p>
 
     <div class="diceForm__submit--container">

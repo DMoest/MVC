@@ -20,10 +20,10 @@ $playerNumber = $playerNumber ?? null;
 
 
 <!-- Yatzy View -->
-<h1><?= $header ?></h1>
-<p><i><?= $message ?></i></p>
-
 <form method="post" action="<?= $action ?>" class="diceForm">
+    <h1><?= $header ?></h1>
+    <p><i><?= $message ?></i></p>
+
     <p>Round: <?= $round ?> </p>
     <p>Times player have rolled the dices: <?= $playerRolls ?> </p>
 

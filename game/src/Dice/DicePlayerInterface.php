@@ -8,10 +8,16 @@ namespace daap19\Dice;
 /**
  * Interface DicePlayerInterface
  * @package daap19\Yatzy
+ * @property int $credit
+ * @property ?int $wins
+ * @property bool $stopped
+ * @property ?bool $bust
+ * @property ?bool $out
+ * @property bool $machine
  */
 interface DicePlayerInterface
 {
-    public function __construct(int $startCredit, bool $machinePlayer);
+    public function __construct(int $startCredit, int $machinePlayer);
     public function getScore(): int;
     public function getCredit(): int;
     public function setCredit(int $newCredit): void;

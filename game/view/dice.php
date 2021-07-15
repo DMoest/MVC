@@ -24,10 +24,11 @@ $credit = $credit ?? null;
 
 ?>
 
-<h1><?= $header ?></h1>
-<p><i><?= $message ?></i></p>
+
 
 <form method="post" action="<?= $action ?>" class="diceForm">
+    <h1><?= $header ?></h1>
+    <p><i><?= $message ?></i></p>
     <p>Round: <?= $round ?></p>
     <p>It's Player <?= $playerNumber ?> </p>
     <p>Player <?= $playerNumber ?> score is: <?= $score ?></p>

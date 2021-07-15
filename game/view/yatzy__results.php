@@ -17,10 +17,9 @@ $scoreBoard = $scoreBoard ?? null;
 
 
 
-<h1><?= $header ?></h1>
-<p><i><?= $message ?> - round <?= $round ?></i></p>
-
 <form method="post" action="<?= $action ?>" class="diceForm">
+    <h1><?= $header ?></h1>
+    <p><i><?= $message ?> - round <?= $round ?></i></p>
 
     <!-- Print score board -->
     <?= $scoreBoard ?>

@@ -40,9 +40,15 @@ class YatzyInit extends ControllerBase
         }
 
         $data = [
-            "header" => "Welcome to Yatzy",
+            "header" => "Play a game of Yatzy",
             "message" => "Welcome to a game of Yatzy. 
-                This is a simplyfied version of the game yatzy. Please press start.",
+                This is a simplyfied version of the game Yatzy. 
+                You will only play the first part of the game where you roll and collect dices of the same value. 
+                First you roll the dices then you select the dices to keep/hold, if any, before you roll again. 
+                You have three times rolling the dices per round. At the end of each round you can choose where to position your points/dices, 
+                check your hand carefully before selecting position as it will be zero points if no dices of the selected value exists.
+                After all posibilities f placing your points/dices have been chosen the game is over and you will see a summary of your game.
+                Please press start to play, good luck!",
             "action" => url("/yatzy__init/process"),
         ];
 

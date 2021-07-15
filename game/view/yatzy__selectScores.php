@@ -20,10 +20,9 @@ $scoreSum = $scoreSum ?? null;
 
 
 
-<h1><?= $header ?></h1>
-<p><i><?= $message ?></i></p>
-
 <form method="post" action="<?= $action ?>" class="yatzyForm">
+    <h1><?= $header ?></h1>
+    <p><i><?= $message ?></i></p>
     <p>Player rolled the dices: <?= $playerRolls ?> times.</p>
 
     <?php if ($graphicDices !== null) : ?>

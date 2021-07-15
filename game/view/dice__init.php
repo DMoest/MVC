@@ -21,9 +21,9 @@ $credit = $credit ?? null;
 ?>
 
 
-<h2 class="diceForm__text--header"><?= $header ?></h2>
 
 <form method="post" action="<?= $action ?>" class="diceForm">
+    <h2 class="diceForm__text--header"><?= $header ?></h2>
     <p class="diceForm__text--paragraph"><?= $message ?></p>
     <p>
         <label class="diceForm__text--paragraph" for="players">Number of players in range of 1-5 (excl. computer):

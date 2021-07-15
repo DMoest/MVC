@@ -18,10 +18,11 @@ $scoreBoard = $scoreBoard ?? null;
 
 ?>
 
-<h1><?= $header ?></h1>
-<p><i><?= $message ?> - round <?= $round ?></i></p>
+
 
 <form method="post" action="<?= $action ?>" class="diceForm">
+    <h1><?= $header ?></h1>
+    <p><i><?= $message ?> - round <?= $round ?></i></p>
     <div class="diceForm__results">
         <h3>Current players score</h3>
 
