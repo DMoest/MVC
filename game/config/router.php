@@ -10,8 +10,10 @@ declare(strict_types=1);
 
 use FastRoute\RouteCollector;
 
-
-$router = $router ?? null;
+$router = $router ?? new RouteCollector(
+    new \FastRoute\RouteParser\Std(),
+    new \FastRoute\DataGenerator\MarkBased()
+);
 
 $router->addRoute("GET", "/test", function () {
     // A quick and dirty way to test the router or the request.
@@ -35,18 +37,6 @@ $router->addGroup("/form", function (RouteCollector $router) {
     $router->addRoute("GET", "/view", ["\Mos\Controller\Form", "view"]);
     $router->addRoute("POST", "/process", ["\Mos\Controller\Form", "process"]);
 });
-
-
-
-/* Controller Class Routes */
-/* -------------------------------------------------- */
-/* Check these things:
-    1. Route to respond on.
-    2. Method in use for route (GET/POST).
-    3. Usage route addon URL.
-    4. Controller-Class used for route.
-    5. Method of the Controller-Class to execute with.
-*/
 
 
 /* - DICE 21 ----------------------------------------------- */
