@@ -27,8 +27,6 @@ use function Mos\Functions\{
  */
 class DiceGame extends ControllerBase
 {
-    private ?string $scoreBoard = null;
-
     /**
      * @method renderView()
      * @description renders view and returns response object for route controller class.
