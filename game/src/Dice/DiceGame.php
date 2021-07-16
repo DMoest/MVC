@@ -45,9 +45,6 @@ class DiceGame
      */
     public function __construct(int $numOfPlayers, int $credit, bool $machine)
     {
-        $this->round = 1;
-        $this->playerIndex = 0;
-
         /**
          * Setup user players
          * @description Setup user players with for loop to generate players on construct. Input is taken from user thru request form.
@@ -66,6 +63,8 @@ class DiceGame
             $this->players[] = $machinePlayer;
         }
 
+        $this->round = 1;
+        $this->playerIndex = 0;
         $this->numOfPlayers = count($this->players);
     }
 

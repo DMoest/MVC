@@ -99,14 +99,12 @@ class DiceHand implements DiceHandInterface
         $dices = count($this->lastRoll);
 
         /* Build string from results */
-        for ($i = 0; $i < $dices; $i++) {
-            /* Presentation with/without comma on the end */
-            if ($i < count($this->lastRoll)-1 && is_int($this->lastRoll[$i])) {
-                $response .= $this->lastRoll[$i] . ", ";
-            } else if ($i == count($this->lastRoll)-1 && is_int($this->lastRoll[$i])) {
-                $response .= $this->lastRoll[$i];
-            }
+        foreach ($this->lastRoll as $dice) {
+            $response .= $dice . ", ";
         }
+
+        /* Trim last two characters off */
+        substr($response, 0, strlen($response)-2);
 
         return $response . " = " . array_sum($this->lastRoll);
     }
@@ -130,6 +128,10 @@ class DiceHand implements DiceHandInterface
      */
     public function getAverage(): ?float
     {
-        return round(array_sum($this->lastRoll) / count($this->lastRoll), 2);
+        if (array_sum($this->lastRoll) !== 0) {
+            return round(array_sum($this->lastRoll) / count($this->lastRoll), 2);
+        }
+
+        return 0;
     }
 }
