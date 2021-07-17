@@ -33,10 +33,10 @@ class DicePlayer extends Player implements DicePlayerInterface
     use ResultsAsStringTrait;
 
     private int $credit;
-    private ?int $wins = null;
+    private int $wins;
     private bool $stopped;
-    private ?bool $bust = null;
-    private ?bool $out = null;
+    private ?bool $bust;
+    private ?bool $out;
     private bool $machine;
 
 
@@ -44,13 +44,14 @@ class DicePlayer extends Player implements DicePlayerInterface
      * @method __construct()
      * @description YatzyPlayer class constructor method.
      * @param int $startCredit
-     * @param bool $machinePlayer
+     * @param int $machinePlayer
      */
     public function __construct(int $startCredit = 25, int $machinePlayer = 1)
     {
         parent::__construct(); // construct from parent class.
 
         $this->credit = $startCredit;
+        $this->wins = 0;
         $this->stopped = false;
         $this->bust = false;
         $this->out = false;
@@ -110,7 +111,7 @@ class DicePlayer extends Player implements DicePlayerInterface
      * @description getter method that returns the integer value of the property wins.
      * @return int
      */
-    public function getWins(): ?int
+    public function getWins(): int
     {
         return $this->wins;
     }
@@ -208,7 +209,7 @@ class DicePlayer extends Player implements DicePlayerInterface
         $this->bust = false;
 
         /* Check players credit */
-        if ($this->credit === 0) {
+        if ($this->credit <= 0) {
             $this->stopped = true;
         }
     }

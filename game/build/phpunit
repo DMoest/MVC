@@ -1,13 +1,13 @@
 PHPUnit 9.5.6 by Sebastian Bergmann and contributors.
 
-.............................................                     45 / 45 (100%)
+............................................................      60 / 60 (100%)
 
-Time: 00:03.090, Memory: 26.00 MB
+Time: 00:03.732, Memory: 26.00 MB
 
-OK (45 tests, 77 assertions)
+OK (60 tests, 127 assertions)
 
 Generating code coverage report in Clover XML format ... 
 Warning: mt_rand(): max(-150) is smaller than min(1) in /Users/Daniel/Documents/Studier/BTH/dbwebb-kurser/mvc/me/game/src/Dice/Dice.php on line 57
-3, 1, 5, 1, 4, 1, 4, 5, 1, done [00:00.329]
+6, 5, 6, 6, 6, 1, 3, 5, 6, done [00:00.619]
 
-Generating code coverage report in HTML format ... done [00:00.588]
+Generating code coverage report in HTML format ... done [00:00.525]

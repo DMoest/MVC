@@ -27,7 +27,7 @@ interface DicePlayerInterface
     public function setBust(): void;
     public function isOut(): bool;
     public function setOut(): void;
-    public function getWins(): ?int;
+    public function getWins(): int;
     public function setWin(): void;
     public function setForNextRound(): void;
     public function isMachine(): bool;
