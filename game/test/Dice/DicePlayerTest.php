@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 class DicePlayerTest extends TestCase
 {
     /**
-     * @description Test DicePlayers constructor method.
+     * @description Test DicePlayer constructor method.
      */
     final public function testDicePlayerConstructor(): void
     {
@@ -20,6 +20,38 @@ class DicePlayerTest extends TestCase
 
         $this->assertIsObject($player);
         $this->assertInstanceOf("daap19\Dice\DicePlayer", $player);
+
+        /* Test unique parent::class attributes */
+        $this->assertObjectHasAttribute("results", $player);
+        $this->assertObjectHasAttribute("lastRoll", $player);
+        $this->assertObjectHasAttribute("lastHand", $player);
+        $this->assertObjectHasAttribute("sum", $player);
+        $this->assertObjectHasAttribute("average", $player);
+        $this->assertObjectHasAttribute("faces", $player);
+        $this->assertObjectHasAttribute("dices", $player);
+
+        /* Test YatzyPlayer attributes */
+        $this->assertObjectHasAttribute("credit", $player);
+        $this->assertObjectHasAttribute("wins", $player);
+        $this->assertObjectHasAttribute("stopped", $player);
+        $this->assertObjectHasAttribute("bust", $player);
+        $this->assertObjectHasAttribute("out", $player);
+        $this->assertObjectHasAttribute("machine", $player);
+
+        /* Test if class have expected methods */
+        $this->assertTrue(method_exists($player, "getScore"), "Class does not have expected method getScore.");
+        $this->assertTrue(method_exists($player, "getCredit"), "Class does not have expected method getCredit.");
+        $this->assertTrue(method_exists($player, "setCredit"), "Class does not have expected method setCredit.");
+        $this->assertTrue(method_exists($player, "setWin"), "Class does not have expected method setWin.");
+        $this->assertTrue(method_exists($player, "getWins"), "Class does not have expected method getWins.");
+        $this->assertTrue(method_exists($player, "stop"), "Class does not have expected method stop.");
+        $this->assertTrue(method_exists($player, "hasStopped"), "Class does not have expected method hasStopped.");
+        $this->assertTrue(method_exists($player, "isBust"), "Class does not have expected method isBust.");
+        $this->assertTrue(method_exists($player, "setBust"), "Class does not have expected method setBust.");
+        $this->assertTrue(method_exists($player, "isOut"), "Class does not have expected method isOut.");
+        $this->assertTrue(method_exists($player, "setOut"), "Class does not have expected method setOut.");
+        $this->assertTrue(method_exists($player, "isMachine"), "Class does not have expected method isMachine.");
+        $this->assertTrue(method_exists($player, "setForNextRound"), "Class does not have expected method setForNextRound.");
     }
 
 

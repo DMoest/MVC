@@ -1,0 +1,17 @@
+# --------------------------------------------------
+# Git ignores for MVC cours repo by Daniel
+# --------------------------------------------------
+
+# Ignored folders
+# Dev-personel needs to run "make clean-all install" for dependencies and build folders.
+# --------------------------------------------------
+**/.bin
+**/build
+**/cache
+**/vendor
+**/sass
+
+
+# Ignore all LOG files.
+# --------------------------------------------------
+*.log
