@@ -58,6 +58,7 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
         $this->sum = $this->getScore();
         $this->average = $this->getAverage();
         $this->playerScores = [0 => null, 1 => null, 2 => null, 3 => null, 4 => null, 5 => null];
+        $this->stopped = false;
     }
 
 
@@ -68,14 +69,12 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
      */
     final public function rollDices(int $dices = 5, int $faces = 6): array
     {
-        $this->diceHand->roll();
-        $this->lastRoll = $this->diceHand->getLastRoll();
+        $this->lastRoll = $this->diceHand->roll();
+        $this->rolls++;
 
         foreach ($this->lastRoll as $value) {
             $this->results[] = $value;
         }
-
-        $this->rolls++;
 
         return $this->lastRoll;
     }
@@ -100,6 +99,34 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
     final public function getScore(): int
     {
         return array_sum($this->lastRoll);
+    }
+
+
+    /**
+     * @method saveScores()
+     * @description Takes dice values the player has chosen and saves the
+     * @param array $diceHandArray
+     * @param int $referenceValue
+     * @return void
+     */
+    public function saveScores(array $diceHandArray, int $referenceValue): void
+    {
+        $counter = 0;
+        $scoreIndex = $referenceValue -1;
+
+        /* Check the dice hand of the player for equal */
+        foreach ($diceHandArray as $diceValue) {
+            if ($diceValue === $referenceValue) {
+                $counter++;
+            }
+        }
+
+        /* Place a integer as score on the position chosen by the player */
+        if ($counter > 0) {
+            $this->playerScores[$scoreIndex] = ($counter * $referenceValue);
+        } elseif ($counter === 0) {
+            $this->playerScores[$scoreIndex] = 0;
+        }
     }
 
 
@@ -193,34 +220,6 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
     final public function hasStopped(): bool
     {
         return $this->stopped;
-    }
-
-
-    /**
-     * @method saveScores()
-     * @description Takes dice values the player has chosen and saves the
-     * @param array $chosenScores
-     * @param int $referenceValue
-     * @return void
-     */
-    public function saveScores(array $diceHandArray, int $referenceValue): void
-    {
-        $counter = 0;
-        $scoreIndex = $referenceValue -1;
-
-        /* Check the dice hand of the player for equal */
-        foreach ($diceHandArray as $diceValue) {
-            if ($diceValue === $referenceValue) {
-                $counter++;
-            }
-        }
-
-        /* Place a integer as score on the position chosen by the player */
-        if ($counter > 0) {
-            $this->playerScores[$scoreIndex] = ($counter * $referenceValue);
-        } elseif ($counter === 0) {
-            $this->playerScores[$scoreIndex] = 0;
-        }
     }
 
 

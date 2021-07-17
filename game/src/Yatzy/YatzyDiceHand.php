@@ -66,6 +66,17 @@ class YatzyDiceHand extends DiceHand implements YatzyDiceHandInterface
 
 
     /**
+     * @method clearKeptDices()
+     * @description Setter method to clear all kept dices.
+     * @return void
+     */
+    public function clearKeptDices(): void
+    {
+        $this->keepDices = [];
+    }
+
+
+    /**
      * @method getKeptDices()
      * @description Getter method to return the kept/held dices of dice hand.
      * @return array of dice objects
