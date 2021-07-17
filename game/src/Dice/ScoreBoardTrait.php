@@ -90,7 +90,7 @@ trait ScoreBoardTrait
      * Returns a string object to be presented as a score board.
      * @return string
      */
-    public function printYatzyScoreBoard(): string
+    final public function printYatzyScoreBoard(): string
     {
         /* Setup score board outer container element */
         $scoreBoard = "<div class=\"diceForm__results--container\">";
