@@ -18,9 +18,14 @@ class ResultsTraitTest extends TestCase
     {
         $player = new Player();
 
+        /* Setup test case */
         $player->rollDices(6);
         $resultString = $player->getResultsAsString();
 
+        /* Test existence of expected class methods */
+        $this->assertTrue(method_exists($player, "getResultsAsString"), "Class does not have expected method getResultsAsString.");
+
+        /* Test class method return type */
         $this->assertIsString($resultString);
     }
 
