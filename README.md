@@ -11,23 +11,24 @@ All information supporting this course is created by the DB-webb team, a part of
 
 * * *
 
-Check out the project:
+### Check out the application:
 1.  Clone the repository.
 
 2.  Make sure you have the latest version of `Composer` and `Make` installed on your local machine.
-    To check run the following commands:
-    Check Composer, run `which composer` and `composer --version`.
-    Check Make, run `which make` and `make --version`.
-    If not installed, install them.
+    To check run the following commands:  
+    For Composer, run `which composer` and `composer --version`.  
+    For Make, run `which make` and `make --version`.  
+    If eather one or both are not installed, make sure to install them.
 
 3.  Install the autoloader:
-    Move to the root of the folder `game/`. Run the command `composer install --no-dev`.
+    Move to the root of the folder `game/`.  
+    Run the command `composer install --no-dev`.  
 
 4.  Install other project dependencies:
-    Run the command `make install`. 
+    Stay in the `game/` folder and run the command `make install`.  
     In case you already installed the project and wish for a fresh install, run `make clean-all install`.
 
-5.  Start a local webserver and run it in your preferred browser!
+5.  Start a local webserver and start the application from the folder `game/htdocs/` in your preferred browser.
 
 * * *
 
