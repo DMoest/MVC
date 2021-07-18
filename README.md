@@ -1,4 +1,4 @@
-# MVC course 2021
+# MVC Course 2021
 
 Repository for the course MVC at Bleking Institute of Technologies. 
 
@@ -33,5 +33,5 @@ Check out the project:
 
 ```
  .
-..:  2021 Daniel Andersson, daap19
+..:  2021 Daniel Andersson, daap19. Student @ BTH.
 ```
