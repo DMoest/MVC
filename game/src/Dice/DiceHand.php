@@ -12,9 +12,9 @@ namespace daap19\Dice;
  */
 class DiceHand implements DiceHandInterface
 {
-    private ?int $faces;
-    private ?int $numberOfDices;
+    private int $faces;
     protected array $dices = [];
+    private ?int $numberOfDices;
     protected array $lastRoll = [];
     private ?int $sum;
     private ?float $average;

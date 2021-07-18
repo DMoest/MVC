@@ -14,26 +14,45 @@ class DiceHandTest extends TestCase
     /**
      * @description Test construct method for DiceHand class.
      */
-    public function testDiceHandConstructDefaultValues()
+    public function testDiceHandConstruct()
     {
         $diceHand = new DiceHand();
 
+        /* Setup test case */
+        $dices = $diceHand->getDices();
+        $lastRoll = $diceHand->getLastRoll();
+        $sum = $diceHand->getSum();
+        $average = $diceHand->getAverage();
+
+        /* Test class object for namespace */
         $this->assertInstanceOf("daap19\Dice\DiceHand", $diceHand);
 
-        $dices = $diceHand->getDices();
+        /* Test class attributes existence */
+        $this->assertObjectHasAttribute("faces", $diceHand);
+        $this->assertObjectHasAttribute("dices", $diceHand);
+        $this->assertObjectHasAttribute("numberOfDices", $diceHand);
+        $this->assertObjectHasAttribute("lastRoll", $diceHand);
+        $this->assertObjectHasAttribute("sum", $diceHand);
+        $this->assertObjectHasAttribute("average", $diceHand);
+
+        /* Test class attributes type */
         $this->assertIsArray($dices);
+        $this->assertIsIterable($dices);
+        $this->assertIsArray($lastRoll);
+        $this->assertIsIterable($lastRoll);
+        $this->assertIsInt($sum);
+        $this->assertIsFloat($average);
+
+        /* Test class attributes initial values */
         $this->assertCount(1, $dices);
+        $this->assertEquals(0, $sum);
+        $this->assertEquals(0, $average);
 
         foreach ($dices as $dice) {
             $faces = $dice->getFaces();
+            $this->assertIsInt($faces);
             $this->assertEquals(6, $faces);
         }
-
-        $sum = $diceHand->getSum();
-        $this->assertEquals(0, $sum);
-
-        $average = $diceHand->getAverage();
-        $this->assertEquals(0, $average);
     }
 
 
