@@ -1,0 +1,11 @@
+.header {
+  width: $size--100;
+  height: auto;
+  padding: 0 0 $whiteSpace--large;
+  display: block;
+
+  &__title {
+    width: $size--100;
+    padding: 0 0 $whiteSpace--large;
+  }
+}

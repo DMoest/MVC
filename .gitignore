@@ -8,7 +8,7 @@
 **/build
 **/cache
 **/vendor
-**/sass
+**/node_modules
 
 
 # Ignore all LOG files.

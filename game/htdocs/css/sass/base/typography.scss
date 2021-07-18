@@ -1,0 +1,42 @@
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: $font__family--text;
+  font-size: $font__size--base;
+}
+
+.header__title {
+  &--text {
+    text-align: center;
+    font-size: $font__size--title;
+  }
+
+  &--slogan {
+    text-align: center;
+    font-size: $font__size--slogan;
+    font-style: italic;
+    font-weight: 100;
+  }
+}
+
+.diceForm{
+
+  &__text {
+    &--header {
+      text-align: center;
+      font-size: $font__size--h2;
+    }
+
+    &--paragraph {
+      text-align: left;
+      font-size: $font__size--p;
+    }
+
+    &--button {
+      text-align: center;
+      font-size: $font__size--button;
+    }
+  }
+}

@@ -1,0 +1,106 @@
+.form {
+
+}
+
+.diceForm,
+.yatzyForm {
+  background-color: $color__grey--10;
+  padding: $whiteSpace;
+  border: $border--thin solid $color__grey--50;
+  border-radius: $border__radius;
+
+  &__text {
+    text-align: center;
+    font-size: 1.33rem;
+    margin: $whiteSpace 0 0;
+
+    &--score {
+      padding: 5px 0 0 32px;
+      margin: 0;
+    }
+  }
+
+  &__graphicDices {
+    display: flex;
+    flex-flow: nowrap row;
+    gap: 2rem;
+
+    &--selectionBox {
+      display: flex;
+      flex-flow: nowrap column;
+      justify-content: space-between;
+      gap: 0.25rem;
+    }
+  }
+
+  &__input {
+    &--label {
+
+    }
+
+    &--checkbox {
+      height: 18px;
+      width: 18px;
+      margin: auto;
+    }
+
+    &--radio {
+      cursor: pointer;
+      height: 20px;
+      width: 20px;
+    }
+
+    &--slider {
+
+    }
+
+    &--button {
+
+    }
+
+    &--caution {
+
+    }
+  }
+
+  &__submit {
+    &--container {
+      display: flex;
+      flex-flow: nowrap row;
+      justify-content: space-around;
+      gap: 1rem;
+    }
+  }
+
+  &__results {
+    width: 100%;
+    display: block;
+
+    &--container {
+      width: $size--100;
+      height: auto;
+      display: flex;
+      flex-flow: nowrap row;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    &--player-0,
+    &--player-1,
+    &--player-2,
+    &--player-3,
+    &--player-4,
+    &--player-5,
+    &--player-6 {
+      width: $size--100;
+      height: auto;
+      padding: 1rem;
+      margin: 0 0 $whiteSpace;
+      display: inline-block;
+      background-color: $color__white;
+      border: $border--thin solid $color__grey--50;
+      border-radius: $border__radius;
+
+    }
+  }
+}

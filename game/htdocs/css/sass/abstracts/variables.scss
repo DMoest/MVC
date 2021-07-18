@@ -1,0 +1,121 @@
+/* --- COLORS --- */
+/* black & white */
+$color__black: #050505;
+$color__white: #fcfcfc;
+
+/* grey scale colors */
+$color__grey--10: #F5F5F5;
+$color__grey--20: #EEEEEE;
+$color__grey--30: #E0E0E0;
+$color__grey--40: #BDBDBD;
+$color__grey--50: #9E9E9E;
+$color__grey--60: #757575;
+$color__grey--70: #616161;
+$color__grey--80: #424242;
+$color__grey--90: #212121;
+
+/* text colors */
+$color__text--light: #F5F5F5;
+$color__text--dark: #212121;
+
+/* primary color */
+$color__primary--lighter: #6ABCE8;
+$color__primary--light: #3CACE8;
+$color__primary: #0288D1;
+$color__primary--dark: #28749D;
+$color__primary--darker: #015988;
+
+/* secondary color */
+$color__secondary--lighter: #FFBF73;
+$color__secondary--light: #FFA840;
+$color__secondary: #FF8B00;
+$color__secondary--dark: #BF7E30;
+$color__secondary--darker: #A65A00;
+
+/* Indicator colors */
+$color__info--lighter: #77BEF5;
+$color__info--light: #4BABF4;
+$color__info: #2196F3;
+$color__info--dark: #098BEF;
+$color__info--darker: #0367B4;
+
+$color__success--lighter: #A9E2AC;
+$color__success--light: #77CC7D;
+$color__success: #4CAF53;
+$color__success--dark: #2D9434;
+$color__success--darker: #15781B;
+
+$color__caution--lighter: #FFEB3B;
+$color__caution--light: #FFEB3B;
+$color__caution: #FFEB3B;
+$color__caution--dark: #F0D809;
+$color__caution--darker: #B6A403;
+
+$color__warning--lighter: #FFC164;
+$color__warning--light: #FFB039;
+$color__warning: #FF9800;
+$color__warning--dark: #9B5D00;
+$color__warning--darker: #9B5D00;
+
+$color__danger--lighter: #FF8F86;
+$color__danger--light: #FF685C;
+$color__danger: #F44336;
+$color__danger--dark: #D81D0F;
+$color__danger--darker: #A90F03;
+
+
+/* --- MEASUREMENTS --- */
+/* percentage sizing */
+$size--100: 100%;
+$size--90: 90%;
+$size--80: 80%;
+$size--75: 75%;
+$size--70: 70%;
+$size--60: 60%;
+$size--50: 50%;
+$size--40: 40%;
+$size--30: 30%;
+$size--25: 25%;
+$size--20: 20%;
+$size--10: 10%;
+
+/* border */
+$border--thin: 0.05rem;
+$border: 0.1rem;
+$border--thick: 0.3rem;
+$border__radius--tight: 0.1rem;
+$border__radius: 0.3rem;
+$border__radius--long: 0.5rem;
+
+
+/* --- FONTS --- */
+$font__family--text: Georgia, Serif;
+$font__family--header: Georgia, Serif;
+$font__family--title: Georgia, Serif;
+
+$font__size--base: 1em;
+$font__size--p: 1.151rem;
+$font__size--title: 2.726rem;
+$font__size--slogan: 1.333rem;
+$font__size--h1: 2.726rem;
+$font__size--h2: 2.369rem;
+$font__size--h3: 2.045rem;
+$font__size--h4: 1.777rem;
+$font__size--h5: 1.534rem;
+$font__size--h6: 1.333rem;
+$font__size--p: 1.151rem;
+$font__size--button: 1.2rem;
+
+$font__weight--h1: 500;
+$font__weight--h2: 400;
+$font__weight--h3: 400;
+$font__weight--h4: 400;
+$font__weight--h5: 400;
+$font__weight--h6: 400;
+$font__weight--p: 300;
+$font__weight--button: 400;
+
+/* --- Space --- */
+$whiteSpace: calc(1.333 * 1em);
+$whiteSpace--large: calc(2 * (1.333 * 1em));
+$whiteSpace--xLarge: calc(4 * (1.333 * 1em));

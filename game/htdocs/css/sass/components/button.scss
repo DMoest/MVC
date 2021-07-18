@@ -1,0 +1,112 @@
+.navbar__button {
+  display: inline-block;
+  width: auto;
+  height: 1rem;
+  padding: 0 0.5rem 0.5rem;
+  text-align: left;
+  font-size: 1.2em;
+  color: var(--color__text--dark);
+  text-decoration: none;
+  transition: color 0.3s ease-in;
+
+  &:hover {
+    cursor: pointer;
+    color: var(--color__primary--light);
+    text-decoration: underline;
+  }
+
+  &:active,
+  &:focus {
+    color: var(--color__primary--lighter);
+  }
+}
+
+
+.diceForm__input {
+  &--button {
+    width: $size--50;
+    height: auto;
+    padding: 1rem;
+    margin: 0 auto;
+    display: inline-block;
+    border: $border--thin solid $color__grey--50;
+    border-radius: $border__radius;
+    font-size: $font__size--button;
+    font-weight: $font__weight--button;
+    text-transform: uppercase;
+    transition: all 0.2s;
+
+
+    &Link {
+      color: $color__text--light;
+      background-color: $color__info--dark;
+      border: $border--thin solid $color__info--darker;
+
+      &:hover,
+      &:link {
+        background-color: $color__info--light;
+        border: $border--thin solid $color__info--dark;
+      }
+
+      &:active,
+      &:focus {
+        background-color: $color__info--lighter;
+        border: $border--thin solid $color__info;
+      }
+    }
+
+    &Success {
+      color: $color__text--light;
+      background-color: $color__success;
+      border: $border--thin solid $color__success--darker;
+
+      &:hover,
+      &:link {
+        background-color: $color__success--light;
+        border: $border--thin solid $color__success;
+      }
+
+      &:active,
+      &:focus {
+        background-color: $color__success--lighter;
+        border: $border--thin solid $color__success--light;
+      }
+    }
+
+    &Caution {
+      color: $color__text--dark;
+      background-color: $color__caution--dark;
+      border: $border--thin solid $color__caution--darker;
+
+      &:hover,
+      &:link {
+        background-color: $color__caution;
+        border: $border--thin solid $color__caution--dark;
+      }
+
+      &:active,
+      &:focus {
+        background-color: $color__caution--lighter;
+        border: $border--thin solid $color__caution;
+      }
+    }
+
+    &Danger {
+      color: $color__text--light;
+      background-color: $color__danger--dark;
+      border: $border--thin solid $color__danger--darker;
+
+      &:hover,
+      &:link {
+        background-color: $color__danger;
+        border: $border--thin solid $color__danger--dark;
+      }
+
+      &:active,
+      &:focus {
+        background-color: $color__danger--lighter;
+        border: $border--thin solid $color__danger;
+      }
+    }
+  }
+}
