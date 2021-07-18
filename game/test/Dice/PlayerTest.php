@@ -18,13 +18,44 @@ class PlayerTest extends TestCase
     {
         $player = new Player();
 
+        $results = $player->getResults();
+        $lastRoll = $player->getLastRoll();
+//        $lastHand = $player->getLastHand();
+        $sum = $player->getSumTotal();
+        $average = $player->getAverage();
+
         $this->assertIsObject($player);
         $this->assertInstanceOf("daap19\Dice\Player", $player);
 
-        $playerSum = $player->getSumTotal();
-        $this->assertEquals(0, $playerSum);
+        /* Test Player attributes */
+        $this->assertObjectHasAttribute("results", $player);
+        $this->assertObjectHasAttribute("lastRoll", $player);
+        $this->assertObjectHasAttribute("lastHand", $player);
+        $this->assertObjectHasAttribute("sum", $player);
+        $this->assertObjectHasAttribute("average", $player);
+        $this->assertObjectHasAttribute("faces", $player);
+        $this->assertObjectHasAttribute("dices", $player);
 
-        $average = $player->getAverage();
+        /* Test property types */
+        $this->assertIsArray($results);
+        $this->assertIsArray($lastRoll);
+//        $this->assertNull($lastHand);
+        $this->assertIsInt($sum);
+        $this->assertNull($average);
+
+        /* Test existence of expected class methods */
+        $this->assertTrue(method_exists($player, "__construct"), "Class does not have expected method __construct.");
+        $this->assertTrue(method_exists($player, "rollDices"), "Class does not have expected method rollDices.");
+        $this->assertTrue(method_exists($player, "getResults"), "Class does not have expected method getResults.");
+        $this->assertTrue(method_exists($player, "getSumTotal"), "Class does not have expected method getSumTotal.");
+        $this->assertTrue(method_exists($player, "getLastRoll"), "Class does not have expected method getLastRoll.");
+        $this->assertTrue(method_exists($player, "getLastHand"), "Class does not have expected method getLastHand.");
+        $this->assertTrue(method_exists($player, "getAverage"), "Class does not have expected method getAverage.");
+
+        /* Test initial values */
+        $this->assertEquals([], $results);
+        $this->assertEquals([], $lastRoll);
+        $this->assertEquals(0, $sum);
         $this->assertEquals(0, $average);
     }
 

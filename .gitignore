@@ -1,9 +1,8 @@
 # --------------------------------------------------
-# Git ignores for MVC cours repo by Daniel
+# Git ignores for MVC course repo by Daniel, daap19
 # --------------------------------------------------
 
 # Ignored folders
-# Dev-personel needs to run "make clean-all install" for dependencies and build folders.
 # --------------------------------------------------
 **/.bin
 **/build
@@ -15,3 +14,8 @@
 # Ignore all LOG files.
 # --------------------------------------------------
 *.log
+
+
+# Ignore unit test cache file
+# --------------------------------------------------
+**.phpunit.result.cache

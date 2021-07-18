@@ -1,3 +1,0 @@
-/Users/Daniel/Documents/Studier/BTH/dbwebb-kurser/mvc/me/game/frontcontroller/src/Dice/DiceHand.php:48	Avoid using Daap19\Dice\count() function in for loops.
-/Users/Daniel/Documents/Studier/BTH/dbwebb-kurser/mvc/me/game/frontcontroller/src/Dice/GraphicDice.php:17	Avoid unused private fields such as '$lastRoll'.
-/Users/Daniel/Documents/Studier/BTH/dbwebb-kurser/mvc/me/game/frontcontroller/src/Router/Router.php:23	The method dispatch() has a Cyclomatic Complexity of 19. The configured cyclomatic complexity threshold is 10.
