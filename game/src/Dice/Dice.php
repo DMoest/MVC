@@ -23,8 +23,8 @@ class Dice
      * @var int|null as the value of the dice roll.
      * @var array to store all the values rolled/thrown with the dice object.
      */
-    private ?int $faces;
-    private ?array $diceResults = [];
+    private int $faces;
+    private array $diceResults = [];
     private ?int $lastRoll = null;
 
     /**

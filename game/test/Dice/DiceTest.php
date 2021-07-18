@@ -17,10 +17,35 @@ class DiceTest extends TestCase
     public function testDiceConstruct()
     {
         $dice = new Dice();
-        $faces = $dice->getFaces();
 
+        /* Setup test case */
+        $faces = $dice->getFaces();
+        $results = $dice->getDiceResults();
+        $lastRoll = $dice->getLastRoll();
+
+        /* Test class object for namespace */
         $this->assertInstanceOf("daap19\Dice\Dice", $dice);
+
+        /* Test class attributes existence */
+        $this->assertObjectHasAttribute("faces", $dice);
+        $this->assertObjectHasAttribute("diceResults", $dice);
+        $this->assertObjectHasAttribute("lastRoll", $dice);
+
+        /* Test class attributes type */
+        $this->assertIsInt($faces);
+        $this->assertIsArray($results);
+        $this->assertNull($lastRoll);
+
+        /* Test class attributes initial values */
         $this->assertEquals(6, $faces);
+        $this->assertEmpty($results);
+
+        /* Test existence of expected class methods */
+        $this->assertTrue(method_exists($dice, "__construct"), "Class does not have expected method __construct.");
+        $this->assertTrue(method_exists($dice, "roll"), "Class does not have expected method roll.");
+        $this->assertTrue(method_exists($dice, "getFaces"), "Class does not have expected method getFaces.");
+        $this->assertTrue(method_exists($dice, "getLastRoll"), "Class does not have expected method getLastRoll.");
+        $this->assertTrue(method_exists($dice, "getDiceResults"), "Class does not have expected method getDiceResults.");
     }
 
 
@@ -29,11 +54,11 @@ class DiceTest extends TestCase
      */
     public function testDiceGetFaces()
     {
-        $dice = new Dice();
+        $dice = new Dice(3);
         $diceFaces = $dice->getFaces();
 
         $this->assertIsInt($diceFaces);
-        $this->assertEquals(6, $diceFaces);
+        $this->assertEquals(3, $diceFaces);
     }
 
 
