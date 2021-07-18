@@ -56,17 +56,26 @@ class DiceHandTest extends TestCase
     }
 
 
+    /**
+     * @description Test DiceHand method getDices.
+     */
     public function testDiceHandGetDices()
     {
+        /* Setup test case */
         $diceHand = new DiceHand();
-
+        $diceHand2 = new DiceHand(13);
         $dices = $diceHand->getDices();
+        $dices2 = $diceHand2->getDices();
+
+        /* Test class method return types */
+        $this->assertIsIterable($dices);
+        $this->assertIsIterable($dices2);
+
+        /* Test class method return values */
         $this->assertCount(1, $dices);
-
-        $diceHand = new DiceHand(13);
-
-        $dices = $diceHand->getDices();
-        $this->assertCount(13, $dices);
+        $this->assertCount(13, $dices2);
+        $this->assertNotSame($diceHand, $diceHand2);
+        $this->assertNotSame($dices, $dices2);
     }
 
 
