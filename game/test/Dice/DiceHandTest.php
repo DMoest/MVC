@@ -14,7 +14,7 @@ class DiceHandTest extends TestCase
     /**
      * @description Test construct method for DiceHand class.
      */
-    public function testDiceHandConstruct()
+    final public function testDiceHandConstruct(): void
     {
         $diceHand = new DiceHand();
 
@@ -59,7 +59,7 @@ class DiceHandTest extends TestCase
     /**
      * @description Test DiceHand method getDices.
      */
-    public function testDiceHandGetDices()
+    final public function testDiceHandGetDices(): void
     {
         /* Setup test case */
         $diceHand = new DiceHand();
@@ -82,7 +82,7 @@ class DiceHandTest extends TestCase
     /**
      * @description 
      */
-    public function testDiceHandRoll()
+    final public function testDiceHandRoll(): void
     {
         $diceHand = new DiceHand();
 
@@ -95,7 +95,7 @@ class DiceHandTest extends TestCase
     /**
      * @description Test DiceHand getLastRoll method.
      */
-    public function testDiceHandLastRoll()
+    final public function testDiceHandLastRoll(): void
     {
         $diceHand = new DiceHand();
         $diceHand->roll();
@@ -116,7 +116,7 @@ class DiceHandTest extends TestCase
     /**
      * @description Test case for DiceHand getLastRollAsString() method.
      */
-    public function testDiceHandLastRollAsString()
+    final public function testDiceHandLastRollAsString(): void
     {
         $diceHand = new DiceHand();
 
@@ -131,7 +131,7 @@ class DiceHandTest extends TestCase
     /**
      * @description Test case for DiceHand getSum() method.
      */
-    public function testDiceHandSum()
+    final public function testDiceHandSum(): void
     {
         $diceHand = new DiceHand();
 
@@ -147,9 +147,9 @@ class DiceHandTest extends TestCase
 
 
     /**
-     * Test case for DiceHand getAverage() method.
+     * @description Test case for DiceHand getAverage() method.
      */
-    public function testDiceHandAverage()
+    final public function testDiceHandAverage(): void
     {
         $diceHand = new DiceHand();
 

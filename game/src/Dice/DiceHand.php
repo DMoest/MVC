@@ -43,7 +43,7 @@ class DiceHand implements DiceHandInterface
     /**
      * DiceHand destructor.
      */
-//    public function __destruct()
+//    final public function __destruct()
 //    {
 //        echo __METHOD__;
 //    }
@@ -71,7 +71,7 @@ class DiceHand implements DiceHandInterface
      * @description Getter method that returns array that holds all the dices in the dice hand as objects of Dice class.
      * @return array as all the dice objects.
      */
-    public function getDices(): array
+    final public function getDices(): array
     {
         return $this->dices;
     }
@@ -82,7 +82,7 @@ class DiceHand implements DiceHandInterface
      * @description returns array of integers as values from last dicehand rolled.
      * @return array of integers
      */
-    public function getLastRoll(): array
+    final public function getLastRoll(): array
     {
         return $this->lastRoll;
     }
@@ -93,7 +93,7 @@ class DiceHand implements DiceHandInterface
      * @description returns the values from the last rolled dices as string.
      * @return string
      */
-    public function getLastRollAsString(): string
+    final public function getLastRollAsString(): string
     {
         $response = "";
         $dices = count($this->lastRoll);
@@ -115,7 +115,7 @@ class DiceHand implements DiceHandInterface
      * @description getter method that returns integer value as sum of last rolled dices.
      * @return int as sum of values from dices.
      */
-    public function getSum(): int
+    final public function getSum(): int
     {
         return array_sum($this->lastRoll);
     }
@@ -126,7 +126,7 @@ class DiceHand implements DiceHandInterface
      * @description getter method that returns the average float|integer value of dice hand results.
      * @return float|null
      */
-    public function getAverage(): ?float
+    final public function getAverage(): ?float
     {
         if (array_sum($this->lastRoll) !== 0) {
             return round(array_sum($this->lastRoll) / count($this->lastRoll), 2);

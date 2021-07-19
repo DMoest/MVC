@@ -26,6 +26,7 @@ interface YatzyPlayerInterface
     public function getAmountOfScoresSaved(): int;
     public function getDiceHand(): ?object;
     public function keepDices(array $diceIndexes): array;
+    public function getKeptDices(): array;
     public function stop(): void;
     public function hasStopped(): bool;
     public function setForNextRound(): void;
