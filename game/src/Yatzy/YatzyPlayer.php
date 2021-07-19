@@ -50,13 +50,11 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
         parent::__construct(); // construct from parent class.
 
         $this->rolls = 0;
-        $this->results = [];
-        $this->lastRoll = [];
         $this->diceHand = new YatzyDiceHand(5, 6);
         $this->lastHand = null;
-        $this->keepDices = $this->diceHand->getKeptDices();
-        $this->sum = $this->getScore();
-        $this->average = $this->getAverage();
+        $this->keepDices = [];
+        $this->sum = 0;
+        $this->average = 0;
         $this->playerScores = [0 => null, 1 => null, 2 => null, 3 => null, 4 => null, 5 => null];
         $this->stopped = false;
     }
@@ -103,6 +101,28 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
 
 
     /**
+     * @method getPlayerScore()
+     * @description Getter method to return array of players saved dice scores so far.
+     * @return array
+     */
+    final public function getPlayerScore(): array
+    {
+        return $this->playerScores;
+    }
+
+
+    /**
+     * @method getPlayerScoreSum()
+     * @description Getter method to return the value of all scores in the array on the property $this->playerScore.
+     * @return int as sum value of array $this->playerScore
+     */
+    final public function getPlayerScoreSum(): int
+    {
+        return array_sum($this->playerScores);
+    }
+
+
+    /**
      * @method saveScores()
      * @description Takes dice values the player has chosen and saves the
      * @param array $diceHandArray
@@ -131,17 +151,6 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
 
 
     /**
-     * @method getPlayerScore()
-     * @description Getter method to return array of players saved dice scores so far.
-     * @return array
-     */
-    final public function getPlayerScore(): array
-    {
-        return $this->playerScores;
-    }
-
-
-    /**
      * @method getAmountOfScoresSaved()
      * @description Getter method for counting number of saved scores.
      * @return int
@@ -157,17 +166,6 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
         }
 
         return $countScores;
-    }
-
-
-    /**
-     * @method getPlayerScoreSum()
-     * @description Getter method to return the value of all scores in the array on the property $this->playerScore.
-     * @return int as sum value of array $this->playerScore
-     */
-    final public function getPlayerScoreSum(): int
-    {
-        return array_sum($this->playerScores);
     }
 
 
@@ -202,6 +200,17 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
 
 
     /**
+     * @method getKeptDices()
+     * @description Getter method to return players property keepDices including dice indexes of values to keep between rolls.
+     * @return array of index numbers.
+     */
+    final public function getKeptDices(): array
+    {
+        return $this->keepDices;
+    }
+
+
+    /**
      * @method stop()
      * @description setter method to set boolean property to indicate that player have stopped at this score.
      * @return void
@@ -232,6 +241,7 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
     {
         $this->rolls = 0;
         $this->lastRoll = [];
+        $this->keepDices = [];
         $this->stopped = false;
     }
 }

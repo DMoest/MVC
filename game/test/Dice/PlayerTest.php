@@ -41,7 +41,7 @@ class PlayerTest extends TestCase
         $this->assertIsArray($lastRoll);
 //        $this->assertNull($lastHand);
         $this->assertIsInt($sum);
-        $this->assertNull($average);
+        $this->assertIsFloat($average);
 
         /* Test existence of expected class methods */
         $this->assertTrue(method_exists($player, "__construct"), "Class does not have expected method __construct.");
@@ -128,7 +128,7 @@ class PlayerTest extends TestCase
         $player = new Player();
 
         $average = $player->getAverage();
-        $this->assertNull($average);
+        $this->assertIsFloat($average);
         $this->assertEquals(0, $average);
 
         $player->rollDices(6);

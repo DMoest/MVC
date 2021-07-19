@@ -48,7 +48,7 @@ class Player implements PlayerInterface
     public function __construct()
     {
         $this->sum = 0;
-        $this->average = $this->getAverage();
+        $this->average = 0;
     }
 
 
@@ -66,12 +66,16 @@ class Player implements PlayerInterface
         $values = $diceHand->getLastRoll();
         $this->lastHand = $diceHand; // last diceHand as object
         $this->lastRoll = []; // clear values
-        $dices = count($values);
+//        $dices = count($values);
 
-        for ($i = 0; $i < $dices; $i++) {
-            $this->lastRoll[] = $values[$i];
-            $this->results[] = $values[$i];
+        foreach ($values as $key => $dice) {
+            $this->lastRoll[$key] = $dice;
+            $this->results[] = $dice;
         }
+//        for ($i = 0; $i < $dices; $i++) {
+//            $this->lastRoll[] = $values[$i];
+//            $this->results[] = $values[$i];
+//        }
 
         return $values;
     }
