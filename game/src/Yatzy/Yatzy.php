@@ -6,6 +6,7 @@
 namespace daap19\Yatzy;
 
 use daap19\Dice\ScoreBoardTrait;
+use JetBrains\PhpStorm\Pure;
 
 /**
  * Functions in use.
@@ -32,10 +33,10 @@ class Yatzy
 {
     use ScoreBoardTrait;
 
-    private ?int $round;
-    private ?int $numOfPlayers = null;
-    private ?array $players;
-    private ?int $playerIndex;
+    private int $round;
+    private int $numOfPlayers;
+    private array $players;
+    private int $playerIndex;
 
 
     /**
@@ -71,8 +72,9 @@ class Yatzy
      * @description Method to play game with.
      * @returns void
      */
-    final public function play(object $player, string $submit): void
+    final public function play(string $submit): void
     {
+        $player = $this->getCurrentPlayer();
         $playerRolls = $player->getRolls();
 
         if ($submit === "roll" && $playerRolls < 3) {
@@ -166,11 +168,11 @@ class Yatzy
      * @method showGraphicDices()
      * @description method to help show graphic representations of dices in dice hand.
      * @param object $diceHand as representation of a hand of dice objects.
-     * @return ?array of strings representing classes to show a dice.
+     * @return array of strings representing classes to show a dice.
      */
-    final public function showGraphicDices(object $diceHand): ?array
+    final public function showGraphicDices(object $diceHand): array
     {
-        $graphicDices = null;
+        $graphicDices = [];
         $dices = $diceHand->getDices();
 
         if ($diceHand->getSum() > 0) {

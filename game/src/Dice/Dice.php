@@ -54,7 +54,8 @@ class Dice
      */
     public function roll(): int
     {
-        $this->lastRoll = mt_rand(1, $this->faces); // Random integer 1 to 6 integer.
+        $faces = $this->getFaces();
+        $this->lastRoll = random_int(1, $faces); // Random integer 1 to 6 integer.
         $this->diceResults[] = $this->lastRoll;
 
         return $this->lastRoll;
