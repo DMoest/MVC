@@ -32,13 +32,13 @@ class YatzyDiceHand extends DiceHand implements YatzyDiceHandInterface
      */
     public function roll(): array
     {
-//        $oldValues = $this->getLastRoll();
-//        $this->lastRoll = [];
+        $oldValues = $this->getLastRoll();
+        $this->lastRoll = [];
 
         foreach ($this->dices as $key => $dice) {
             if (in_array($key, $this->keepDices)) {
-//                $this->lastRoll[$key] = $oldValues[$key];
-                $this->lastRoll[$key] = $this->lastRoll[$key];
+                $this->lastRoll[$key] = $oldValues[$key];
+//                $this->lastRoll[$key] = $this->lastRoll[$key];
             } elseif (!in_array($key, $this->keepDices)) {
                 $this->lastRoll[$key] = $dice->roll();
             }

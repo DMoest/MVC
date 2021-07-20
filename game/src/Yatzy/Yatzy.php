@@ -82,9 +82,9 @@ class Yatzy
         } elseif ($submit === "stop") {
             $player->stop();
         } elseif ($playerRolls === 3) {
-            $this->round++;
-            $player->setReadyForNextRound();
+            $player->setForNextRound();
             $this->setPlayerIndex();
+            $this->round++;
         }
     }
 

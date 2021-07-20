@@ -68,11 +68,12 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
     final public function rollDices(int $dices = 5, int $faces = 6): array
     {
         $this->lastRoll = $this->diceHand->roll();
-        $this->rolls++;
 
         foreach ($this->lastRoll as $value) {
             $this->results[] = $value;
         }
+
+        $this->rolls++;
 
         return $this->lastRoll;
     }

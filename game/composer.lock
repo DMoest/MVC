@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "333de66257a921cdd1709ec3aead7fab",
+    "content-hash": "843b8a57c2c2d9eff15606672be3d1a9",
     "packages": [
         {
             "name": "laminas/laminas-httphandlerrunner",
@@ -795,57 +795,6 @@
         }
     ],
     "packages-dev": [
-        {
-            "name": "1happyplace/phpunit-colors",
-            "version": "v1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/1HappyPlace/phpunit-colors.git",
-                "reference": "e55b04a1cd80d84f5b841d2a7effe4e38d7291f2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/1HappyPlace/phpunit-colors/zipball/e55b04a1cd80d84f5b841d2a7effe4e38d7291f2",
-                "reference": "e55b04a1cd80d84f5b841d2a7effe4e38d7291f2",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^8.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "PHPUnitColors\\": "src/PHPUnitColors/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Katie Ayres",
-                    "email": "katie@1happyplace.com",
-                    "homepage": "http://1happyplace.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Class that adds color to PHPUnit testing output using ANSI escape coding",
-            "homepage": "http://clio.1happyplace.com/utilities/phpunit-color-display.html",
-            "keywords": [
-                "colors",
-                "output",
-                "phpunit"
-            ],
-            "support": {
-                "issues": "https://github.com/1HappyPlace/phpunit-colors/issues",
-                "source": "https://github.com/1HappyPlace/phpunit-colors/tree/v1.2"
-            },
-            "time": "2020-01-06T18:19:43+00:00"
-        },
         {
             "name": "doctrine/instantiator",
             "version": "1.4.0",
@@ -1749,16 +1698,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.6",
+            "version": "9.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "fb9b8333f14e3dce976a60ef6a7e05c7c7ed8bfb"
+                "reference": "d0dc8b6999c937616df4fb046792004b33fd31c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/fb9b8333f14e3dce976a60ef6a7e05c7c7ed8bfb",
-                "reference": "fb9b8333f14e3dce976a60ef6a7e05c7c7ed8bfb",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/d0dc8b6999c937616df4fb046792004b33fd31c5",
+                "reference": "d0dc8b6999c937616df4fb046792004b33fd31c5",
                 "shasum": ""
             },
             "require": {
@@ -1836,7 +1785,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.6"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.7"
             },
             "funding": [
                 {
@@ -1848,7 +1797,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-06-23T05:14:38+00:00"
+            "time": "2021-07-19T06:14:47+00:00"
         },
         {
             "name": "sebastian/cli-parser",

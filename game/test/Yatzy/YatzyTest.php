@@ -60,6 +60,114 @@ class YatzyTest extends TestCase
 
 
     /**
+     * @description Test Yatzy play method with argument "roll" simulating player move roll dices.
+     */
+    final public function testYatzyPlayRollDices(): void
+    {
+        /* Setup test case */
+        $this->yatzy->play("roll");
+        $player = $this->yatzy->getCurrentPlayer();
+        $rolls = $player->getRolls();
+
+        /* Test case assertion */
+        $this->assertIsInt($rolls);
+        $this->assertEquals(1, $rolls);
+    }
+
+
+    /**
+     * @description Test Yatzy play method with argument "stop" simulating player move stop.
+     */
+    final public function testYatzyPlayStop(): void
+    {
+        /* Setup test case */
+        $player = $this->yatzy->getCurrentPlayer();
+        $this->yatzy->play("stop");
+        $diceHand = $player->getDiceHand();
+        $lastRoll = $diceHand->getLastRoll();
+        $stopped = $player->hasStopped();
+
+        /* Test case assertion */
+        $this->assertIsIterable($lastRoll);
+        $this->assertIsArray($lastRoll);
+        $this->assertEmpty($lastRoll);
+        $this->assertIsBool($stopped);
+        $this->assertTrue($stopped);
+    }
+
+
+    /**
+     * @description Test Yatzy play method with argument "roll" simulating player move roll dices.
+     */
+    final public function testYatzyPlayRollDicesThreeTimes(): void
+    {
+        /* Setup test case */
+        $this->yatzy = new Yatzy(2);
+
+        $this->yatzy->play("roll");
+
+        $round = $this->yatzy->getRound();
+        $index = $this->yatzy->getPlayerIndex();
+        $player = $this->yatzy->getCurrentPlayer();
+        $rolls = $player->getRolls();
+
+        $this->assertIsInt($round);
+        $this->assertEquals(0, $round);
+        $this->assertIsInt($rolls);
+        $this->assertEquals(1, $rolls);
+        $this->assertIsInt($index);
+        $this->assertEquals(0, $index);
+
+        $this->yatzy->play("roll");
+
+        $round = $this->yatzy->getRound();
+        $index = $this->yatzy->getPlayerIndex();
+        $player = $this->yatzy->getCurrentPlayer();
+        $rolls = $player->getRolls();
+
+        $this->assertIsInt($round);
+        $this->assertEquals(0, $round);
+        $this->assertIsInt($rolls);
+        $this->assertEquals(2, $rolls);
+        $this->assertIsInt($index);
+        $this->assertEquals(0, $index);
+
+        $this->yatzy->play("roll");
+
+        $round = $this->yatzy->getRound();
+        $index = $this->yatzy->getPlayerIndex();
+        $player = $this->yatzy->getCurrentPlayer();
+        $rolls = $player->getRolls();
+
+        $this->assertIsInt($round);
+        $this->assertEquals(0, $round);
+        $this->assertIsInt($rolls);
+        $this->assertEquals(3, $rolls);
+        $this->assertIsInt($index);
+        $this->assertEquals(0, $index);
+
+        $this->yatzy->play("roll");
+
+        $round = $this->yatzy->getRound();
+        $index = $this->yatzy->getPlayerIndex();
+        $player = $this->yatzy->getCurrentPlayer();
+        $rolls = $player->getRolls();
+
+        $this->assertIsInt($round);
+        $this->assertEquals(1, $round);
+        $this->assertIsInt($rolls);
+        $this->assertEquals(0, $rolls);
+        $this->assertIsInt($index);
+        $this->assertEquals(1, $index);
+
+
+
+        /* Test case assertion */
+
+    }
+
+
+    /**
      * @description Test Yatzy method getRound.
      */
     final public function testYatzyGetRound(): void
@@ -182,5 +290,44 @@ class YatzyTest extends TestCase
         $this->assertIsIterable($graphicDices);
         $this->assertIsArray($graphicDices);
         $this->assertNotEmpty($graphicDices);
+    }
+
+
+    /**
+     * @description Test Yatzy method selectScores without saved scores.
+     */
+    final public function testYatzyScoreSelectionNoScores(): void
+    {
+        /* Setup test case */
+        $this->yatzy->play("roll");
+        $this->yatzy->play("roll");
+        $this->yatzy->play("roll");
+        $scoreSelection = $this->yatzy->scoreSelection();
+
+        /* Test case assertions */
+        $this->assertIsString($scoreSelection);
+        $this->assertNotEmpty($scoreSelection);
+    }
+
+
+    /**
+     * @description Test Yatzy method selectScores with saved scores.
+     */
+    final public function testYatzyScoreSelectionWithScores(): void
+    {
+        /* Setup test case */
+        $this->yatzy->play("roll");
+        $player = $this->yatzy->getCurrentPlayer();
+        $lastRoll = $player->getlastRoll();
+        $player->saveScores($lastRoll, 1);
+        $playerScores = $player->getPlayerScore();
+        $scoreSelection = $this->yatzy->scoreSelection();
+
+        /* Test case assertions */
+        $this->assertIsIterable($playerScores);
+        $this->assertIsArray($playerScores);
+        $this->assertNotEmpty($playerScores);
+        $this->assertIsString($scoreSelection);
+        $this->assertNotEmpty($scoreSelection);
     }
 }
