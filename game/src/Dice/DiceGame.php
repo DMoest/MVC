@@ -31,9 +31,9 @@ class DiceGame
     use ScoreBoardTrait;
 
     private array $players = [];
-    private ?int $round;
-    private ?int $playerIndex;
-    private ?int $numOfPlayers;
+    private int $round;
+    private int $playerIndex;
+    private int $numOfPlayers;
 
 
     /**
@@ -46,21 +46,23 @@ class DiceGame
     public function __construct(int $numOfPlayers, int $credit, bool $machine)
     {
         /**
-         * Setup user players
-         * @description Setup user players with for loop to generate players on construct. Input is taken from user thru request form.
-         */
-        for ($i = 0; $i < $numOfPlayers; $i++) {
-            $newPlayer = new DicePlayer($credit, false);
-            $this->players[] = $newPlayer;
-        }
-
-        /**
          * Setup computer player
-         * @description Setup computer controlled player if variable validates to boolean true.
+         * @description Setup computer controlled player if variable validates to boolean true else if false only user players.
          */
         if (intval($machine) === 1) {
+            for ($i = 0; $i < $numOfPlayers -1; $i++) {
+                $newPlayer = new DicePlayer($credit, false);
+                $this->players[] = $newPlayer;
+            }
+
             $machinePlayer = new DicePlayer($credit, $machine);
             $this->players[] = $machinePlayer;
+
+        } elseif (intval($machine) === 0) {
+            for ($i = 0; $i < $numOfPlayers; $i++) {
+                $newPlayer = new DicePlayer($credit, false);
+                $this->players[] = $newPlayer;
+            }
         }
 
         $this->round = 1;
@@ -160,8 +162,8 @@ class DiceGame
              * Check score, check if player has stopped, check if player is bust and last get the new player score.
              */
             $this->checkScore($player);
-            $bust = intval($player->isBust());
             $score = $player->getScore();
+            $bust = intval($player->isBust());
             $stopped = intval($player->hasStopped());
         }
     }
@@ -244,18 +246,15 @@ class DiceGame
      */
     final public function setNextRound(): void
     {
-        $numOfPlayers = count($this->players);
         $this->solveTheBet();
+        $this->round++;
 
         /**
          * Reset status for all players.
          */
-        for ($i = 0; $i < $numOfPlayers; $i++) {
-            $thisPlayer = $this->players[$i];
-            $thisPlayer->setForNextRound();
+        foreach ($this->players as $player) {
+            $player->setForNextRound();
         }
-
-        $this->round++;
     }
 
 
@@ -271,8 +270,8 @@ class DiceGame
         $score = $player->getScore();
 
         if ($score > 21 && $stopped !== 1) {
-            $player->setBust();
             $player->stop();
+            $player->setBust();
         }
     }
 
