@@ -6,6 +6,7 @@ declare(strict_types=1);
  * Namespace for this module & other namespaces in use.
  */
 namespace daap19\Controller;
+
 use Mos\Controller\ControllerBase;
 use Psr\Http\Message\ResponseInterface;
 use daap19\Dice\DiceGame;
