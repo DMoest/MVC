@@ -10,9 +10,9 @@ use PHPUnit\Framework\TestCase;
 //use function Mos\Functions\renderView;
 
 /**
- * Test cases for the controller class YatzySelectScores.
+ * Test cases for the controller class YatzyFinalResults.
  */
-class ControllerYatzySelectScoresTest extends TestCase
+class ControllerYatzyFinalResultsTest extends TestCase
 {
     protected object $yatzyObject;
     protected object $yatzyController;
@@ -25,7 +25,7 @@ class ControllerYatzySelectScoresTest extends TestCase
     final protected function setUp(): void
     {
         $this->yatzyObject = new \daap19\Yatzy\Yatzy();
-        $this->yatzyController = new YatzySelectScores();
+        $this->yatzyController = new YatzyFinalResults();
 
         $_SESSION["yatzy"] = $this->yatzyObject;
     }
@@ -40,24 +40,24 @@ class ControllerYatzySelectScoresTest extends TestCase
     }
 
 
-    /**
-     * @description Setter method to simulate user selection of dice value to save.
-     */
-    final public function setupUserScoreSelection(int $diceValue): void
-    {
-        $value = strval($diceValue -1);
-        $_POST["scoreSelect"] = $value;
-    }
+//    /**
+//     * @description Setter method to simulate user selection of dice value to save.
+//     */
+//    final public function setupUserScoreSelection(int $diceValue): void
+//    {
+//        $value = strval($diceValue -1);
+//        $_POST["scoreSelect"] = $value;
+//    }
 
 
     /**
-     * @description Test new YatzySelectScores object.
+     * @description Test new YatzyFinalResults object.
      */
-    final public function testYatzySelectScoresControllerObject(): void
+    final public function testYatzyFinalResultsControllerObject(): void
     {
         /* Test type and namespace existence */
         $this->assertIsObject($this->yatzyController);
-        $this->assertInstanceOf("daap19\Controller\YatzySelectScores", $this->yatzyController);
+        $this->assertInstanceOf("daap19\Controller\YatzyFinalResults", $this->yatzyController);
 
         /* Test if class have expected methods */
         $this->assertTrue(method_exists($this->yatzyController, "renderView"), "Class does not have expected method renderView.");
@@ -66,9 +66,9 @@ class ControllerYatzySelectScoresTest extends TestCase
 
 
     /**
-     * @description Test new YatzySelectScores object.
+     * @description Test new YatzyFinalResults object.
      */
-    final public function testYatzySelectScoresMethodRenderView(): void
+    final public function testYatzyFinalResultsMethodRenderView(): void
     {
         /* Setup test case */
         $expected = "\Psr\Http\Message\ResponseInterface";
@@ -89,12 +89,26 @@ class ControllerYatzySelectScoresTest extends TestCase
 
 
     /**
-     * @description Test response object to contain status code 301.
+     * @description Test response object to contain status code 200.
      */
-    final public function testYatzySelectScoresMethodProcessResponseStatusCode(): void
+    final public function testYatzyFinalResultsMethodRenderViewStatusCode(): void
     {
         /* Setup test case */
-        $this->setupUserScoreSelection(1);
+        $response = $this->yatzyController->renderView();
+        $statusCode = $response->getStatusCode();
+
+        /* Test case assertions */
+        $this->assertIsInt($statusCode);
+        $this->assertEquals(200, $statusCode);
+    }
+
+
+    /**
+     * @description Test response object to contain status code 301.
+     */
+    final public function testYatzyFinalResultsMethodProcessResponseStatusCode(): void
+    {
+        /* Setup test case */
         $processedResponse = $this->yatzyController->processResponse();
         $statusCode = $processedResponse->getStatusCode();
 
@@ -105,41 +119,9 @@ class ControllerYatzySelectScoresTest extends TestCase
 
 
     /**
-     * @description Test YatzySelectScores controller method processResponse redirect path.
+     * @description Test YatzyFinalResults controller method processResponse redirect path.
      */
-    final public function testYatzySelectScoresMethodProcessResponseRedirecPath(): void
-    {
-        /* Setup test case */
-        $this->setupUserScoreSelection(1);
-        $processedResponse = $this->yatzyController->processResponse();
-        $this->setupUserScoreSelection(2);
-        $processedResponse = $this->yatzyController->processResponse();
-        $this->setupUserScoreSelection(3);
-        $processedResponse = $this->yatzyController->processResponse();
-        $this->setupUserScoreSelection(4);
-        $processedResponse = $this->yatzyController->processResponse();
-        $this->setupUserScoreSelection(5);
-        $processedResponse = $this->yatzyController->processResponse();
-        $this->setupUserScoreSelection(6);
-        $processedResponse = $this->yatzyController->processResponse();
-
-        $basePath = "://vendor/bin/";
-        $headers = $processedResponse->getHeaders();
-        $redirectPath = $headers["Location"][0];
-
-        /* Test case assertions */
-        $this->assertIsIterable($headers);
-        $this->assertIsArray($headers);
-        $this->assertArrayHasKey('Location', $headers);
-        $this->assertIsString($redirectPath);
-        $this->assertEquals($basePath . "yatzy__finalResults/view", $redirectPath);
-    }
-
-
-    /**
-     * @description Test YatzySelectScores controller method processResponse redirect path.
-     */
-    final public function testYatzySelectScoresMethodProcessResponseRedirecPathOnAllSavedScores(): void
+    final public function testYatzyFinalResultsMethodProcessResponseRedirecPathOnAllSavedScores(): void
     {
         /* Setup test case */
         $basePath = "://vendor/bin/";
