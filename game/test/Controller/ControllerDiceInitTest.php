@@ -35,6 +35,28 @@ class ControllerDiceInitTest extends TestCase
 
 
     /**
+     * @description Setup for $_POST variable dependencies for test cases false machine.
+     */
+    final public function setupPostVariablesFalseMachine(): void
+    {
+        $_POST["players"] = 2;
+        $_POST["credit"] = 25;
+        $_POST["machine"] = false;
+    }
+
+
+    /**
+     * @description Setup for $_POST variable dependencies for test cases null machine.
+     */
+    final public function setupPostVariablesNULLMachine(): void
+    {
+        $_POST["players"] = 2;
+        $_POST["credit"] = 25;
+        $_POST["machine"] = null;
+    }
+
+
+    /**
      * @description Test new DiceInit object.
      */
     final public function testDiceInitObject(): void
@@ -75,10 +97,8 @@ class ControllerDiceInitTest extends TestCase
      */
     final public function testDiceInitMethodProcessResponseStatusCode(): void
     {
-        $_POST["players"] = 2;
-        $_POST["credit"] = 25;
-        $_POST["machine"] = false;
-
+        /* Setup test case */
+        $this->setupPostVariablesFalseMachine();
         $processedResponse = $this->diceInit->processResponse();
         $statusCode = $processedResponse->getStatusCode();
 
@@ -95,11 +115,7 @@ class ControllerDiceInitTest extends TestCase
     final public function testDiceInitMethodProcessResponseStatusCodeNoMachine(): void
     {
         /* Setup test case */
-        $_POST["players"] = 2;
-        $_POST["credit"] = 25;
-        $_POST["machine"] = null;
-
-        $basePath = "://vendor/bin/";
+        $this->setupPostVariablesNULLMachine();
         $processedResponse = $this->diceInit->processResponse();
         $statusCode = $processedResponse->getStatusCode();
 
@@ -108,25 +124,23 @@ class ControllerDiceInitTest extends TestCase
         $this->assertEquals(301, $statusCode);
     }
 
+
     /**
      * @description Test DiceInit controller method processResponse redirect path.
      */
     final public function testDiceInitMethodProcessResponseRedirecPath(): void
     {
         /* Setup test case */
-        $_POST["players"] = 2;
-        $_POST["credit"] = 25;
-        $_POST["machine"] = false;
         $basePath = "://vendor/bin/";
-
+        $this->setupPostVariablesFalseMachine();
         $processedResponse = $this->diceInit->processResponse();
         $headers = $processedResponse->getHeaders();
         $redirectPath = $headers["Location"][0];
 
+        /* Test case assertions */
         $this->assertIsIterable($headers);
         $this->assertIsArray($headers);
         $this->assertArrayHasKey('Location', $headers);
-
         $this->assertIsString($redirectPath);
         $this->assertEquals($basePath . "dice/view", $redirectPath);
     }

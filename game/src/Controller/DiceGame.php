@@ -27,6 +27,10 @@ use function Mos\Functions\{
  */
 class DiceGame extends ControllerBase
 {
+    protected object $diceGame;
+    protected string $scoreBoard;
+
+
     /**
      * @method renderView()
      * @description renders view and returns response object for route controller class.
@@ -37,17 +41,15 @@ class DiceGame extends ControllerBase
         $diceGame = $_SESSION["diceGame"];
         $players = $diceGame->getPlayers();
         $currentPlayer = $players[$diceGame->getPlayerIndex()];
-        $playerScore = $currentPlayer->getScore();
-        $playerCredit = $currentPlayer->getCredit();
 
         $data = [
             "header" => "Dice DiceGame 21",
             "message" => "DiceGame on, roll them dices!",
             "action" => url("/dice/process"),
             "round" => $diceGame->getRound(),
-            "players" => $players,
-            "score" => $playerScore,
-            "credit" => $playerCredit,
+            "players" => $diceGame->getPlayers(),
+            "score" => $currentPlayer->getScore(),
+            "credit" => $currentPlayer->getCredit(),
             "numberOfPlayers" => count($diceGame->getPLayers()),
             "playerNumber" => $diceGame->getPlayerIndex() +1,
             "scoreBoard" => $diceGame->printDiceScoreBoard(),
@@ -67,8 +69,9 @@ class DiceGame extends ControllerBase
      */
     public function processResponse(): ResponseInterface
     {
-        /* Catch POST request from dice__init form and store values to SESSION variable */
         $diceGame = $_SESSION["diceGame"];
+
+        /* Catch POST request from dice__init form and store values to SESSION variable */
         $dices = intval($_POST["dices"]) ?? null;
         $submit = strval($_POST["submit"]) ?? null;
 
@@ -78,20 +81,5 @@ class DiceGame extends ControllerBase
 
         // Return the redirect through parent class ControllerBase
         return $this->redirect(url("/dice__results/view"));
-    }
-
-
-    /**
-     * @name reset
-     * @description method to reset game through removing the variable from the session.
-     * @return ResponseInterface
-     */
-    public function reset(): ResponseInterface
-    {
-        /* Removes the session variable that is diceGame to */
-        unset($_SESSION["diceGame"]);
-
-        // Return the redirect through parent class ControllerBase
-        return $this->redirect(url("/dice__init/view"));
     }
 }
