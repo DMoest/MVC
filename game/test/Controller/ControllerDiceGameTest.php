@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace daap19\Controller;
 
 use PHPUnit\Framework\TestCase;
+use \daap19\Dice\DiceGame;
+//use \daap19\Controller\DiceGameController;
 //use Psr\Http\Message\ResponseInterface;
 //use Webmozart\Assert\Assert;
 //use function Mos\Functions\renderView;
@@ -23,8 +25,8 @@ class ControllerDiceGameTest extends TestCase
      */
     final protected function setUp(): void
     {
-        $this->diceGameObject = new \daap19\Dice\DiceGame(2, 25, false);
-        $this->diceGameController = new DiceGame();
+        $this->diceGameObject = new DiceGame(2, 25, false);
+        $this->diceGameController = new DiceGameController();
 
         $_SESSION["diceGame"] = $this->diceGameObject;
     }
@@ -56,7 +58,7 @@ class ControllerDiceGameTest extends TestCase
     {
         /* Test type and namespace existence */
         $this->assertIsObject($this->diceGameController);
-        $this->assertInstanceOf("daap19\Controller\DiceGame", $this->diceGameController);
+        $this->assertInstanceOf("daap19\Controller\DiceGameController", $this->diceGameController);
 
         /* Test if class have expected methods */
         $this->assertTrue(method_exists($this->diceGameController, "renderView"), "Class does not have expected method renderView.");

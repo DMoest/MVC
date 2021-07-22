@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace daap19\Controller;
 
 use PHPUnit\Framework\TestCase;
+use \daap19\Yatzy\Yatzy;
 //use Psr\Http\Message\ResponseInterface;
 //use Webmozart\Assert\Assert;
 //use function Mos\Functions\renderView;
@@ -24,7 +25,7 @@ class ControllerYatzySelectScoresTest extends TestCase
      */
     final protected function setUp(): void
     {
-        $this->yatzyObject = new \daap19\Yatzy\Yatzy();
+        $this->yatzyObject = new Yatzy();
         $this->yatzyController = new YatzySelectScores();
 
         $_SESSION["yatzy"] = $this->yatzyObject;

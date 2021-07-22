@@ -96,7 +96,6 @@ class DiceHand implements DiceHandInterface
     final public function getLastRollAsString(): string
     {
         $response = "";
-        $dices = count($this->lastRoll);
 
         /* Build string from results */
         foreach ($this->lastRoll as $dice) {
@@ -104,7 +103,7 @@ class DiceHand implements DiceHandInterface
         }
 
         /* Trim last two characters off */
-        substr($response, 0, strlen($response)-2);
+        $response = substr($response, 0, strlen($response)-2);
 
         return $response . " = " . array_sum($this->lastRoll);
     }

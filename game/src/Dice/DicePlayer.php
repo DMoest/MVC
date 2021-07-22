@@ -96,7 +96,7 @@ class DicePlayer extends Player implements DicePlayerInterface
 
 
     /**
-     * @method setWin
+     * @method setWin()
      * @description setter method that iterates the property wins +1.
      * @returns void
      */

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace daap19\Controller;
 
 use PHPUnit\Framework\TestCase;
+use \daap19\Dice\diceGame;
 //use Psr\Http\Message\ResponseInterface;
 //use Webmozart\Assert\Assert;
 //use function Mos\Functions\renderView;
@@ -14,7 +15,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ControllerDiceGameResultsTest extends TestCase
 {
-    protected object $diceGameResultsController;
+    protected object $diceResController;
     protected object $diceGameObject;
 
 
@@ -23,8 +24,8 @@ class ControllerDiceGameResultsTest extends TestCase
      */
     final protected function setUp(): void
     {
-        $this->diceGameObject = new \daap19\Dice\DiceGame(2, 25, false);
-        $this->diceGameResultsController = new DiceGameResults();
+        $this->diceGameObject = new DiceGame(2, 25, false);
+        $this->diceResController = new DiceGameResults();
         $this->diceGameObject->playGame(2, "roll"); // For results to show a diceHand must be played first.
 
         $_SESSION["diceGame"] = $this->diceGameObject;
@@ -46,12 +47,12 @@ class ControllerDiceGameResultsTest extends TestCase
     final public function testDiceGameResultsObject(): void
     {
         /* Test type and namespace existence */
-        $this->assertIsObject($this->diceGameResultsController);
-        $this->assertInstanceOf("daap19\Controller\DiceGameResults", $this->diceGameResultsController);
+        $this->assertIsObject($this->diceResController);
+        $this->assertInstanceOf("daap19\Controller\DiceGameResults", $this->diceResController);
 
         /* Test if class have expected methods */
-        $this->assertTrue(method_exists($this->diceGameResultsController, "renderView"), "Class does not have expected method renderView.");
-        $this->assertTrue(method_exists($this->diceGameResultsController, "processResponse"), "Class does not have expected method processResponse.");
+        $this->assertTrue(method_exists($this->diceResController, "renderView"), "Class does not have expected method renderView.");
+        $this->assertTrue(method_exists($this->diceResController, "processResponse"), "Class does not have expected method processResponse.");
     }
 
 
@@ -62,7 +63,7 @@ class ControllerDiceGameResultsTest extends TestCase
     {
         /* Setup test case */
         $expected = "\Psr\Http\Message\ResponseInterface";
-        $renderResponse = $this->diceGameResultsController->renderView();
+        $renderResponse = $this->diceResController->renderView();
 
         /* Test type and namespace existence */
         $this->assertIsObject($renderResponse);
@@ -84,7 +85,7 @@ class ControllerDiceGameResultsTest extends TestCase
     final public function testDiceGameResultsMethodRenderViewResponseStatusCode(): void
     {
         /* Setup test case */
-        $renderResponse = $this->diceGameResultsController->renderView();
+        $renderResponse = $this->diceResController->renderView();
         $statusCode = $renderResponse->getStatusCode();
 
         /* Test case assertions */
@@ -98,7 +99,7 @@ class ControllerDiceGameResultsTest extends TestCase
      */
     final public function testDiceGameResultsMethodRenderViewResponseReasonPhrase(): void
     {
-        $renderResponse = $this->diceGameResultsController->renderView();
+        $renderResponse = $this->diceResController->renderView();
         $reasonPhrase = $renderResponse->getReasonPhrase();
 
         /* Test case assertions */
@@ -119,7 +120,7 @@ class ControllerDiceGameResultsTest extends TestCase
         $player = $players[$this->diceGameObject->getPlayerIndex()];
         $player->stop();
         $stopped = $player->hasStopped();
-        $this->diceGameResultsController->processResponse();
+        $this->diceResController->processResponse();
 
         /* Test case assertions */
         $this->assertIsBool($stopped);
@@ -138,7 +139,7 @@ class ControllerDiceGameResultsTest extends TestCase
         $player = $players[$this->diceGameObject->getPlayerIndex()];
         $player->setBust();
         $bust = $player->isBust();
-        $this->diceGameResultsController->processResponse();
+        $this->diceResController->processResponse();
 
         /* Test case assertions */
         $this->assertIsBool($bust);
@@ -159,7 +160,7 @@ class ControllerDiceGameResultsTest extends TestCase
         $player = $players[$playerIndex];
         $player->stop();
         $stopped = $player->hasStopped();
-        $this->diceGameResultsController->processResponse();
+        $this->diceResController->processResponse();
         $lastIndex = array_key_last($players);
 
         /* Test case assertions */
@@ -176,7 +177,7 @@ class ControllerDiceGameResultsTest extends TestCase
     {
         /* Setup test case */
         $basePath = "://vendor/bin/";
-        $processedResponse = $this->diceGameResultsController->processResponse();
+        $processedResponse = $this->diceResController->processResponse();
         $headers = $processedResponse->getHeaders();
         $redirectPath = $headers["Location"][0];
 

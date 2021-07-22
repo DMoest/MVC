@@ -50,7 +50,7 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
         parent::__construct(); // construct from parent class.
 
         $this->rolls = 0;
-        $this->diceHand = new YatzyDiceHand(5, 6);
+        $this->diceHand = new YatzyDiceHand();
         $this->lastHand = null;
         $this->keepDices = [];
         $this->sum = 0;
@@ -173,7 +173,7 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
     /**
      * @method getDiceHand()
      * @description return last dice hand as object.
-     * @return ?object
+     * @return object
      */
     final public function getDiceHand(): object
     {
@@ -189,14 +189,14 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
      */
     final public function keepDices(array $diceIndexes): array
     {
-        $this->keep = []; // Clear old values if any.
+        $this->keepDices = []; // Clear old values if any.
         $dices = $this->diceHand->getDices();
 
         foreach ($diceIndexes as $index) {
-            $this->keep[$index] = $dices[$index];
+            $this->keepDices[$index] = $dices[$index];
         }
 
-        return $this->keep;
+        return $this->keepDices;
     }
 
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace daap19\Controller;
 
 use PHPUnit\Framework\TestCase;
+use \daap19\Dice\DiceGame;
 //use Psr\Http\Message\ResponseInterface;
 //use Webmozart\Assert\Assert;
 //use function Mos\Functions\renderView;
@@ -35,9 +36,12 @@ class ControllerYatzyInitTest extends TestCase
     }
 
 
+    /**
+     * @description Method to start a diceGame on session variable.
+     */
     final public function startSession(): void
     {
-        $_SESSION["yatzy"] = new \daap19\Dice\DiceGame(2, 25, false);
+        $_SESSION["yatzy"] = new DiceGame(2, 25, false);
     }
 
 
@@ -89,17 +93,17 @@ class ControllerYatzyInitTest extends TestCase
         $expected = "\Psr\Http\Message\ResponseInterface";
         $response = $this->yatzyObject->renderView();
 
-//        /* Test type and namespace existence */
-//        $this->assertIsObject($response);
-//        $this->assertInstanceOf($expected, $response);
-//
-//        /* Test response object attributes existence */
-//        $this->assertObjectHasAttribute("reasonPhrase", $response);
-//        $this->assertObjectHasAttribute("statusCode", $response);
-//        $this->assertObjectHasAttribute("headers", $response);
-//        $this->assertObjectHasAttribute("headerNames", $response);
-//        $this->assertObjectHasAttribute("protocol", $response);
-//        $this->assertObjectHasAttribute("stream", $response);
+        /* Test type and namespace existence */
+        $this->assertIsObject($response);
+        $this->assertInstanceOf($expected, $response);
+
+        /* Test response object attributes existence */
+        $this->assertObjectHasAttribute("reasonPhrase", $response);
+        $this->assertObjectHasAttribute("statusCode", $response);
+        $this->assertObjectHasAttribute("headers", $response);
+        $this->assertObjectHasAttribute("headerNames", $response);
+        $this->assertObjectHasAttribute("protocol", $response);
+        $this->assertObjectHasAttribute("stream", $response);
 
         /* Setup test case */
         $basePath = "://vendor/bin/";

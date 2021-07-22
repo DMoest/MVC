@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace daap19\Controller;
 
 use PHPUnit\Framework\TestCase;
+use \daap19\Yatzy\Yatzy;
 //use Psr\Http\Message\ResponseInterface;
 //use Webmozart\Assert\Assert;
 //use function Mos\Functions\renderView;
@@ -22,8 +23,8 @@ class ControllerYatzyTest extends TestCase
      */
     final protected function setUp(): void
     {
-        $this->yatzyObject = new \daap19\Yatzy\Yatzy();
-        $this->yatzyController = new Yatzy();
+        $this->yatzyObject = new Yatzy();
+        $this->yatzyController = new YatzyController();
 
         $_SESSION["yatzy"] = $this->yatzyObject;
     }
@@ -38,6 +39,9 @@ class ControllerYatzyTest extends TestCase
     }
 
 
+    /**
+     * @description Setter method to set $_POST variable submit response.
+     */
     final public function setupPostVariables(): void
     {
         $_POST["submit"] = "roll";
@@ -62,7 +66,7 @@ class ControllerYatzyTest extends TestCase
     {
         /* Test type and namespace existence */
         $this->assertIsObject($this->yatzyController);
-        $this->assertInstanceOf("daap19\Controller\Yatzy", $this->yatzyController);
+        $this->assertInstanceOf("daap19\Controller\YatzyController", $this->yatzyController);
 
         /* Test if class have expected methods */
         $this->assertTrue(method_exists($this->yatzyController, "renderView"), "Class does not have expected method renderView.");

@@ -193,6 +193,7 @@ class DiceGameTest extends TestCase
 
             $this->assertIsInt($index);
             $this->assertEquals($key, $index);
+            $this->assertEquals($player, $players[$index]);
 
             $this->diceGame->setNextPlayerIndex();
         }

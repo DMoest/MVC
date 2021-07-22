@@ -23,10 +23,10 @@ use function Mos\Functions\{
 
 
 /**
- * @name Yatzy
+ * @name YatzyController
  * @description Controller class for playing a game of Dice, used by router.
  */
-class Yatzy extends ControllerBase
+class YatzyController extends ControllerBase
 {
     private ?string $scoreBoard = null;
 
@@ -35,7 +35,7 @@ class Yatzy extends ControllerBase
      * @description renders view and returns response object for route controller class.
      * @return ResponseInterface
      */
-    public function renderView(): ResponseInterface
+    final public function renderView(): ResponseInterface
     {
         $yatzy = $_SESSION["yatzy"];
         $player = $yatzy->getCurrentPlayer();
@@ -66,7 +66,7 @@ class Yatzy extends ControllerBase
      * @description method to process POST action to return response object.
      * @return ResponseInterface
      */
-    public function processResponse(): ResponseInterface
+    final public function processResponse(): ResponseInterface
     {
         /* Catch POST request from dice__init form and store values to SESSION variable */
         $yatzy = $_SESSION["yatzy"];

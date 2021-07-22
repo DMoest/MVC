@@ -51,16 +51,16 @@ class DiceGame
          */
         if (intval($machine) === 1) {
             for ($i = 0; $i < $numOfPlayers -1; $i++) {
-                $newPlayer = new DicePlayer($credit, false);
+                $newPlayer = new DicePlayer($credit, 0);
                 $this->players[] = $newPlayer;
             }
 
-            $machinePlayer = new DicePlayer($credit, $machine);
+            $machinePlayer = new DicePlayer($credit, intval($machine));
             $this->players[] = $machinePlayer;
 
         } elseif (intval($machine) === 0) {
             for ($i = 0; $i < $numOfPlayers; $i++) {
-                $newPlayer = new DicePlayer($credit, false);
+                $newPlayer = new DicePlayer($credit, 0);
                 $this->players[] = $newPlayer;
             }
         }

@@ -64,7 +64,7 @@ class Dice
     /**
      * @method getFaces()
      * @description getter method to get the number of faces of the dice object.
-     * @return int|null of faces of the dice.
+     * @return int of faces of the dice.
      */
     public function getFaces(): int
     {

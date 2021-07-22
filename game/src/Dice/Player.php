@@ -43,7 +43,6 @@ class Player implements PlayerInterface
     /**
      * @method __construct()
      * @description YatzyPlayer class constructor method.
-     * @param bool $machinePlayer
      */
     public function __construct()
     {
