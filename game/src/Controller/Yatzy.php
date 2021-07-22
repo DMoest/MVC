@@ -109,25 +109,10 @@ class Yatzy extends ControllerBase
         }
 
         /* Play game */
-        $yatzy->play($player, $submit);
+        $yatzy->play($submit);
         $this->scoreBoard = $yatzy->printYatzyScoreBoard();
 
         // Return the redirect through parent class ControllerBase
         return $this->redirect(url("/yatzy__results/view"));
-    }
-
-
-    /**
-     * @name reset
-     * @description method to reset game through removing the variable from the session.
-     * @return ResponseInterface
-     */
-    public function reset(): ResponseInterface
-    {
-        /* Removes the session variable that is diceGame to */
-        unset($_SESSION["yatzy"]);
-
-        // Return the redirect through parent class ControllerBase
-        return $this->redirect(url("/yatzy__init/view"));
     }
 }

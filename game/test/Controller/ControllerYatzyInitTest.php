@@ -135,5 +135,6 @@ class ControllerYatzyInitTest extends TestCase
         $this->assertArrayHasKey('Location', $headers);
         $this->assertIsString($redirectPath);
         $this->assertEquals($basePath . "yatzy/view", $redirectPath);
+        $this->assertNotEmpty($_SESSION["yatzy"]);
     }
 }
