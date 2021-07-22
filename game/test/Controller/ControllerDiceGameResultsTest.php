@@ -12,9 +12,9 @@ use PHPUnit\Framework\TestCase;
 /**
  * Test cases for the controller Session.
  */
-class ControllerDiceGameTest extends TestCase
+class ControllerDiceGameResultsTest extends TestCase
 {
-    protected object $diceGameController;
+    protected object $diceGameResultsController;
     protected object $diceGameObject;
 
 
@@ -24,7 +24,8 @@ class ControllerDiceGameTest extends TestCase
     final protected function setUp(): void
     {
         $this->diceGameObject = new \daap19\Dice\DiceGame(2, 25, false);
-        $this->diceGameController = new DiceGame();
+        $this->diceGameResultsController = new DiceGameResults();
+        $this->diceGameObject->playGame(2, "roll"); // For results to show a diceHand must be played first.
 
         $_SESSION["diceGame"] = $this->diceGameObject;
     }
@@ -40,38 +41,28 @@ class ControllerDiceGameTest extends TestCase
 
 
     /**
-     * @description Setup for test case dependencies to $_POST variable attributes "dices" and "submit" for replicating user action.
+     * @description Test new DiceGameResults object.
      */
-    final public function setupDicesAndSubmit(): void
-    {
-        $_POST["dices"] = 2;
-        $_POST["submit"] = "roll";
-    }
-
-
-    /**
-     * @description Test new DiceGame object.
-     */
-    final public function testDiceGameObject(): void
+    final public function testDiceGameResultsObject(): void
     {
         /* Test type and namespace existence */
-        $this->assertIsObject($this->diceGameController);
-        $this->assertInstanceOf("daap19\Controller\DiceGame", $this->diceGameController);
+        $this->assertIsObject($this->diceGameResultsController);
+        $this->assertInstanceOf("daap19\Controller\DiceGameResults", $this->diceGameResultsController);
 
         /* Test if class have expected methods */
-        $this->assertTrue(method_exists($this->diceGameController, "renderView"), "Class does not have expected method renderView.");
-        $this->assertTrue(method_exists($this->diceGameController, "processResponse"), "Class does not have expected method processResponse.");
+        $this->assertTrue(method_exists($this->diceGameResultsController, "renderView"), "Class does not have expected method renderView.");
+        $this->assertTrue(method_exists($this->diceGameResultsController, "processResponse"), "Class does not have expected method processResponse.");
     }
 
 
     /**
-     * @description Test new DiceGame controller object renderView response.
+     * @description Test new DiceGameResults controller object renderView response.
      */
-    final public function testDiceGameMethodRenderView(): void
+    final public function testDiceGameResultsMethodRenderView(): void
     {
         /* Setup test case */
         $expected = "\Psr\Http\Message\ResponseInterface";
-        $renderResponse = $this->diceGameController->renderView();
+        $renderResponse = $this->diceGameResultsController->renderView();
 
         /* Test type and namespace existence */
         $this->assertIsObject($renderResponse);
@@ -88,12 +79,12 @@ class ControllerDiceGameTest extends TestCase
 
 
     /**
-     * @description Test DiceGame controller object response from renderView to contain status code 200.
+     * @description Test DiceGameResults controller object response from renderView to contain status code 200.
      */
-    final public function testDiceGameMethodRenderViewResponseStatusCode(): void
+    final public function testDiceGameResultsMethodRenderViewResponseStatusCode(): void
     {
         /* Setup test case */
-        $renderResponse = $this->diceGameController->renderView();
+        $renderResponse = $this->diceGameResultsController->renderView();
         $statusCode = $renderResponse->getStatusCode();
 
         /* Test case assertions */
@@ -103,11 +94,11 @@ class ControllerDiceGameTest extends TestCase
 
 
     /**
-     * @description Test DiceGame controller object response from renderView to contain expected reason phrase.
+     * @description Test DiceGameResults controller object response from renderView to contain expected reason phrase.
      */
-    final public function testDiceGameMethodRenderViewResponseReasonPhrase(): void
+    final public function testDiceGameResultsMethodRenderViewResponseReasonPhrase(): void
     {
-        $renderResponse = $this->diceGameController->renderView();
+        $renderResponse = $this->diceGameResultsController->renderView();
         $reasonPhrase = $renderResponse->getReasonPhrase();
 
         /* Test case assertions */
@@ -117,14 +108,13 @@ class ControllerDiceGameTest extends TestCase
 
 
     /**
-     * @description Test DiceGame controller method processResponse object to contain status code 301.
+     * @description Test DiceGameResults controller method processResponse object to contain status code 301.
      * Machine set to null to reach if-statement in tested method.
      */
-    final public function testDiceGameMethodProcessResponseStatusCodeNoMachine(): void
+    final public function testDiceGameResultsMethodProcessResponseStatusCodeNoMachine(): void
     {
         /* Setup test case */
-        $this->setupDicesAndSubmit();
-        $processedResponse = $this->diceGameController->processResponse();
+        $processedResponse = $this->diceGameResultsController->processResponse();
         $statusCode = $processedResponse->getStatusCode();
 
         /* Test case assertions */
@@ -134,14 +124,13 @@ class ControllerDiceGameTest extends TestCase
 
 
     /**
-     * @description Test DiceGame controller method processResponse redirect path.
+     * @description Test DiceGameResults controller method processResponse redirect path.
      */
-    final public function testDiceGameMethodProcessResponseRedirecPath(): void
+    final public function testDiceGameResultsMethodProcessResponseRedirecPath(): void
     {
         /* Setup test case */
         $basePath = "://vendor/bin/";
-        $this->setupDicesAndSubmit();
-        $processedResponse = $this->diceGameController->processResponse();
+        $processedResponse = $this->diceGameResultsController->processResponse();
         $headers = $processedResponse->getHeaders();
         $redirectPath = $headers["Location"][0];
 
@@ -151,6 +140,6 @@ class ControllerDiceGameTest extends TestCase
         $this->assertArrayHasKey('Location', $headers);
         $this->assertArrayHasKey(0, $headers['Location']);
         $this->assertIsString($redirectPath);
-        $this->assertEquals($basePath . "dice__results/view", $redirectPath);
+        $this->assertEquals($basePath . "dice/view", $redirectPath);
     }
 }

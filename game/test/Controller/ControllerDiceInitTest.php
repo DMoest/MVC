@@ -77,10 +77,12 @@ class ControllerDiceInitTest extends TestCase
     final public function testDiceInitMethodRenderView(): void
     {
         /* Setup test case */
+        $expected = "\Psr\Http\Message\ResponseInterface";
         $response = $this->diceInit->renderView();
 
         /* Test type and namespace existence */
         $this->assertIsObject($response);
+        $this->assertInstanceOf($expected, $response);
 
         /* Test response object attributes existence */
         $this->assertObjectHasAttribute("reasonPhrase", $response);
