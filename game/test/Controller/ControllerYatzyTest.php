@@ -99,12 +99,14 @@ class ControllerYatzyTest extends TestCase
     final public function testYatzyMethodProcessResponseStatusCode(): void
     {
         /* Setup test case */
+        $expected = "\Psr\Http\Message\ResponseInterface";
         $this->yatzyObject->play("roll");
         $this->setupPostVariables();
         $processedResponse = $this->yatzyController->processResponse();
         $statusCode = $processedResponse->getStatusCode();
 
         /* Test case assertions */
+        $this->assertInstanceOf($expected, $processedResponse);
         $this->assertIsInt($statusCode);
         $this->assertEquals(301, $statusCode);
     }

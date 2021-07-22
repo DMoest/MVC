@@ -68,8 +68,9 @@ class YatzyResults extends ControllerBase
         // Return the redirect through parent class ControllerBase, the redirect depends on the players amount of dice rolls.
         if ($playerRolls < 3) {
             return $this->redirect(url("/yatzy/view"));
-        } elseif ($playerRolls === 3) {
-            return $this->redirect(url("/yatzy__selectScores/view"));
         }
+
+        /* If player rolled 3 times or more return this redirect */
+        return $this->redirect(url("/yatzy__selectScores/view"));
     }
 }
