@@ -58,7 +58,6 @@ class DicePlayerTest extends TestCase
         $this->assertObjectHasAttribute("machine", $this->player);
 
         /* Test if class have expected methods */
-        $this->assertTrue(method_exists($this->player, "getScore"), "Class does not have expected method getScore.");
         $this->assertTrue(method_exists($this->player, "getCredit"), "Class does not have expected method getCredit.");
         $this->assertTrue(method_exists($this->player, "setCredit"), "Class does not have expected method setCredit.");
         $this->assertTrue(method_exists($this->player, "setWin"), "Class does not have expected method setWin.");
@@ -75,18 +74,6 @@ class DicePlayerTest extends TestCase
 
 
     /**
-     * @description Test DicePlayer getScore method return type.
-     */
-    final public function testDicePlayerGetScore(): void
-    {
-        $this->player->rollDices();
-
-        $score = $this->player->getScore();
-        $this->assertIsInt($score);
-    }
-
-
-    /**
      * @description Test DicePlayer getCredit method return type.
      */
     final public function testDicePlayerGetCredit(): void
@@ -97,25 +84,9 @@ class DicePlayerTest extends TestCase
 
 
     /**
-     * @description Test DicePlayer setCredit method functionality.
-     */
-    final public function testDicePlayerSetCredit(): void
-    {
-        $credit1 = $this->player->getCredit();
-        $credit2 = $credit1 * 3;
-        $this->player->setCredit($credit2);
-        $credit2 = $this->player->getCredit();
-
-        $this->assertIsInt($credit1);
-        $this->assertIsInt($credit2);
-        $this->assertNotEquals($credit1, $credit2);
-    }
-
-
-    /**
      * @description Test DicePlayer getWins method return type and value after class construct.
      */
-    final public function testDicePlayerGetWinsAfterClassConstruct(): void
+    final public function testDicePlayerGetWins(): void
     {
         $wins = $this->player->getWins();
         $this->assertIsInt($wins);
@@ -124,21 +95,9 @@ class DicePlayerTest extends TestCase
 
 
     /**
-     * @description Test DicePlayer setWins method return type after DicePlayer wins a game round.
-     */
-    final public function testDicePlayerGetWinsAfterPlayerWin(): void
-    {
-        $this->player->setWin();
-        $wins = $this->player->getWins();
-        $this->assertIsInt($wins);
-        $this->assertEquals(1, $wins);
-    }
-
-
-    /**
      * @description Test DicePlayer stop property after class construct.
      */
-    final public function testDicePlayerStopAfterConstruct(): void
+    final public function testDicePlayerHasStopped(): void
     {
         $stopped = $this->player->hasStopped();
         $this->assertIsBool($stopped);
@@ -147,21 +106,9 @@ class DicePlayerTest extends TestCase
 
 
     /**
-     * @description Test DicePlayer stop property after player stops.
-     */
-    final public function testDicePlayerStop(): void
-    {
-        $this->player->stop();
-        $stopped = $this->player->hasStopped();
-        $this->assertIsBool($stopped);
-        $this->assertEquals(true, $stopped);
-    }
-
-
-    /**
      * @description Test DicePlayer bust property after class construct.
      */
-    final public function testDicePlayerBustAfterConstruct(): void
+    final public function testDicePlayerIsBust(): void
     {
         $bust = $this->player->isBust();
         $this->assertIsBool($bust);
@@ -170,37 +117,13 @@ class DicePlayerTest extends TestCase
 
 
     /**
-     * @description Test DicePlayer bust property after player goes bust in a game round.
-     */
-    final public function testDicePlayerGoingBust(): void
-    {
-        $this->player->setBust();
-        $bust = $this->player->isBust();
-        $this->assertIsBool($bust);
-        $this->assertEquals(true, $bust);
-    }
-
-
-    /**
      * @description Test DicePlayer out property after class construct.
      */
-    final public function testDicePlayerOutAfterConstruct(): void
+    final public function testDicePlayerIsOut(): void
     {
         $out = $this->player->isOut();
         $this->assertIsBool($out);
         $this->assertEquals(false, $out);
-    }
-
-
-    /**
-     * @description Test DicePlayer out property after player is out of the game.
-     */
-    final public function testDicePlayerOut(): void
-    {
-        $this->player->setOut();
-        $out = $this->player->isOut();
-        $this->assertIsBool($out);
-        $this->assertEquals(true, $out);
     }
 
 

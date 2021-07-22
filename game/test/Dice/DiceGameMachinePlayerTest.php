@@ -19,7 +19,7 @@ class DiceGameMachinePlayerTest extends TestCase
      */
     final protected function setUp(): void
     {
-        $this->diceGame = new DiceGame(2, 25, true);
+        $this->diceGame = new DiceGame21(2, 25, true);
     }
 
 

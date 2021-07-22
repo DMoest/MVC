@@ -2,9 +2,13 @@
 
 declare(strict_types=1);
 
-namespace daap19\Yatzy;
 
+/**
+ * Namespace declared and others in use.
+ */
+namespace daap19\Yatzy;
 use PHPUnit\Framework\TestCase;
+
 
 /**
  * Test cases for Dice class.

@@ -19,7 +19,7 @@ class DiceGameLogicMethodsTest extends TestCase
      */
     final protected function setUp(): void
     {
-        $this->diceGame = new DiceGame(2, 25, false);
+        $this->diceGame = new DiceGame21(2, 25, false);
     }
 
 
@@ -65,7 +65,7 @@ class DiceGameLogicMethodsTest extends TestCase
 
         foreach ($players as $player) {
             $this->diceGame->checkScore($player);
-            $score = $player->getScore();
+            $score = $player->getSumTotal();
             $stopped = $player->hasStopped();
             $bust = $player->isBust();
 
@@ -91,7 +91,7 @@ class DiceGameLogicMethodsTest extends TestCase
 
         $this->diceGame->checkScore($player);
 
-        $score = $player->getScore();
+        $score = $player->getSumTotal();
         $stopped = $player->hasStopped();
         $bust = $player->isBust();
 

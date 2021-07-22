@@ -1,10 +1,12 @@
 <?php
 
+
 /**
- * Namespace.
+ * Namespace declared and others in use.
  */
 namespace daap19\Yatzy;
 use daap19\Dice\DiceHand;
+
 
 /**
  * @name YatzyDiceHand

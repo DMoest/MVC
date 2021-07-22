@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
+
 /**
  * Namespace for this module & other namespaces in use.
  */
 namespace daap19\Controller;
-
 use Mos\Controller\ControllerBase;
 use Psr\Http\Message\ResponseInterface;
-use daap19\Dice\DiceGame;
+use daap19\Dice\DiceGame21;
+
 
 /**
  * Functions usage.
@@ -69,7 +70,8 @@ class DiceInit extends ControllerBase
         }
 
         /* Create new DiceGame object on SESSION variable */
-        $diceGame = new DiceGame($players, $startCredit, $machine);
+        $diceGame = new DiceGame21($players, $startCredit, $machine);
+
         $_SESSION["diceGame"] = $diceGame;
 
         // Return the redirect through parent class ControllerBase

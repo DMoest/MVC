@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Test cases for the controller Error.
+ * Test suite for the controller Error.
  */
 class ControllerErrorTest extends TestCase
 {

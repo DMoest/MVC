@@ -2,16 +2,18 @@
 
 declare(strict_types=1);
 
-namespace daap19\Controller;
-
-use PHPUnit\Framework\TestCase;
-use \daap19\Yatzy\Yatzy;
-//use Psr\Http\Message\ResponseInterface;
-//use Webmozart\Assert\Assert;
-//use function Mos\Functions\renderView;
 
 /**
- * Test cases for the controller class YatzyFinalResults.
+ * Namespace declared and others in use.
+ */
+namespace daap19\UnitTests;
+use daap19\Controller\YatzyFinalResults;
+use \daap19\Yatzy\Yatzy;
+use PHPUnit\Framework\TestCase;
+
+
+/**
+ * Test suite for the controller class YatzyFinalResults.
  */
 class ControllerYatzyFinalResultsTest extends TestCase
 {

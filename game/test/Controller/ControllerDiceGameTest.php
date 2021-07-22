@@ -2,17 +2,18 @@
 
 declare(strict_types=1);
 
-namespace daap19\Controller;
-
-use PHPUnit\Framework\TestCase;
-use \daap19\Dice\DiceGame;
-//use \daap19\Controller\DiceGameController;
-//use Psr\Http\Message\ResponseInterface;
-//use Webmozart\Assert\Assert;
-//use function Mos\Functions\renderView;
 
 /**
- * Test cases for the controller Session.
+ * Namespace declared and others in use.
+ */
+namespace daap19\UnitTests;
+use daap19\Controller\DiceGameController;
+use PHPUnit\Framework\TestCase;
+use \daap19\Dice\DiceGame21;
+
+
+/**
+ * Test suite for the controller Session.
  */
 class ControllerDiceGameTest extends TestCase
 {
@@ -25,7 +26,7 @@ class ControllerDiceGameTest extends TestCase
      */
     final protected function setUp(): void
     {
-        $this->diceGameObject = new DiceGame(2, 25, false);
+        $this->diceGameObject = new DiceGame21(2, 25, false);
         $this->diceGameController = new DiceGameController();
 
         $_SESSION["diceGame"] = $this->diceGameObject;

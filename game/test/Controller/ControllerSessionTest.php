@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Test cases for the controller Session.
+ * Test suite for the controller Session.
  */
 class ControllerSessionTest extends TestCase
 {

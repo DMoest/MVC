@@ -1,5 +1,6 @@
 <?php
 
+
 /**
  * Namespace declaration & other namespaces in use.
  */
@@ -7,6 +8,7 @@ namespace daap19\Yatzy;
 use daap19\Dice\Player;
 use daap19\Dice\ResultsAsStringTrait;
 use daap19\Dice\LastRollAsStringTrait;
+
 
 /**
  * Functions in use.

@@ -1,9 +1,11 @@
 <?php
 
+
 /**
  * Namespace declaration & other namespaces in use.
  */
 namespace daap19\Dice;
+
 
 /**
  * Functions in use.
@@ -56,19 +58,6 @@ class DicePlayer extends Player implements DicePlayerInterface
         $this->bust = false;
         $this->out = false;
         $this->machine = boolval($machinePlayer); // convert back to boolval.
-    }
-
-
-    /**
-     * @method getScore()
-     * @description returns a sum of all values in array of results.
-     * @return int as player score.
-     */
-    public function getScore(): int
-    {
-        $valueArray = $this->getResults();
-
-        return array_sum($valueArray);
     }
 
 

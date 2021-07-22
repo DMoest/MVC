@@ -1,9 +1,11 @@
 <?php
 
+
 /**
  * Namespace declaration & other namespaces in use.
  */
 namespace daap19\Dice;
+
 
 /**
  * Interface DicePlayerInterface
@@ -18,7 +20,6 @@ namespace daap19\Dice;
 interface DicePlayerInterface
 {
     public function __construct(int $startCredit, int $machinePlayer);
-    public function getScore(): int;
     public function getCredit(): int;
     public function setCredit(int $newCredit): void;
     public function stop(): void;

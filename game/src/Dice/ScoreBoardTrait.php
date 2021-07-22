@@ -1,5 +1,6 @@
 <?php
 
+
 /**
  * Namespace declaration & other namespaces in use.
  */
@@ -37,7 +38,7 @@ trait ScoreBoardTrait
             /* Collect data from player object thru its methods */
             $stringRes = $player->getResultsAsString();
             $average = $player->getAverage();
-            $totalScore = $player->getScore();
+            $totalScore = $player->getSumTotal();
             $playerCredit = $player->getCredit();
             $playerWins = $player->getWins();
             $stopped = $player->hasStopped();
@@ -99,7 +100,7 @@ trait ScoreBoardTrait
             /* Results as string */
             $stringRes = $player->getLastRollAsString();
             $average = $player->getAverage();
-            $totalScore = $player->getScore();
+            $totalScore = $player->getSumTotal();
 
             /* Build elements */
             $scoreBoard .= "<div class=\"diceForm__results--player-" . $key . "\">";

@@ -8,12 +8,17 @@
 
 declare(strict_types=1);
 
+
 use FastRoute\RouteCollector;
+
 
 $router = $router ?? new RouteCollector(
     new \FastRoute\RouteParser\Std(),
     new \FastRoute\DataGenerator\MarkBased()
 );
+
+
+/* - Example Routes ----------------------------------------------- */
 
 $router->addRoute("GET", "/test", function () {
     // A quick and dirty way to test the router or the request.

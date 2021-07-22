@@ -11,6 +11,7 @@ namespace daap19\Dice;
  */
 include(__DIR__ . "/../../config/config.php");
 
+
 /**
  * @name Dice
  * @description Class Dice to represent a dice.

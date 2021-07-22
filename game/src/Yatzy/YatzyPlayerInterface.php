@@ -1,9 +1,11 @@
 <?php
 
+
 /**
  * Namespace declaration & other namespaces in use.
  */
 namespace daap19\Yatzy;
+
 
 /**
  * Interface DicePlayerInterface

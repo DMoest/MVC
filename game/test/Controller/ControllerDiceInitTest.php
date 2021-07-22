@@ -2,15 +2,17 @@
 
 declare(strict_types=1);
 
-namespace daap19\Controller;
-
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ResponseInterface;
-use Webmozart\Assert\Assert;
-use function Mos\Functions\renderView;
 
 /**
- * Test cases for the controller Session.
+ * Namespace declared and others in use.
+ */
+namespace daap19\UnitTests;
+use daap19\Controller\DiceInit;
+use PHPUnit\Framework\TestCase;
+
+
+/**
+ * Test suite for the controller Session.
  */
 class ControllerDiceInitTest extends TestCase
 {

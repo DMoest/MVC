@@ -19,7 +19,7 @@ class DiceGameScoreBoardTraitTest extends TestCase
      */
     final protected function setUp(): void
     {
-        $this->diceGame = new DiceGame(3, 25, false);
+        $this->diceGame = new DiceGame21(3, 25, false);
     }
 
 

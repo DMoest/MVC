@@ -1,9 +1,11 @@
 <?php
 
+
 /**
  * Namespace.
  */
 namespace daap19\Dice;
+
 
 /**
  * @name DiceHand

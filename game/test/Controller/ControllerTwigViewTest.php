@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Test cases for the controller TwigView.
+ * Test suite for the controller TwigView.
  */
 class ControllerTwigViewTest extends TestCase
 {

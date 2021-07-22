@@ -1,12 +1,12 @@
 <?php
 
+
 /**
  * Namespace declaration & other namespaces in use.
  */
 namespace daap19\Yatzy;
-
 use daap19\Dice\ScoreBoardTrait;
-use JetBrains\PhpStorm\Pure;
+
 
 /**
  * Functions in use.

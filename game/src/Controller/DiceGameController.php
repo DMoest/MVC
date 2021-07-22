@@ -6,10 +6,9 @@ declare(strict_types=1);
  * Namespace for this module.
  */
 namespace daap19\Controller;
-
 use Mos\Controller\ControllerBase;
 use Psr\Http\Message\ResponseInterface;
-//use Nyholm\Psr7\Factory\Psr17Factory;
+
 
 /**
  * Functions usage.
@@ -38,21 +37,23 @@ class DiceGameController extends ControllerBase
      */
     public function renderView(): ResponseInterface
     {
-        $diceGame = $_SESSION["diceGame"];
-        $players = $diceGame->getPlayers();
-        $currentPlayer = $players[$diceGame->getPlayerIndex()];
+        $this->diceGame = $_SESSION["diceGame"];
+        $players = $this->diceGame->getPlayers();
+        $playerIndex = $this->diceGame->getPlayerIndex();
+        $player = $players[$playerIndex];
+        $credit = $player->getCredit();
 
         $data = [
             "header" => "Dice DiceGame 21",
             "message" => "DiceGame on, roll them dices!",
             "action" => url("/dice/process"),
-            "round" => $diceGame->getRound(),
-            "players" => $diceGame->getPlayers(),
-            "score" => $currentPlayer->getScore(),
-            "credit" => $currentPlayer->getCredit(),
-            "numberOfPlayers" => count($diceGame->getPLayers()),
-            "playerNumber" => $diceGame->getPlayerIndex() +1,
-            "scoreBoard" => $diceGame->printDiceScoreBoard(),
+            "round" => $this->diceGame->getRound(),
+            "players" => $this->diceGame->getPlayers(),
+            "score" => $player->getSumTotal(),
+            "credit" => $credit,
+            "numberOfPlayers" => count($this->diceGame->getPLayers()),
+            "playerNumber" => $this->diceGame->getPlayerIndex() +1,
+            "scoreBoard" => $this->diceGame->printDiceScoreBoard(),
         ];
 
         $body = renderView("layout/dice.php", $data);

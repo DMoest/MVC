@@ -2,9 +2,14 @@
 
 declare(strict_types=1);
 
-namespace daap19\Dice;
 
+/**
+ * Namespace declared and others in use.
+ */
+namespace daap19\UnitTests;
+use \daap19\Dice\DiceGame21;
 use PHPUnit\Framework\TestCase;
+
 
 /**
  * Test cases for Dice class.
@@ -19,7 +24,7 @@ class DiceGameTest extends TestCase
      */
     final protected function setUp(): void
     {
-        $this->diceGame = new DiceGame(2, 25, false);
+        $this->diceGame = new DiceGame21(2, 25, false);
     }
 
 
@@ -39,7 +44,7 @@ class DiceGameTest extends TestCase
     {
         /* Test class namespace */
         $this->assertIsObject($this->diceGame);
-        $this->assertInstanceOf("daap19\Dice\DiceGame", $this->diceGame);
+        $this->assertInstanceOf("daap19\Dice\DiceGame21", $this->diceGame);
 
         /* Test class attributes existence */
         $this->assertObjectHasAttribute("players", $this->diceGame);

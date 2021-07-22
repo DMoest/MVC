@@ -1,9 +1,11 @@
 <?php
 
+
 /**
  * Namespaces.
  */
 namespace daap19\Dice;
+
 
 /**
  * Class DiceGraphic

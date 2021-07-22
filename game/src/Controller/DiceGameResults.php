@@ -6,10 +6,8 @@ declare(strict_types=1);
  * Namespace for this module.
  */
 namespace daap19\Controller;
-
 use Mos\Controller\ControllerBase;
 use Psr\Http\Message\ResponseInterface;
-//use Nyholm\Psr7\Factory\Psr17Factory;
 
 
 /**

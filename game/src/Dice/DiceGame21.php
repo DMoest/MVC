@@ -1,9 +1,11 @@
 <?php
 
+
 /**
  * Namespace declaration & other namespaces in use.
  */
 namespace daap19\Dice;
+
 
 /**
  * Functions in use.
@@ -22,11 +24,12 @@ namespace daap19\Dice;
  */
 include(__DIR__ . "/../../config/config.php");
 
+
 /**
  * Class Dice
  * @package Daap19\Dice
  */
-class DiceGame
+class DiceGame21
 {
     use ScoreBoardTrait;
 
@@ -43,13 +46,14 @@ class DiceGame
      * @param int $credit as the amount of credit the player start with.
      * @param bool $machine as a indicator a player should be played by the machine.
      */
-    public function __construct(int $numOfPlayers, int $credit, bool $machine)
+    public function __construct(int $numOfPlayers = 2, int $credit = 25, bool $machine)
     {
         /**
          * Setup computer player
          * @description Setup computer controlled player if variable validates to boolean true else if false only user players.
          */
         if (intval($machine) === 1) {
+
             for ($i = 0; $i < $numOfPlayers -1; $i++) {
                 $newPlayer = new DicePlayer($credit, 0);
                 $this->players[] = $newPlayer;
@@ -137,7 +141,7 @@ class DiceGame
     {
         $stopped = intval($player->hasStopped());
         $bust = intval($player->isBust());
-        $score = $player->getScore();
+        $score = $player->getSumTotal();
 
         /**
          * Computer run until conditions are met.
@@ -162,7 +166,7 @@ class DiceGame
              * Check score, check if player has stopped, check if player is bust and last get the new player score.
              */
             $this->checkScore($player);
-            $score = $player->getScore();
+            $score = $player->getSumTotal();
             $bust = intval($player->isBust());
             $stopped = intval($player->hasStopped());
         }
@@ -267,7 +271,7 @@ class DiceGame
     final public function checkScore(object $player): void
     {
         $stopped = intval($player->hasStopped());
-        $score = $player->getScore();
+        $score = $player->getSumTotal();
 
         if ($score > 21 && $stopped !== 1) {
             $player->stop();
@@ -310,7 +314,7 @@ class DiceGame
         for ($i = 0; $i < $numOfPlayers; $i++) {
             /* get player data */
             $player = $this->players[$i];
-            $score = $player->getScore();
+            $score = $player->getSumTotal();
 
             /* Only proceed if player is NOT bust in the game round */
             if (intval($player->isBust()) !== 1 && intval($player->isOut()) !== 1) {
@@ -324,7 +328,7 @@ class DiceGame
          * Sort out the winners from array $potentialWinners with max() function.
          */
         foreach ($potentialWinners as $player) {
-            $score = $player->getScore();
+            $score = $player->getSumTotal();
 
             /* Include all players who have the winning score */
             if ($score === max($potentialWinnerVal)) {

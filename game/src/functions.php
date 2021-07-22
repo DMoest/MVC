@@ -2,14 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mos\Functions;
 
+namespace Mos\Functions;
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
-
-/**
- * Functions.
- */
 
 
 /**

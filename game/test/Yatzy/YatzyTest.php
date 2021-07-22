@@ -2,9 +2,13 @@
 
 declare(strict_types=1);
 
-namespace daap19\Yatzy;
 
+/**
+ * Namespace declared and others in use.
+ */
+namespace daap19\Yatzy;
 use PHPUnit\Framework\TestCase;
+
 
 /**
  * Test cases for Dice class.
@@ -60,114 +64,6 @@ class YatzyTest extends TestCase
 
 
     /**
-     * @description Test Yatzy play method with argument "roll" simulating player move roll dices.
-     */
-    final public function testYatzyPlayRollDices(): void
-    {
-        /* Setup test case */
-        $this->yatzy->play("roll");
-        $player = $this->yatzy->getCurrentPlayer();
-        $rolls = $player->getRolls();
-
-        /* Test case assertion */
-        $this->assertIsInt($rolls);
-        $this->assertEquals(1, $rolls);
-    }
-
-
-    /**
-     * @description Test Yatzy play method with argument "stop" simulating player move stop.
-     */
-    final public function testYatzyPlayStop(): void
-    {
-        /* Setup test case */
-        $player = $this->yatzy->getCurrentPlayer();
-        $this->yatzy->play("stop");
-        $diceHand = $player->getDiceHand();
-        $lastRoll = $diceHand->getLastRoll();
-        $stopped = $player->hasStopped();
-
-        /* Test case assertion */
-        $this->assertIsIterable($lastRoll);
-        $this->assertIsArray($lastRoll);
-        $this->assertEmpty($lastRoll);
-        $this->assertIsBool($stopped);
-        $this->assertTrue($stopped);
-    }
-
-
-    /**
-     * @description Test Yatzy play method with argument "roll" simulating player move roll dices.
-     */
-    final public function testYatzyPlayRollDicesThreeTimes(): void
-    {
-        /* Setup test case */
-        $this->yatzy = new Yatzy(2);
-
-        $this->yatzy->play("roll");
-
-        $round = $this->yatzy->getRound();
-        $index = $this->yatzy->getPlayerIndex();
-        $player = $this->yatzy->getCurrentPlayer();
-        $rolls = $player->getRolls();
-
-        $this->assertIsInt($round);
-        $this->assertEquals(0, $round);
-        $this->assertIsInt($rolls);
-        $this->assertEquals(1, $rolls);
-        $this->assertIsInt($index);
-        $this->assertEquals(0, $index);
-
-        $this->yatzy->play("roll");
-
-        $round = $this->yatzy->getRound();
-        $index = $this->yatzy->getPlayerIndex();
-        $player = $this->yatzy->getCurrentPlayer();
-        $rolls = $player->getRolls();
-
-        $this->assertIsInt($round);
-        $this->assertEquals(0, $round);
-        $this->assertIsInt($rolls);
-        $this->assertEquals(2, $rolls);
-        $this->assertIsInt($index);
-        $this->assertEquals(0, $index);
-
-        $this->yatzy->play("roll");
-
-        $round = $this->yatzy->getRound();
-        $index = $this->yatzy->getPlayerIndex();
-        $player = $this->yatzy->getCurrentPlayer();
-        $rolls = $player->getRolls();
-
-        $this->assertIsInt($round);
-        $this->assertEquals(0, $round);
-        $this->assertIsInt($rolls);
-        $this->assertEquals(3, $rolls);
-        $this->assertIsInt($index);
-        $this->assertEquals(0, $index);
-
-        $this->yatzy->play("roll");
-
-        $round = $this->yatzy->getRound();
-        $index = $this->yatzy->getPlayerIndex();
-        $player = $this->yatzy->getCurrentPlayer();
-        $rolls = $player->getRolls();
-
-        $this->assertIsInt($round);
-        $this->assertEquals(1, $round);
-        $this->assertIsInt($rolls);
-        $this->assertEquals(0, $rolls);
-        $this->assertIsInt($index);
-        $this->assertEquals(1, $index);
-
-
-
-        /* Test case assertion */
-
-    }
-
-
-    /**
      * @description Test Yatzy method getRound.
      */
     final public function testYatzyGetRound(): void
@@ -178,30 +74,6 @@ class YatzyTest extends TestCase
         /* Test case assertions */
         $this->assertIsInt($round);
         $this->assertEquals(0, $round);
-    }
-
-
-    /**
-     * @description Test Yatzy method getRound.
-     */
-    final public function testYatzySetNextRound(): void
-    {
-        /* Setup test case */
-        $firstRound = $this->yatzy->getRound();
-        $this->yatzy->setNextRound();
-        $secondRound = $this->yatzy->getRound();
-        $this->yatzy->setNextRound();
-        $thirdRound = $this->yatzy->getRound();
-
-        /* Test case assertions */
-        $this->assertIsInt($firstRound);
-        $this->assertEquals(0, $firstRound);
-
-        $this->assertIsInt($secondRound);
-        $this->assertEquals(1, $secondRound);
-
-        $this->assertIsInt($thirdRound);
-        $this->assertEquals(2, $thirdRound);
     }
 
 

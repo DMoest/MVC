@@ -2,9 +2,13 @@
 
 declare(strict_types=1);
 
-namespace daap19\Yatzy;
 
+/**
+ * Namespace declared and others in use.
+ */
+namespace daap19\Yatzy;
 use PHPUnit\Framework\TestCase;
+
 
 /**
  * Test cases for Dice class.
@@ -101,121 +105,6 @@ class YatzyPlayerTest extends TestCase
         /* Case Assertions */
         $this->assertIsInt($rolls);
         $this->assertEquals(3, $rolls);
-    }
-
-
-    /**
-     * @description Test YatzyPlayer saveScores method with zero count of chosen value.
-     */
-    final public function testYatzyPlayerSaveScoresNoValue(): void
-    {
-        /* Setup case */
-        $diceHand = [1, 2, 3, 4, 5];
-        $referenceValue = 6;
-        $this->player->saveScores($diceHand, $referenceValue);
-        $savedScores = $this->player->getPlayerScore();
-
-        /* Test case assertions */
-        $this->assertIsIterable($savedScores);
-        $this->assertIsArray($savedScores);
-        $this->assertArrayHasKey($referenceValue -1, $savedScores);
-
-        foreach ($savedScores as $key => $score) {
-            if ($key !== $referenceValue-1) {
-                $this->assertNull($score);
-            } elseif ($key === $referenceValue-1) {
-                $this->assertIsInt($score);
-                $this->assertEquals(0, $score);
-            }
-        }
-    }
-
-
-    /**
-     * @description Test YatzyPlayer saveScores method.
-     */
-    final public function testYatzyPlayerSaveScoresMultiplesOfDiceValue(): void
-    {
-        /* Setup case */
-        $diceHand = [1, 3, 3, 3, 5];
-        $referenceValue = 3;
-        $this->player->saveScores($diceHand, $referenceValue);
-        $savedScores = $this->player->getPlayerScore();
-
-        /* Test case assertions */
-        $this->assertIsIterable($savedScores);
-        $this->assertIsArray($savedScores);
-        $this->assertArrayHasKey($referenceValue -1, $savedScores);
-
-        foreach ($savedScores as $key => $score) {
-            if ($key !== $referenceValue-1) {
-                $this->assertNull($score);
-            } elseif ($key === $referenceValue-1) {
-                $this->assertIsInt($score);
-                $this->assertEquals(9, $score);
-            }
-        }
-    }
-
-
-    /**
-     * @description Test YatzyPlayer getAmountOfSaveScores method.
-     */
-    final public function testYatzyPlayerGetAmountOfSavedScores(): void
-    {
-        /* Setup case */
-        $diceHand = [1, 3, 3, 3, 5];
-        $this->player->saveScores($diceHand, 3);
-        $this->player->saveScores($diceHand, 5);
-        $amountOfSavedScores = $this->player->getAmountOfScoresSaved();
-
-        /* Test case assertions */
-        $this->assertIsInt($amountOfSavedScores);
-        $this->assertEquals(2, $amountOfSavedScores);
-    }
-
-
-    /**
-     * @description Test YatzyPlayer saveScoresSum method.
-     */
-    final public function testYatzyPlayerGetSavedScoresSum(): void
-    {
-        /* Setup case */
-        $diceHand = [1, 4, 3, 4, 5];
-        $this->player->saveScores($diceHand, 3);
-        $this->player->saveScores($diceHand, 4);
-        $savedScoresSum = $this->player->getPlayerScoreSum();
-
-        /* Test case assertions */
-        $this->assertIsInt($savedScoresSum);
-        $this->assertEquals(11, $savedScoresSum);
-    }
-
-
-    /**
-     * @description Test YatzyPlayer getPlayerScores method.
-     */
-    final public function testYatzyPlayerGetPlayerScores(): void
-    {
-        /* Setup case */
-        $diceHand = $this->player->rollDices();
-        $referenceValue = $diceHand[0];
-        $this->player->saveScores($diceHand, $referenceValue);
-        $savedScores = $this->player->getPlayerScore();
-        $occurrence = 0;
-
-        /* Count reference value occurence */
-        foreach ($diceHand as $diceValue) {
-            if ($diceValue === $referenceValue) {
-                $occurrence++;
-            }
-        }
-
-        /* Test case assertions */
-        $this->assertIsIterable($savedScores);
-        $this->assertIsArray($savedScores);
-        $this->assertArrayHasKey($referenceValue -1, $savedScores);
-        $this->assertEquals($referenceValue, ($savedScores[$referenceValue-1] / $occurrence));
     }
 
 

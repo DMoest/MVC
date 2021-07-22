@@ -2,16 +2,18 @@
 
 declare(strict_types=1);
 
-namespace daap19\Controller;
-
-use PHPUnit\Framework\TestCase;
-use \daap19\Dice\DiceGame;
-//use Psr\Http\Message\ResponseInterface;
-//use Webmozart\Assert\Assert;
-//use function Mos\Functions\renderView;
 
 /**
- * Test cases for the controller class YatzyInit.
+ * Namespace declared and others in use.
+ */
+namespace daap19\UnitTests;
+use daap19\Controller\YatzyInit;
+use \daap19\Yatzy\Yatzy;
+use PHPUnit\Framework\TestCase;
+
+
+/**
+ * Test suite for the controller class YatzyInit.
  */
 class ControllerYatzyInitTest extends TestCase
 {
@@ -41,7 +43,7 @@ class ControllerYatzyInitTest extends TestCase
      */
     final public function startSession(): void
     {
-        $_SESSION["yatzy"] = new DiceGame(2, 25, false);
+        $_SESSION["yatzy"] = new Yatzy();
     }
 
 
