@@ -101,9 +101,10 @@ class YatzySelectScores extends ControllerBase
         if ($playerSavedScores < $maxScores) {
             // Return the redirect through parent class ControllerBase
             return $this->redirect(url("/yatzy/view"));
-        } elseif ($playerSavedScores === $maxScores) {
-            // Return the redirect through parent class ControllerBase
-            return $this->redirect(url("/yatzy__finalResults/view"));
         }
+
+        // Return the redirect through parent class ControllerBase if player saved $maxScores or more.
+        return $this->redirect(url("/yatzy__finalResults/view"));
+
     }
 }
