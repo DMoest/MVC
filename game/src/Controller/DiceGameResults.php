@@ -67,7 +67,7 @@ class DiceGameResults extends ControllerBase
         $players = $diceGame->getPlayers();
         $playerIndex = $diceGame->getPlayerIndex();
         $player = $players[$playerIndex];
-        $lastIndex = count($players) -1;
+        $lastIndex = array_key_last($players);
         $bust = intval($player->isBust());
         $stopped = intval($player->hasStopped());
 

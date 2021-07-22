@@ -109,17 +109,63 @@ class ControllerDiceGameResultsTest extends TestCase
 
     /**
      * @description Test DiceGameResults controller method processResponse object to contain status code 301.
-     * Machine set to null to reach if-statement in tested method.
+     * Player stopped to reach if-statement in tested method.
      */
-    final public function testDiceGameResultsMethodProcessResponseStatusCodeNoMachine(): void
+    final public function testDiceGameResultsMethodProcessResponsePlayerStop(): void
     {
         /* Setup test case */
-        $processedResponse = $this->diceGameResultsController->processResponse();
-        $statusCode = $processedResponse->getStatusCode();
+
+        $players = $this->diceGameObject->getPlayers();
+        $player = $players[$this->diceGameObject->getPlayerIndex()];
+        $player->stop();
+        $stopped = $player->hasStopped();
+        $this->diceGameResultsController->processResponse();
 
         /* Test case assertions */
-        $this->assertIsInt($statusCode);
-        $this->assertEquals(301, $statusCode);
+        $this->assertIsBool($stopped);
+        $this->assertEquals(true, $stopped);
+    }
+
+
+    /**
+     * @description Test DiceGameResults controller method processResponse object to contain status code 301.
+     * Player stopped to reach if-statement in tested method.
+     */
+    final public function testDiceGameResultsMethodProcessResponsePlayerBust(): void
+    {
+        /* Setup test case */
+        $players = $this->diceGameObject->getPlayers();
+        $player = $players[$this->diceGameObject->getPlayerIndex()];
+        $player->setBust();
+        $bust = $player->isBust();
+        $this->diceGameResultsController->processResponse();
+
+        /* Test case assertions */
+        $this->assertIsBool($bust);
+        $this->assertEquals(true, $bust);
+    }
+
+
+    /**
+     * @description Test DiceGameResults controller method processResponse object to contain status code 301.
+     * Player stopped to reach if-statement in tested method.
+     */
+    final public function testDiceGameResultsMethodProcessResponseLastPlayerStopped(): void
+    {
+        /* Setup test case */
+        $this->diceGameObject->setNextPlayerIndex();
+        $players = $this->diceGameObject->getPlayers();
+        $playerIndex = $this->diceGameObject->getPlayerIndex();
+        $player = $players[$playerIndex];
+        $player->stop();
+        $stopped = $player->hasStopped();
+        $this->diceGameResultsController->processResponse();
+        $lastIndex = array_key_last($players);
+
+        /* Test case assertions */
+        $this->assertIsBool($stopped);
+        $this->assertEquals(true, $stopped);
+        $this->assertEquals($lastIndex, $playerIndex);
     }
 
 
