@@ -3,8 +3,8 @@
  * Set the error reporting. Only for development environments, remove if site goes into production.
  */
 
-error_reporting(-1); //Report all types of errors.
-ini_set("display_errors", 1); //Display all errors.
+//error_reporting(-1); //Report all types of errors.
+//ini_set("display_errors", 1); //Display all errors.
 
 /**
  * Default exception handler.
