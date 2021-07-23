@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* --- COLORS --- */
 /* black & white */
 /* grey scale colors */
@@ -141,6 +142,70 @@ body {
 
 main {
   min-height: 20em;
+}
+
+.dice {
+  font-size: 32px;
+  /**
+   * CSS sprite for a dice with six faces.
+   */
+  /**
+   * Style a dice using UTF-8 characters.
+   */
+}
+.dice-utf8 {
+  font-size: 32px;
+}
+.dice-sprite {
+  display: inline-block;
+  padding: 0;
+  margin: 0 4px 0 0;
+  width: 32px;
+  height: 32px;
+  font-style: normal;
+  background: url(./../../../img/dice-faces.jpg) no-repeat;
+}
+.dice-1::after {
+  content: "⚀";
+}
+.dice-2::after {
+  content: "⚁";
+}
+.dice-3::after {
+  content: "⚂";
+}
+.dice-4::after {
+  content: "⚃";
+}
+.dice-5::after {
+  content: "⚄";
+}
+.dice-6::after {
+  content: "⚅";
+}
+
+.dice-sprite.dice-1 {
+  background-position: -160px 0;
+}
+
+.dice-sprite.dice-2 {
+  background-position: -128px 0;
+}
+
+.dice-sprite.dice-3 {
+  background-position: -96px 0;
+}
+
+.dice-sprite.dice-4 {
+  background-position: -64px 0;
+}
+
+.dice-sprite.dice-5 {
+  background-position: -32px 0;
+}
+
+.dice-sprite.dice-6 {
+  background-position: 0 0;
 }
 
 .diceForm,

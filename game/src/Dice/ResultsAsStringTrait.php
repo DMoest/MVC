@@ -43,16 +43,16 @@ trait ResultsAsStringTrait
     public function getLastRollAsString(): string
     {
         $numberOfDices = count($this->lastRoll);
-        $outputString = "";
+        $lastRollString = "";
 
         foreach ($this->lastRoll as $key => $diceValue) {
             if ($key < $numberOfDices -1) {
-                $outputString .= $diceValue . ", ";
+                $lastRollString .= $diceValue . ", ";
             } else if ($key === $numberOfDices -1) {
-                $outputString .= $diceValue . " = " . array_sum($this->lastRoll);
+                $lastRollString .= $diceValue . " = " . array_sum($this->lastRoll);
             }
         }
 
-        return $outputString;
+        return $lastRollString;
     }
 }

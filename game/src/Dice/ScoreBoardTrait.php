@@ -97,8 +97,9 @@ trait ScoreBoardTrait
         $scoreBoard = "<div class=\"diceForm__results--container\">";
 
         foreach ($this->players as $key => $player) {
+
             /* Results as string */
-            $stringRes = $player->getLastRollAsString();
+            $lastResultsString = $player->getLastRollAsString();
             $average = $player->getAverage();
             $totalScore = $player->getSumTotal();
 
@@ -108,7 +109,7 @@ trait ScoreBoardTrait
 
             /* Only add elements if player have results */
             if ($totalScore > 0) {
-                $scoreBoard .= "<p>$stringRes</p>";
+                $scoreBoard .= "<p>$lastResultsString</p>";
                 $scoreBoard .= "<p>Average dice value = " . $average . "</p>";
                 $scoreBoard .= "<p>Player " . ($key+1) . " score = " . $totalScore . "</p>";
             }

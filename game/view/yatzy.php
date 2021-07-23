@@ -40,9 +40,9 @@ $playerNumber = $playerNumber ?? null;
                 <?php foreach($graphicDices as $key => $value) : ?>
                     <!-- Each graphic dice representation -->
                     <div class="dice-utf8 diceForm__graphicDices--selectionBox">
-                        <i class="<?= $value ?>"></i>
+                        <i class="dice-sprite dice-<?= $key ?> <?= $value ?>"></i>
                         <?php if ($playerRolls !== 3) : ?>
-                            <input class="diceForm__input--checkbox" id="dice--<?= $key ?>" name="dice--<?= $key ?>" type="checkbox"/>
+                            <input class="diceForm__input--checkbox" id="dice-<?= $key ?>" name="dice-<?= $key ?>" type="checkbox"/>
                         <?php endif; ?>
                     </div>
 
