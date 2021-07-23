@@ -38,7 +38,7 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
 
     private ?int $rolls;
     private ?object $diceHand;
-    private ?array $keepDices;
+//    private ?array $keepDices;
     private bool $stopped;
     private array $playerScores;
 
@@ -54,7 +54,6 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
         $this->rolls = 0;
         $this->diceHand = new YatzyDiceHand();
         $this->lastHand = null;
-        $this->keepDices = [];
         $this->sum = 0;
         $this->average = 0;
         $this->playerScores = [0 => null, 1 => null, 2 => null, 3 => null, 4 => null, 5 => null];
@@ -128,17 +127,17 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
     /**
      * @method saveScores()
      * @description Takes dice values the player has chosen and saves the
-     * @param array $diceHandArray
+     * @param array $lastHand
      * @param int $referenceValue
      * @return void
      */
-    public function saveScores(array $diceHandArray, int $referenceValue): void
+    public function saveScores(array $lastHand, int $referenceValue): void
     {
         $counter = 0;
         $scoreIndex = $referenceValue -1;
 
         /* Check the dice hand of the player for equal */
-        foreach ($diceHandArray as $diceValue) {
+        foreach ($lastHand as $diceValue) {
             if ($diceValue === $referenceValue) {
                 $counter++;
             }
@@ -184,36 +183,6 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
 
 
     /**
-     * @method keepDices()
-     * @description Stores index numbers of dices in diceHand. These dices are not to be rolled in next diceHand roll.
-     * @param array $diceIndexes as integers of index numbers for dices.
-     * @returns array of integers.
-     */
-    final public function keepDices(array $diceIndexes): array
-    {
-        $this->keepDices = []; // Clear old values if any.
-        $dices = $this->diceHand->getDices();
-
-        foreach ($diceIndexes as $index) {
-            $this->keepDices[$index] = $dices[$index];
-        }
-
-        return $this->keepDices;
-    }
-
-
-    /**
-     * @method getKeptDices()
-     * @description Getter method to return players property keepDices including dice indexes of values to keep between rolls.
-     * @return array of index numbers.
-     */
-    final public function getKeptDices(): array
-    {
-        return $this->keepDices;
-    }
-
-
-    /**
      * @method stop()
      * @description setter method to set boolean property to indicate that player have stopped at this score.
      * @return void
@@ -244,7 +213,6 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
     {
         $this->rolls = 0;
         $this->lastRoll = [];
-        $this->keepDices = [];
         $this->stopped = false;
     }
 }

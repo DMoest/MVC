@@ -73,36 +73,30 @@ class YatzyController extends ControllerBase
         $player = $yatzy->getCurrentPlayer();
         $submit = strval($_POST["submit"]);
         $diceHand = $player->getDiceHand();
-        $playerSavedScores = $player->getPlayerScore();
+        $dices = $diceHand->getDices();
         $keepThese = [];
-        $savedValues = 0;
 
-        /* Count the saved player scores to determine if player is done */
-        foreach ($playerSavedScores as $value) {
-            if (intval($value) !== 0) {
-                $savedValues++;
-            }
-        }
 
+        /* Keep user selected dice values */
         if ($diceHand !== null) {
-            if (isset($_POST["dice--0"])) {
-                $keepThese[0] = 0;
+            if (isset($_POST["dice-0"])) {
+                $keepThese[0] = $dices[0];
             }
 
-            if (isset($_POST["dice--1"])) {
-                $keepThese[1] = 1;
+            if (isset($_POST["dice-1"])) {
+                $keepThese[1] = $dices[1];
             }
 
-            if (isset($_POST["dice--2"])) {
-                $keepThese[2] = 2;
+            if (isset($_POST["dice-2"])) {
+                $keepThese[2] = $dices[2];
             }
 
-            if (isset($_POST["dice--3"])) {
-                $keepThese[3] = 3;
+            if (isset($_POST["dice-3"])) {
+                $keepThese[3] = $dices[3];
             }
 
-            if (isset($_POST["dice--4"])) {
-                $keepThese[4] = 4;
+            if (isset($_POST["dice-4"])) {
+                $keepThese[4] = $dices[4];
             }
 
             $diceHand->keepDices($keepThese);
@@ -112,7 +106,11 @@ class YatzyController extends ControllerBase
         $yatzy->play($submit);
         $this->scoreBoard = $yatzy->printYatzyScoreBoard();
 
-        // Return the redirect through parent class ControllerBase
-        return $this->redirect(url("/yatzy__results/view"));
+        // Return the redirect through parent class ControllerBase destination depends on number of rolls.
+        if ($player->getRolls() < 3) {
+            return $this->redirect(url("/yatzy/view"));
+        }
+
+        return $this->redirect(url("/yatzy__selectScores/view"));
     }
 }

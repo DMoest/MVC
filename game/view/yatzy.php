@@ -10,6 +10,7 @@ declare(strict_types=1);
 $header = $header ?? null;
 $message = $message ?? null;
 $action = $action ?? null;
+$action2 = $action2 ?? null;
 $round = $round ?? null;
 $playerRolls = $playerRolls ?? null;
 $graphicDices = $graphicDices ?? null;
@@ -27,6 +28,8 @@ $playerNumber = $playerNumber ?? null;
     <p>Round: <b><?= $round ?></b></p>
     <p>Times player have rolled the dices: <b><?= $playerRolls ?></b></p>
 
+
+    <!-- Graphic Dices -->
     <?php if ($graphicDices !== null) : ?>
         <p class="diceForm__results">
 
@@ -40,9 +43,9 @@ $playerNumber = $playerNumber ?? null;
                 <?php foreach($graphicDices as $key => $value) : ?>
                     <!-- Each graphic dice representation -->
                     <div class="dice-utf8 diceForm__graphicDices--selectionBox">
-                        <i class="dice-sprite dice-<?= $key ?> <?= $value ?>"></i>
+                        <i class="dice-sprite <?= $value ?>"></i>
                         <?php if ($playerRolls !== 3) : ?>
-                            <input class="diceForm__input--checkbox" id="<?= $value ?>" name="<?= $value ?>" type="checkbox"/>
+                            <input class="diceForm__input--checkbox" id="dice-<?= $key ?>" name="dice-<?= $key ?>" type="checkbox"/>
                         <?php endif; ?>
                     </div>
 
@@ -52,6 +55,8 @@ $playerNumber = $playerNumber ?? null;
         </p>
     <?php endif; ?>
 
+
+    <!-- Submit buttons depend on number of rolls the player have done -->
     <div class="diceForm__submit--container">
         <?php if($playerRolls < 3) : ?>
             <button class="diceForm__input--button diceForm__input--buttonSuccess" type="submit" name="submit" value="roll">Roll the dices</button>

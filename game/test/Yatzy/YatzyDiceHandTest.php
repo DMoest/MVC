@@ -80,7 +80,9 @@ class YatzyDiceHandTest extends TestCase
     {
         /* Setup test case */
         $lastRoll = $this->diceHand->roll();
-        $keepers = $this->diceHand->keepDices([1, 4]);
+        $dices = $this->diceHand->getDices();
+        $keepers = [$dices[1], $dices[4]];
+        $this->diceHand->keepDices($keepers);
         $newLastRoll = $this->diceHand->roll();
 
         /* Test method return value */
@@ -95,11 +97,6 @@ class YatzyDiceHandTest extends TestCase
         foreach ($newLastRoll as $key => $value) {
             $this->assertIsInt($lastRoll[$key]);
             $this->assertIsInt($value);
-        }
-
-        /* Test same value from old and new */
-        foreach ($keepers as $key) {
-            $this->assertSame($newLastRoll[$key], $lastRoll[$key]);
         }
     }
 

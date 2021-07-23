@@ -21,7 +21,7 @@ class YatzyDiceHand extends DiceHand implements YatzyDiceHandInterface
     /**
      * YatzyDiceHand constructor.
      */
-    public function __construct()
+    final public function __construct()
     {
         parent::__construct(self::DICESINHAND, self::FACESOFDICE); // construct from parent class.
     }
@@ -32,16 +32,16 @@ class YatzyDiceHand extends DiceHand implements YatzyDiceHandInterface
      * @description Method to roll the dice objects in dice hand for new values.
      * @return array
      */
-    public function roll(): array
+    final public function roll(): array
     {
-        $oldValues = $this->getLastRoll();
-        $this->lastRoll = [];
+        $diceHand = $this->getDices();
+        $lastRoll = $this->getLastRoll();
+        $keepers = $this->getKeptDices();
 
-        foreach ($this->dices as $key => $dice) {
-            if (in_array($key, $this->keepDices)) {
-                $this->lastRoll[$key] = $oldValues[$key];
-//                $this->lastRoll[$key] = $this->lastRoll[$key];
-            } elseif (!in_array($key, $this->keepDices)) {
+        foreach ($diceHand as $key => $dice) {
+            if (in_array($dice, $keepers)) {
+                $this->lastRoll[$key] = $lastRoll[$key];
+            } elseif (!in_array($dice, $keepers)) {
                 $this->lastRoll[$key] = $dice->roll();
             }
         }
@@ -53,12 +53,13 @@ class YatzyDiceHand extends DiceHand implements YatzyDiceHandInterface
     /**
      * @method keepDices()
      * @description Method to keep/hold dices to enable rolling the other dices in dice hand.
-     * @param array $dices
-     * @return array of dice objects
+     * @param array $dices as array of dice objects.
+     * @return array of dice objects to keep.
      */
-    public function keepDices(array $dices)
+    final public function keepDices(array $dices)
     {
-        $this->keepDices = []; // Clearing of earlier kept dices.
+
+        $this->clearKeptDices(); // Clearing of earlier kept dices.
 
         foreach ($dices as $key => $dice) {
             $this->keepDices[$key] = $dice;
@@ -69,24 +70,24 @@ class YatzyDiceHand extends DiceHand implements YatzyDiceHandInterface
 
 
     /**
-     * @method clearKeptDices()
-     * @description Setter method to clear all kept dices.
-     * @return void
-     */
-    public function clearKeptDices(): void
-    {
-        $this->keepDices = [];
-    }
-
-
-    /**
      * @method getKeptDices()
      * @description Getter method to return the kept/held dices of dice hand.
      * @return array of dice objects
      */
-    public function getKeptDices(): array
+    final public function getKeptDices(): array
     {
         return $this->keepDices;
+    }
+
+
+    /**
+     * @method clearKeptDices()
+     * @description Setter method to clear all kept dices.
+     * @return void
+     */
+    final public function clearKeptDices(): void
+    {
+        $this->keepDices = [];
     }
 
 
@@ -95,7 +96,7 @@ class YatzyDiceHand extends DiceHand implements YatzyDiceHandInterface
      * @description Setter method to prepare diceHand object for next round of yatzy.
      * @return void
      */
-    public function setForNextRound(): void
+    final public function setForNextRound(): void
     {
         $this->lastRoll = [];
         $this->keepDices = [];

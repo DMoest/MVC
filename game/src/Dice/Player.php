@@ -67,16 +67,11 @@ class Player implements PlayerInterface
         $values = $diceHand->getLastRoll();
         $this->lastHand = $diceHand; // last diceHand as object
         $this->lastRoll = []; // clear values
-//        $dices = count($values);
 
         foreach ($values as $key => $dice) {
             $this->lastRoll[$key] = $dice;
             $this->results[] = $dice;
         }
-//        for ($i = 0; $i < $dices; $i++) {
-//            $this->lastRoll[] = $values[$i];
-//            $this->results[] = $values[$i];
-//        }
 
         return $values;
     }
@@ -121,7 +116,7 @@ class Player implements PlayerInterface
 
     /**
      * @method getLastHand()
-     * @description return last dice hand as object.
+     * @description return dice hand as object.
      * @return object
      */
     public function getLastHand(): object

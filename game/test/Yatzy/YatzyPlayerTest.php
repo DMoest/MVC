@@ -54,7 +54,6 @@ class YatzyPlayerTest extends TestCase
         $this->assertObjectHasAttribute("lastRoll", $this->player);
         $this->assertObjectHasAttribute("diceHand", $this->player);
         $this->assertObjectHasAttribute("lastHand", $this->player);
-        $this->assertObjectHasAttribute("keepDices", $this->player);
         $this->assertObjectHasAttribute("sum", $this->player);
         $this->assertObjectHasAttribute("average", $this->player);
         $this->assertObjectHasAttribute("playerScores", $this->player);
@@ -69,7 +68,6 @@ class YatzyPlayerTest extends TestCase
         $this->assertTrue(method_exists($this->player, "getAmountOfScoresSaved"), "Class does not have expected method getAmountOfScoresSaved.");
         $this->assertTrue(method_exists($this->player, "getPlayerScoreSum"), "Class does not have expected method getPlayerScoreSum.");
         $this->assertTrue(method_exists($this->player, "getDiceHand"), "Class does not have expected method getDiceHand.");
-        $this->assertTrue(method_exists($this->player, "keepDices"), "Class does not have expected method keepDices.");
         $this->assertTrue(method_exists($this->player, "stop"), "Class does not have expected method stop.");
         $this->assertTrue(method_exists($this->player, "hasStopped"), "Class does not have expected method hasStopped.");
         $this->assertTrue(method_exists($this->player, "saveScores"), "Class does not have expected method saveScores.");
@@ -156,32 +154,6 @@ class YatzyPlayerTest extends TestCase
 
 
     /**
-     * @description Test YatzyPlayer keepDices method.
-     */
-    final public function testYatzyPlayerKeepDices(): void
-    {
-        /* Setup case */
-        $firstRoll = $this->player->rollDices();
-        $diceHand = $this->player->getDiceHand();
-        $this->player->keepDices([2, 4]);
-        $diceHandDices = $diceHand->getDices();
-        $secondRoll = $this->player->rollDices();
-
-        /* Test case assertions */
-        $this->assertIsObject($diceHand);
-        $this->assertIsArray($diceHandDices);
-        $this->assertIsArray($firstRoll);
-        $this->assertIsArray($secondRoll);
-        $this->assertNotSame($firstRoll, $secondRoll);
-
-        /* Probem to fix with keepDices method */
-//        var_dump($firstRoll);
-//        var_dump($secondRoll);
-//        $this->assertSame($firstRoll[2]->getLastRoll(), $secondRoll[2]->getLastRoll());
-    }
-
-
-    /**
      * @description Test YatzyPlayer method setForNextRound.
      */
     final public function testYatzyPlayerSetForNextRound(): void
@@ -189,7 +161,6 @@ class YatzyPlayerTest extends TestCase
         /* Setup test case */
         $lastRoll = $this->player->rollDices();
         $rolls = $this->player->getRolls();
-        $keepers = $this->player->keepDices([0, 3, 4]);
         $this->player->stop();
         $stopped = $this->player->hasStopped();
 
@@ -197,7 +168,6 @@ class YatzyPlayerTest extends TestCase
 
         $newLastRoll = $this->player->getLastRoll();
         $newRolls = $this->player->getRolls();
-        $newKeepers = $this->player->getKeptDices();
         $newStopped = $this->player->hasStopped();
 
         /* Test case assertions */
@@ -210,12 +180,5 @@ class YatzyPlayerTest extends TestCase
         $this->assertIsBool($stopped);
         $this->assertIsBool($newStopped);
         $this->assertNotEquals($stopped, $newStopped);
-        $this->assertIsIterable($keepers);
-        $this->assertIsArray($keepers);
-        $this->assertNotEmpty($keepers);
-        $this->assertIsIterable($newKeepers);
-        $this->assertIsArray($newKeepers);
-        $this->assertEmpty($newKeepers);
-        $this->assertNotSame($keepers, $newKeepers);
     }
 }

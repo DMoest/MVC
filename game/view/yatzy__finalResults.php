@@ -25,23 +25,26 @@ $scoreSum = $scoreSum ?? null;
 <!-- Print player final scores -->
 <?php if ($playerScores !== null) : ?>
 
+
     <!-- Present the player -->
     <h3>Player <?= $playerNumber ?></h3>
 
     <!--Show final results -->
     <div>
 
+
         <!-- Generate dice representations -->
         <?php foreach($playerScores as $key => $value) : ?>
 
             <!-- Each graphic dice representation -->
-            <div class="">
-                <p><?= $key +1 ?>-Dice's points: <b></b><?= $value ?></b></p>
+            <div class="diceContainer__results">
+                <p><i class="dice-utf8 dice-<?= $key +1 ?>"></i> Points: <b></b><?= $value ?></b></p>
             </div>
         <?php endforeach; ?>
 
+
         <!-- Print final score -->
-        <h4>Players total score: <?= $scoreSum ?></h4>
+        <h4>Player total score: <?= $scoreSum ?></h4>
     </div>
 
 <?php endif; ?>
