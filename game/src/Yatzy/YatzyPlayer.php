@@ -94,7 +94,7 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
 
     /**
      * @method getScore()
-     * @description returns a sum of all values in array of results.
+     * @description returns a sum of all values in array of lastRoll.
      * @return int as player score.
      */
     final public function getScore(): int

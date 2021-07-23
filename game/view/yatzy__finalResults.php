@@ -26,7 +26,7 @@ $scoreSum = $scoreSum ?? null;
 <?php if ($playerScores !== null) : ?>
 
     <!-- Present the player -->
-    <h3>Player <?= $playerNumber ?> score</h3>
+    <h3>Player <?= $playerNumber ?></h3>
 
     <!--Show final results -->
     <div>
@@ -36,7 +36,7 @@ $scoreSum = $scoreSum ?? null;
 
             <!-- Each graphic dice representation -->
             <div class="">
-                <p><?= $key +1 ?>-Dice's points: <?= $value ?></p>
+                <p><?= $key +1 ?>-Dice's points: <b></b><?= $value ?></b></p>
             </div>
         <?php endforeach; ?>
 

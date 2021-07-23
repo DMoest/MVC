@@ -25,36 +25,48 @@
    * Style a dice using UTF-8 characters.
    */
   &-1 {
+    font-style: normal;
+
     &::after {
       content: "\2680";
     }
   }
 
   &-2 {
+    font-style: normal;
+
     &::after {
       content: "\2681";
     }
   }
 
   &-3 {
+    font-style: normal;
+
     &::after {
       content: "\2682";
     }
   }
 
   &-4 {
+    font-style: normal;
+
     &::after {
       content: "\2683";
     }
   }
 
   &-5 {
+    font-style: normal;
+
     &::after {
       content: "\2684";
     }
   }
 
   &-6 {
+    font-style: normal;
+
     &::after {
       content: "\2685";
     }

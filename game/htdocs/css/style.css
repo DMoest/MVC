@@ -165,20 +165,38 @@ main {
   font-style: normal;
   background: url(./../../../img/dice-faces.jpg) no-repeat;
 }
+.dice-1 {
+  font-style: normal;
+}
 .dice-1::after {
   content: "⚀";
+}
+.dice-2 {
+  font-style: normal;
 }
 .dice-2::after {
   content: "⚁";
 }
+.dice-3 {
+  font-style: normal;
+}
 .dice-3::after {
   content: "⚂";
+}
+.dice-4 {
+  font-style: normal;
 }
 .dice-4::after {
   content: "⚃";
 }
+.dice-5 {
+  font-style: normal;
+}
 .dice-5::after {
   content: "⚄";
+}
+.dice-6 {
+  font-style: normal;
 }
 .dice-6::after {
   content: "⚅";

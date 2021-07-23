@@ -99,19 +99,31 @@ trait ScoreBoardTrait
         foreach ($this->players as $key => $player) {
 
             /* Results as string */
-            $lastResultsString = $player->getLastRollAsString();
+            $playerNumber = $this->getPlayerIndex() +1;
+            $sum = $player->getScore();
             $average = $player->getAverage();
-            $totalScore = $player->getSumTotal();
+            $totalScore = $player->getPlayerScoreSum();
+            $diceHand = $player->getDiceHand();
+            $graphicDices = $this->showGraphicDices($diceHand);
 
             /* Build elements */
             $scoreBoard .= "<div class=\"diceForm__results--player-" . $key . "\">";
             $scoreBoard .= "<h4>Player " . ($key +1) . "</h4>";
 
-            /* Only add elements if player have results */
+            /* Add graphic dices to scoreboard */
+            foreach ($graphicDices as $key => $diceClass) {
+                $scoreBoard .= "<span class=\"dice-utf8\">";
+                $scoreBoard .= "<i class=" . $diceClass . "></i>";
+                $scoreBoard .= "</span>";
+            }
+
+
+            $scoreBoard .= "<p>Dice hand sum total: <b>" . $sum . "</b></p>";
+            $scoreBoard .= "<p>Player rolls an average dice value of: <b>" . $average . "</b></b></p>";
+
+            /* Only add element if player have results */
             if ($totalScore > 0) {
-                $scoreBoard .= "<p>$lastResultsString</p>";
-                $scoreBoard .= "<p>Average dice value = " . $average . "</p>";
-                $scoreBoard .= "<p>Player " . ($key+1) . " score = " . $totalScore . "</p>";
+                $scoreBoard .= "<p>Player " . $playerNumber . " game score: <b>" . $totalScore . "</b></p>";
             }
 
             /* Close the player container div element */

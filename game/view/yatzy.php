@@ -24,8 +24,8 @@ $playerNumber = $playerNumber ?? null;
     <h1><?= $header ?></h1>
     <p><i><?= $message ?></i></p>
 
-    <p>Round: <?= $round ?> </p>
-    <p>Times player have rolled the dices: <?= $playerRolls ?> </p>
+    <p>Round: <b><?= $round ?></b></p>
+    <p>Times player have rolled the dices: <b><?= $playerRolls ?></b></p>
 
     <?php if ($graphicDices !== null) : ?>
         <p class="diceForm__results">
@@ -42,7 +42,7 @@ $playerNumber = $playerNumber ?? null;
                     <div class="dice-utf8 diceForm__graphicDices--selectionBox">
                         <i class="dice-sprite dice-<?= $key ?> <?= $value ?>"></i>
                         <?php if ($playerRolls !== 3) : ?>
-                            <input class="diceForm__input--checkbox" id="dice-<?= $key ?>" name="dice-<?= $key ?>" type="checkbox"/>
+                            <input class="diceForm__input--checkbox" id="<?= $value ?>" name="<?= $value ?>" type="checkbox"/>
                         <?php endif; ?>
                     </div>
 
