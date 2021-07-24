@@ -38,7 +38,6 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
 
     private ?int $rolls;
     private ?object $diceHand;
-//    private ?array $keepDices;
     private bool $stopped;
     private array $playerScores;
 

@@ -22,8 +22,6 @@ $scoreSum = $scoreSum ?? null;
 
 <form method="post" action="<?= $action ?>" class="yatzyForm">
     <h1><?= $header ?></h1>
-    <p><i><?= $message ?></i></p>
-    <p>Player rolled the dices: <b><?= $playerRolls ?></b> times.</p>
 
     <?php if ($graphicDices !== null) : ?>
         <p class="diceForm__results">
@@ -44,7 +42,7 @@ $scoreSum = $scoreSum ?? null;
             <?php endforeach; ?>
         </div>
 
-        <p><i>Select where on the chart to place your points.</i></p>
+        <p><i><?= $message ?></i></p>
 
         <!-- Scores selection board included here -->
         <?= $scoreSelection ?>

@@ -40,7 +40,7 @@ class YatzySelectScores extends ControllerBase
 
         $data = [
             "header" => "Yatzy - Player Points Selection",
-            "message" => "",
+            "message" => "Select where on the chart to place your points. Once your points for this round have been placed you can not place more points to this position. Try to make strategic placement for a higher sum total as your end result.",
             "action" => url("/yatzy__selectScores/process"),
             "round" => $yatzy->getRound(),
             "playerNumber" => $yatzy->getPlayerIndex() +1,

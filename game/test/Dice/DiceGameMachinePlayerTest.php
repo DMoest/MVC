@@ -82,4 +82,25 @@ class DiceGameMachinePlayerTest extends TestCase
         $this->assertTrue($machine);
         $this->assertNotEmpty($results);
     }
+
+
+    /**
+     * @description Test DiceGame method playComputer.
+     */
+    final public function testDiceMachnePlayerMethodPlayComputer(): void
+    {
+        /* Setup test case */
+        $players = $this->diceGame->getPlayers();
+        $player = $players[array_key_last($players)];
+        $this->diceGame->playComputer($player);
+        $score = $player->getSumTotal();
+        $stopped = $player->hasStopped();
+        $bust = $player->isBust();
+
+        /* Test case assertions */
+        $this->assertIsInt($score);
+        $this->assertNotEquals(0, $score);
+        $this->assertIsBool($stopped);
+        $this->assertIsBool($bust);
+    }
 }

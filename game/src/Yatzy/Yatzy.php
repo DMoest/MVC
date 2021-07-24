@@ -218,9 +218,9 @@ class Yatzy
             if ($score === null) {
                 $outputString .= "<label class='yatzyForm__input--label' for='" . $key . "'>";
                 $outputString .= "<input class='yatzyForm__input--radio' type='radio' name='scoreSelect' id='" . $key . "' value='" . $key . "' /> ";
-                $outputString .= $yatzyScoreNames[$key] . " </label><br> ";
+                $outputString .= "<i class='dice-utf8 dice-" . ($key+1) . "'></i> " . $yatzyScoreNames[$key] . " </label><br> ";
             } elseif (is_int($score)) {
-                $outputString .= "<p class='yatzyForm__text--score'> " . $yatzyScoreNames[$key] . " : " . $score . " points </p>";
+                $outputString .= "<p><i class='dice-utf8 dice-" . ($key+1) . "'></i> " . $yatzyScoreNames[$key] . " : " . $score . " points</p>";
             }
         }
 
