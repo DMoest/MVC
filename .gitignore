@@ -4,18 +4,31 @@
 
 # Ignored folders
 # --------------------------------------------------
-**/.bin
-**/build
-**/cache
-**/vendor
-**/node_modules
+game/.bin
+game/bin/
+game/build
+game/vendor
+game/.venv/
 
 
 # Ignore all LOG files.
 # --------------------------------------------------
 *.log
+*.log/
 
 
-# Ignore unit test cache file
+# Ignore unit test result.cache file
 # --------------------------------------------------
 **.phpunit.result.cache
+
+
+# Ignore unnessesary package and composer generated files.
+# --------------------------------------------------
+game/package-lock.json
+game/composer.lock
+#gui-repo/
+
+
+# Ignore NODE MODULES!
+# --------------------------------------------------
+**/node_modules
