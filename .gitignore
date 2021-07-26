@@ -11,12 +11,6 @@ game/vendor
 game/.venv/
 
 
-# Ignore all LOG files.
-# --------------------------------------------------
-*.log
-*.log/
-
-
 # Ignore unit test result.cache file
 # --------------------------------------------------
 **.phpunit.result.cache
