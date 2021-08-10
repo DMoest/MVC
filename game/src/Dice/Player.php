@@ -35,7 +35,7 @@ class Player implements PlayerInterface
 
     protected array $results = [];
     protected array $lastRoll = [];
-    protected ?object $lastHand;
+    protected ?object $diceHand;
     protected ?int $sum = null;
     protected ?float $average = null;
     protected int $faces = 6;
@@ -65,7 +65,7 @@ class Player implements PlayerInterface
         $diceHand = new DiceHand($dices, $faces);
         $diceHand->roll();
         $values = $diceHand->getLastRoll();
-        $this->lastHand = $diceHand; // last diceHand as object
+        $this->diceHand = $diceHand; // last diceHand as object
         $this->lastRoll = []; // clear values
 
         foreach ($values as $key => $dice) {
@@ -119,9 +119,9 @@ class Player implements PlayerInterface
      * @description return dice hand as object.
      * @return object
      */
-    public function getLastHand(): object
+    public function getDiceHand(): object
     {
-        return $this->lastHand;
+        return $this->diceHand;
     }
 
 

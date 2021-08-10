@@ -68,7 +68,7 @@ class PlayerTest extends TestCase
         $this->assertTrue(method_exists($this->player, "getResults"), "Class does not have expected method getResults.");
         $this->assertTrue(method_exists($this->player, "getSumTotal"), "Class does not have expected method getSumTotal.");
         $this->assertTrue(method_exists($this->player, "getLastRoll"), "Class does not have expected method getLastRoll.");
-        $this->assertTrue(method_exists($this->player, "getLastHand"), "Class does not have expected method getLastHand.");
+        $this->assertTrue(method_exists($this->player, "getDiceHand"), "Class does not have expected method getLastHand.");
         $this->assertTrue(method_exists($this->player, "getAverage"), "Class does not have expected method getAverage.");
 
         /* Test initial values */
@@ -126,7 +126,7 @@ class PlayerTest extends TestCase
     public function testPlayerGetLastHand()
     {
         $this->player->rollDices(4);
-        $lastHand = $this->player->getLastHand();
+        $lastHand = $this->player->getDiceHand();
 
         $this->assertIsObject($lastHand);
     }

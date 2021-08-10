@@ -52,7 +52,7 @@ class YatzyPlayer extends Player implements YatzyPlayerInterface
 
         $this->rolls = 0;
         $this->diceHand = new YatzyDiceHand();
-        $this->lastHand = null;
+        $this->diceHand = null;
         $this->sum = 0;
         $this->average = 0;
         $this->playerScores = [0 => null, 1 => null, 2 => null, 3 => null, 4 => null, 5 => null];
